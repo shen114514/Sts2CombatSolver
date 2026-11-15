@@ -1,0 +1,17 @@
+.git/
+.godot/
+bin/
+obj/
+dist/
+**/bin/
+**/obj/
+*.user
+*.log
+*.pdb
+*.save
+*.run
+*.jsonl
+*.zip
+*.exe
+*.dll
+!tests/results/*.json

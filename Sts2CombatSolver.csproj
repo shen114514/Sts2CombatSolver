@@ -1,0 +1,24 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework><LangVersion>13.0</LangVersion>
+    <Nullable>enable</Nullable><ImplicitUsings>true</ImplicitUsings><AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <EnableDynamicLoading>true</EnableDynamicLoading><AssemblyName>Sts2CombatSolver</AssemblyName>
+    <Version>1.0.0</Version><EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin/$(Configuration)/</OutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <NoWarn>$(NoWarn);CS0436;CS0618</NoWarn>
+    <Sts2Dir Condition="'$(Sts2Dir)' == ''">$(STS2_GAME_DIR)</Sts2Dir>
+    <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Dir)/data_sts2_windows_x86_64</Sts2DataDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+    <EmbeddedResource Include="src/solver/UI/English.json" LogicalName="CombatSolver.UI.English.json" />
+    <PackageReference Include="Krafs.Publicizer" Version="2.3.0" PrivateAssets="all" />
+    <Publicize Include="sts2" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false" />
+    <Reference Include="sts2" HintPath="$(Sts2DataDir)/sts2.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(Sts2DataDir)/0Harmony.dll" Private="false" />
+    <Reference Include="GodotSharp" HintPath="$(Sts2DataDir)/GodotSharp.dll" Private="false" />
+  </ItemGroup>
+  <Target Name="ValidateGameInstall" BeforeTargets="ResolveAssemblyReferences"><Error Condition="!Exists('$(Sts2DataDir)/sts2.dll')" Text="Set Sts2Dir to your game installation." /></Target>
+</Project>

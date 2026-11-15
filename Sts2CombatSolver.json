@@ -1,0 +1,12 @@
+{
+  "id": "Sts2CombatSolver",
+  "name": "战斗求解器 · 独立版",
+  "author": "shen114514; Torch1230 and contributors; hotwords123",
+  "description": "独立战斗搜索、自动出牌和可选自动选路。无外部框架依赖，无联网交互。商店、奖励、事件和火堆由玩家操作。",
+  "version": "1.0.0",
+  "has_pck": false,
+  "has_dll": true,
+  "affects_gameplay": true,
+  "min_game_version": "0.113.1",
+  "dependencies": []
+}

@@ -1,0 +1,12 @@
+{
+  "status": "Passed",
+  "stage": "native_map_travel",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "NativeCombatWon:Character=FOOL:Turns=3:Hp=61:Searches=1:ManualResponses=0",
+    "NativeMapTravel:From=MapCoord (3, 0):To=MapCoord (2, 1):ManualResponses=0"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-15T21:16:53.6056488+08:00"
+}
