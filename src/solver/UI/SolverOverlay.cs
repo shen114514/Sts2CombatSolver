@@ -201,6 +201,7 @@ internal static class SolverOverlay
     internal static string? AdoptRouteButtonTextForTesting => _adoptRouteButton?.Text;
     internal static bool AdoptRouteButtonDisabledForTesting => _adoptRouteButton?.Disabled ?? true;
     internal static SolverOverlayPresentation PresentationForTesting => _presentation;
+    internal static bool SettingsVisibleForAutomation=>_settingsPanel?.IsVisibleInTree()==true;
     internal static string? RouteHeadingForTesting => _routeHeadingLabel?.Text;
     internal static string? RewardOutcomeTextForTesting => _rewardOutcomeLabel?.Visible == true
         ? _rewardOutcomeLabel.Text : null;

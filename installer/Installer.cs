@@ -14,6 +14,7 @@ internal static class Installer
 {
     private const string ModName="Sts2CombatSolver";
     private const string PayloadHash="__PAYLOAD_HASH__";
+    private const string Version="__VERSION__";
     private const string GameHash="62ECBE91093E1FA862DE4329AAC865209DCB297804CAF0F0520D92D8C0B4A9C3";
     private static readonly string[] Files={"Sts2CombatSolver.dll","Sts2CombatSolver.json","LICENSE"};
     [STAThread]
@@ -33,7 +34,7 @@ internal static class Installer
             }
             if(game==null)throw new InvalidOperationException("没有找到游戏，请选择正确的 Steam 游戏目录。");
             string backup=Install(game);
-            if(!quiet)MessageBox.Show("安装完成。\n\n进入战斗后自动计算并出牌，可在求解器设置中暂停或关闭自动选路。\n奖励、商店、事件与火堆由玩家操作。\n\n原版本备份："+backup,"战斗求解器",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            if(!quiet)MessageBox.Show("安装完成。\n\n进入战斗后自动计算并出牌。\n奖励、商店、事件与火堆可在设置中分别开启自动操作，默认关闭。\n\n原版本备份："+backup,"战斗求解器",MessageBoxButtons.OK,MessageBoxIcon.Information);
             return 0;
         }
         catch(Exception ex)
@@ -90,7 +91,7 @@ internal static class Installer
             }
             if(Process.GetProcessesByName("SlayTheSpire2").Length>0)throw new IOException("游戏在安装过程中启动，已恢复原 Mod。");
             Directory.Move(stage,destination);installed=true;
-            File.WriteAllText(Path.Combine(backup,"installation.txt"),"Installed "+ModName+" 1.0.0\r\nGame: "+game+"\r\nFiles: "+string.Join(", ",Files)+"\r\nExisting unrelated mods, settings and saves were not changed.\r\n");
+            File.WriteAllText(Path.Combine(backup,"installation.txt"),"Installed "+ModName+" "+Version+"\r\nGame: "+game+"\r\nFiles: "+string.Join(", ",Files)+"\r\nExisting unrelated mods, settings and saves were not changed.\r\n");
             return backup;
         }
         catch

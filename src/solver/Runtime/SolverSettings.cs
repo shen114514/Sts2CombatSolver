@@ -76,6 +76,10 @@ internal sealed record SolverSettingsData
     public int? LegacyDeepMaxHandChoiceBranchesPerAction { get => null; init { if (!SearchMaxHandChoiceBranchesPerAction.HasValue) SearchMaxHandChoiceBranchesPerAction = value; } }
     public bool SolverDisabled { get; init; }
     public bool AutoRouteEnabled { get; init; } = true;
+    public bool AutoRewardsEnabled { get; init; }
+    public bool AutoShopEnabled { get; init; }
+    public bool AutoEventsEnabled { get; init; }
+    public bool AutoCampEnabled { get; init; }
     public bool AutomaticCalculationEnabled { get; init; } = true;
     public bool AutoEnableFullAuto { get; init; } = true;
 
@@ -409,7 +413,7 @@ internal static class SolverSettings
         lock (Sync)
         {
             _current = data;
-            SaveLocked(data);
+            if(!StandaloneSmokeTest.IsRunning)SaveLocked(data);
         }
     }
 

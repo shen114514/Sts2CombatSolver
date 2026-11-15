@@ -50,6 +50,13 @@ internal static class StandaloneSmokeTest
             if(RunManager.Instance.ShouldSave)throw new InvalidOperationException("Saving test refused.");
             var run=RunManager.Instance.DebugOnlyGetState()!;
             var player=LocalContext.GetMe(run)!;
+            if(RoomOptionsNativeTest.IsRequested)
+            {
+                stage="room_options";
+                await RoomOptionsNativeTest.RunAsync(host,run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             stage="native_combat";
             PauseAutomaticSearch=false;
             var encounter=ModelDb.AllEncounters.Single(e=>e.Id.Entry=="CORPSE_SLUGS_WEAK").ToMutable();
@@ -96,6 +103,8 @@ internal static class StandaloneSmokeTest
 
 internal sealed class StandaloneTestProgressIsolationPatch:IPatchMethod
 {
-    public static ModPatchTarget[] GetTargets()=>[new(typeof(SaveManager),nameof(SaveManager.UpdateProgressAfterCombatWon),[typeof(Player),typeof(CombatRoom)])];
+    public static ModPatchTarget[] GetTargets()=>[
+        new(typeof(SaveManager),nameof(SaveManager.UpdateProgressAfterCombatWon),[typeof(Player),typeof(CombatRoom)]),
+        new(typeof(SaveManager),nameof(SaveManager.SaveProgressFile),[])];
     public static bool Prefix()=>!StandaloneSmokeTest.IsRunning;
 }

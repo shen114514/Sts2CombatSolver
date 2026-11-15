@@ -1,0 +1,1496 @@
+{
+  "version": "fool-draft-0.1",
+  "gameVersion": "0.113.0",
+  "status": "规则先验；修正沉重射击误标瞄准来源，尚未完成胜率校准。",
+  "scope": "愚者（Fool）：箭矢/瞄准/拉伸/悲伤/旋律/塔罗 六套机制的关键词先验。",
+  "coefficients": {
+    "cardTax": 2.5,
+    "damageNeed": 3,
+    "blockNeed": 2.5,
+    "duplicateQuadratic": 0.65,
+    "synergyCap": 5
+  },
+  "cards": {
+    "AllIsWell": {
+      "base": 3.1,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "sorrow",
+        "block",
+        "scaling"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线＋格挡。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Anguish": {
+      "base": 4.2,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "sorrow",
+        "arrow"
+      ],
+      "note": "规则先验：6伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Archery": {
+      "base": 4,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "aim_source",
+        "power"
+      ],
+      "note": "每回合 4 瞄准，射击流持续供能。",
+      "confidence": "medium"
+    },
+    "ArrowStab": {
+      "base": 5.55,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "规则先验：9伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "BlossomShot": {
+      "base": 3.98,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "arrow",
+        "stretch"
+      ],
+      "note": "规则先验：11伤×1次/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "BlotOutTheSky": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "arrow"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Bounce": {
+      "base": 3,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "stretch"
+      ],
+      "note": "规则先验：0格挡/能耗1＋拉伸10。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "BowSmack": {
+      "base": 3.6,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "impale"
+      ],
+      "note": "规则先验：8伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Brace": {
+      "base": 2.8,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "aim_source"
+      ],
+      "note": "规则先验：0格挡/能耗2.5＋瞄准8。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "BrightenUp": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "sorrow",
+        "joy"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ChoBarbs": {
+      "base": 5.95,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill",
+        "block"
+      ],
+      "note": "规则先验：7格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ChoChorus": {
+      "base": 2.9,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "block"
+      ],
+      "note": "规则先验：12格挡/能耗3－高费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ChoFirm": {
+      "base": 5.1,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill",
+        "arrow",
+        "block"
+      ],
+      "note": "规则先验：6格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ChoKi": {
+      "base": 6.8,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "stretch",
+        "block"
+      ],
+      "note": "规则先验：8格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ChoLimbs": {
+      "base": 2.12,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "melody",
+        "block"
+      ],
+      "note": "规则先验：5格挡/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ChoReady": {
+      "base": 7.85,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill",
+        "aim_source",
+        "block"
+      ],
+      "note": "规则先验：8格挡/能耗1＋瞄准3。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Coda": {
+      "base": 3,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "melody_payoff"
+      ],
+      "note": "6 费 40 伤，按旋律种类减费；旋律不足时打不出手。",
+      "confidence": "medium"
+    },
+    "Compost": {
+      "base": 2.8,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "CoveringFire": {
+      "base": 4.1,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "arrow",
+        "block",
+        "scaling"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线＋格挡。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "DeepStretch": {
+      "base": 3,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill",
+        "stretch",
+        "draw"
+      ],
+      "note": "规则先验：0格挡/能耗1＋抽1＋拉伸7。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "DefendFool": {
+      "base": -6,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "basic",
+        "block"
+      ],
+      "note": "基础牌只当牌组能力与稀释参考，不主动新增。",
+      "confidence": "medium"
+    },
+    "DislikeYou": {
+      "base": 3.6,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack"
+      ],
+      "note": "规则先验：8伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "DivineShot": {
+      "base": 19.8,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "规则先验：40伤×1次/能耗1＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Ecstasy": {
+      "base": 3.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "sorrow",
+        "joy"
+      ],
+      "note": "每回合把一张悲伤变喜悦：需要有悲伤来源才有价值。",
+      "confidence": "medium"
+    },
+    "Encore": {
+      "base": 2.1,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "draw"
+      ],
+      "note": "规则先验：0格挡/能耗1＋抽2＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Ennui": {
+      "base": 2.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "sorrow",
+        "draw"
+      ],
+      "note": "每回合塞悲伤但多抽 2：用悲伤换手牌速度，悲伤清除手段多时才安全。",
+      "confidence": "medium"
+    },
+    "Enrapture": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "stretch"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Ensemble": {
+      "base": -0.5,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill"
+      ],
+      "note": "规则先验：0格挡/能耗3－高费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "EpicRetrieval": {
+      "base": 3.38,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "arrow",
+        "dislodge"
+      ],
+      "note": "规则先验：15伤×1次/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ExplosiveArrows": {
+      "base": 3.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "impale",
+        "aoe"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Florescence": {
+      "base": 0.3,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "arrow",
+        "exhaust"
+      ],
+      "note": "规则先验：0格挡/能耗1＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Growth": {
+      "base": 1.2,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "stretch",
+        "sorrow",
+        "exhaust"
+      ],
+      "note": "规则先验：0格挡/能耗1＋拉伸4。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "HarmonicShield": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "melody",
+        "block"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "HeavyShot": {
+      "base": 6,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "已核对0.113实现：消耗箭矢，已有瞄准对本牌加倍；本牌不产生瞄准。",
+      "confidence": "low"
+    },
+    "HiddenRoots": {
+      "base": 2.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "stretch"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "HobblingShot": {
+      "base": 7.35,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "规则先验：13伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Honing": {
+      "base": 4.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "arrow"
+      ],
+      "note": "箭矢伤害 +50%：射击流的乘算核心，箭越稳定越强。",
+      "confidence": "medium"
+    },
+    "Jest": {
+      "base": 5.95,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill",
+        "sorrow",
+        "block"
+      ],
+      "note": "规则先验：14格挡/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "KiChant": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "KiHop": {
+      "base": 4.75,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "impale",
+        "draw"
+      ],
+      "note": "规则先验：7伤×1次/能耗1＋抽2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "KiRest": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "melody"
+      ],
+      "note": "规则先验：0格挡/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "KiVerse": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "KiWhip": {
+      "base": 2.25,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack"
+      ],
+      "note": "规则先验：5伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "LockedIn": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "arrow"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "FoolishShot": {
+      "base": -1.5,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "basic",
+        "attack",
+        "arrow"
+      ],
+      "note": "初始射击牌：1 费 15 伤，但必须先有箭矢；作为基础牌不主动多抓。",
+      "confidence": "medium"
+    },
+    "LostLute": {
+      "base": 5,
+      "phase": [
+        0,
+        1,
+        1.2
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "power",
+        "scaling",
+        "melody"
+      ],
+      "note": "获得旋律时打出抽牌堆顶的牌：旋律体系引擎，牌组太薄会打乱节奏。",
+      "confidence": "medium"
+    },
+    "Lullaby": {
+      "base": 4.4,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "melody",
+        "block"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线＋格挡＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "MelodicShot": {
+      "base": 6.9,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "arrow",
+        "melody"
+      ],
+      "note": "规则先验：12伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Motif": {
+      "base": 3.3,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "melody",
+        "draw",
+        "scaling"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线＋抽1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "MourningBlow": {
+      "base": 4.8,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "sorrow"
+      ],
+      "note": "规则先验：10伤×1次/能耗1＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "MythicForm": {
+      "base": 5,
+      "phase": [
+        0,
+        1,
+        1.2
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "scaling",
+        "tarot"
+      ],
+      "note": "每回合给一张随机塔罗牌：上限高但结果随机。",
+      "confidence": "medium"
+    },
+    "Nail": {
+      "base": 5.3,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "impale"
+      ],
+      "note": "规则先验：20伤×1次/能耗2＋2层减益。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Nock": {
+      "base": 3.5,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "aim_source",
+        "skill"
+      ],
+      "note": "0 费 5 瞄准：射击流的核心启动件，但不产箭。",
+      "confidence": "medium"
+    },
+    "PunchOfJoy": {
+      "base": 2.92,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "sorrow",
+        "joy"
+      ],
+      "note": "规则先验：13伤×1次/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "QuickShot": {
+      "base": 5.5,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "0 费射击，是箭体系最便宜的触发器；没有箭时只能当普通 0 费 10 伤。",
+      "confidence": "medium"
+    },
+    "Quietus": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "arrow"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Quiver": {
+      "base": 4.5,
+      "phase": [
+        0.5,
+        0.8,
+        0.8
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "slot",
+        "power"
+      ],
+      "note": "多一个箭槽：直接提高每回合可射击次数，箭体系的地基。",
+      "confidence": "medium"
+    },
+    "RainShot": {
+      "base": 6.9,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "规则先验：12伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "RapidShot": {
+      "base": 5.55,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "规则先验：3伤×3次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Recall": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "skill",
+        "arrow",
+        "impale",
+        "dislodge"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "RepeatShot": {
+      "base": 6.5,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "X 费多次射击，箭越多越强；缺箭时收益断崖。",
+      "confidence": "medium"
+    },
+    "RhythmStrike": {
+      "base": 2.1,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "melody"
+      ],
+      "note": "规则先验：4伤×1次/能耗1＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Rummage": {
+      "base": 2.7,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "sorrow",
+        "draw"
+      ],
+      "note": "规则先验：0格挡/能耗1＋抽3。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "SelfDeprecate": {
+      "base": 0,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "sorrow",
+        "joy"
+      ],
+      "note": "规则先验：0格挡/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "SerratedArrows": {
+      "base": 2.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "impale"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ShowOff": {
+      "base": 1.75,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "skill",
+        "aim_source"
+      ],
+      "note": "规则先验：0格挡/能耗1＋瞄准5。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Simpleton": {
+      "base": 2,
+      "phase": [
+        0,
+        0.8,
+        0.8
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "scaling"
+      ],
+      "note": "回合结束打出最低费的一张：白嫖小牌，配合 0 费牌组才明显。",
+      "confidence": "medium"
+    },
+    "SkyShot": {
+      "base": 6,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "1 费 30 伤的单发，前期主要输出；瞄准加成同样吃双份。",
+      "confidence": "medium"
+    },
+    "SongPath": {
+      "base": 3.1,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "melody",
+        "block",
+        "scaling"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线＋格挡。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "SorrowfulStrike": {
+      "base": 5.85,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "sorrow"
+      ],
+      "note": "规则先验：13伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "SteadyCadence": {
+      "base": 4.5,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "melody"
+      ],
+      "note": "规则先验：10伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "StrikeFool": {
+      "base": -6,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "basic",
+        "attack"
+      ],
+      "note": "初始输出只算有限即时能力，不主动新增。",
+      "confidence": "medium"
+    },
+    "Timber": {
+      "base": 2.5,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "aoe"
+      ],
+      "note": "规则先验：20伤×1次/能耗3－高费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "TrickShot": {
+      "base": 6.9,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "arrow"
+      ],
+      "note": "规则先验：12伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Tune": {
+      "base": 2.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "melody"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Uproot": {
+      "base": 1.2,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "impale",
+        "dislodge"
+      ],
+      "note": "规则先验：0格挡/能耗1＋3层减益。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "ViolentChord": {
+      "base": 2.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "power",
+        "melody",
+        "aoe",
+        "scaling"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Vitriol": {
+      "base": 1.1,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "sorrow"
+      ],
+      "note": "规则先验：0格挡/能耗1＋2层减益＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahBlast": {
+      "base": 3.15,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "melody",
+        "aoe"
+      ],
+      "note": "规则先验：14伤×1次/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahCho": {
+      "base": 4.2,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "block"
+      ],
+      "note": "规则先验：3伤×1次/能耗1＋3格挡＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahChoKi": {
+      "base": 12.5,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "block",
+        "draw"
+      ],
+      "note": "规则先验：9伤×1次/能耗1＋9格挡＋抽1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahHammer": {
+      "base": 4.05,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "impale"
+      ],
+      "note": "规则先验：9伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahKi": {
+      "base": 2.6,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "attack",
+        "draw"
+      ],
+      "note": "规则先验：2伤×2次/能耗1＋抽1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahSymphony": {
+      "base": 2.85,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "attack",
+        "aoe",
+        "arrow"
+      ],
+      "note": "规则先验：6伤×1次/能耗2。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahSweep": {
+      "base": 5.1,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack",
+        "aoe",
+        "arrow"
+      ],
+      "note": "规则先验：8伤×1次/能耗1。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WahTouch": {
+      "base": 3.1,
+      "phase": [
+        1,
+        0,
+        -0.3
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.5,
+      "tags": [
+        "attack"
+      ],
+      "note": "规则先验：6伤×1次/能耗1＋1层减益。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "WhistlingArrows": {
+      "base": 2.85,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "arrow",
+        "block",
+        "scaling"
+      ],
+      "note": "规则先验：3格挡/能耗1＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Wrest": {
+      "base": 2.1,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "impale",
+        "dislodge",
+        "draw"
+      ],
+      "note": "规则先验：0格挡/能耗1＋抽2＋0费。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Yah": {
+      "base": 3.5,
+      "phase": [
+        0,
+        0.8,
+        1
+      ],
+      "duplicate": 2.6,
+      "upgradeDelta": 2.5,
+      "tags": [
+        "power",
+        "arrow",
+        "dislodge"
+      ],
+      "note": "规则先验：能力牌按稀有度给基线。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    },
+    "Yoga": {
+      "base": 1.8,
+      "phase": [
+        0.4,
+        0.2,
+        0
+      ],
+      "duplicate": 3,
+      "upgradeDelta": 1.8,
+      "tags": [
+        "skill",
+        "stretch"
+      ],
+      "note": "规则先验：0格挡/能耗1＋拉伸6。机制细节未逐张核对，属于规则先验。",
+      "confidence": "low"
+    }
+  }
+}

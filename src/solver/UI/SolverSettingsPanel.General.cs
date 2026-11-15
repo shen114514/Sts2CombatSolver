@@ -19,6 +19,8 @@ internal sealed partial class SolverSettingsPanel
     private OptionButton _overlayTheme = null!;
     private HSlider _overlayOpacity = null!;
     private Label _overlayOpacityValue = null!;
+    private readonly Dictionary<RoomAutomationFeature,CheckButton> _roomAutomationToggles=new();
+    private Label _roomAutomationStatus=null!;
 
     internal bool SearchCompletionNotificationSettingsConfiguredForTesting
         => _searchCompletionNotificationPolicy.GetItemId(
@@ -254,8 +256,20 @@ internal sealed partial class SolverSettingsPanel
             if (!_loading) SolverSettings.Update(SolverSettings.Current with { AutoRouteEnabled = enabled });
         };
         AddBasicRow(routeGrid, "自动选路", autoRoute,
-            "地图允许前进时自动选择路线；低血量优先考虑恢复并规避危险精英。奖励、商店、事件和火堆由玩家处理。");
+            "地图允许前进时自动选择路线；低血量优先考虑恢复并规避危险精英。打开设置期间暂停选路。");
         AddSettingsSection(content, "地图", "控制地图上的自动前进。", routeGrid);
+
+        GridContainer roomGrid=CreateSettingsGrid();
+        AddRoomAutomationToggle(roomGrid,RoomAutomationFeature.Rewards,"自动奖励与拿牌","领取金币、遗物和药水，比较拿牌与跳过；未支持的选择交还手动。");
+        AddRoomAutomationToggle(roomGrid,RoomAutomationFeature.Shop,"自动商店","按当前牌组比较遗物、卡牌与删牌，保护适配的强力遗物预算。");
+        AddRoomAutomationToggle(roomGrid,RoomAutomationFeature.Events,"自动事件","选择已建模的合法事件分支，未知或致死分支交还手动。");
+        AddRoomAutomationToggle(roomGrid,RoomAutomationFeature.Camp,"自动火堆","根据生命、牌组和后续风险选择休息、升级及已支持操作。");
+        AddSettingsSection(content,"房间自动操作","分别开启，默认关闭。关闭后停止提交后续动作；已经提交的单次动作可能仍在完成。",roomGrid);
+        _roomAutomationStatus=SolverUiTokens.CreateLabel(RoomAutomation.Status,SolverUiTokens.Type.Caption,SolverUiTokens.Palette.TextSecondary);
+        _roomAutomationStatus.AutowrapMode=TextServer.AutowrapMode.WordSmart;
+        content.AddChild(_roomAutomationStatus);
+        RoomAutomation.StatusChanged+=UpdateRoomAutomationStatus;
+        TreeExiting+=()=>RoomAutomation.StatusChanged-=UpdateRoomAutomationStatus;
 
         GridContainer interfaceGrid = CreateSettingsGrid();
         _overlayTheme = CreateOverlayThemeInput();
@@ -275,6 +289,35 @@ internal sealed partial class SolverSettingsPanel
         AddSettingsSection(content, SolverText.Get("显示与通知"),
             SolverText.Get("设置主题、透明度与系统通知。"), interfaceGrid);
         return CreatePageScroll(content);
+    }
+
+    private void AddRoomAutomationToggle(GridContainer grid,RoomAutomationFeature feature,string title,string description)
+    {
+        var toggle=CreateToggle();
+        _roomAutomationToggles[feature]=toggle;
+        _reloadInputs.Add(data=>toggle.SetPressedNoSignal(ReadRoomAutomationFlag(data,feature)));
+        toggle.Toggled+=enabled=>
+        {
+            if(_loading)return;
+            SolverSettings.Update(WithRoomAutomationFlag(SolverSettings.Current,feature,enabled));
+            RoomAutomation.SetStatus("自动操作设置已保存；关闭设置后按开关继续");
+        };
+        AddBasicRow(grid,title,toggle,description);
+    }
+    private void UpdateRoomAutomationStatus(string text){if(GodotObject.IsInstanceValid(_roomAutomationStatus))_roomAutomationStatus.Text=text;}
+    internal static bool ReadRoomAutomationFlag(SolverSettingsData data,RoomAutomationFeature feature)=>feature switch
+    {RoomAutomationFeature.Rewards=>data.AutoRewardsEnabled,RoomAutomationFeature.Shop=>data.AutoShopEnabled,
+        RoomAutomationFeature.Events=>data.AutoEventsEnabled,RoomAutomationFeature.Camp=>data.AutoCampEnabled,_=>false};
+    internal static SolverSettingsData WithRoomAutomationFlag(SolverSettingsData data,RoomAutomationFeature feature,bool value)=>feature switch
+    {RoomAutomationFeature.Rewards=>data with{AutoRewardsEnabled=value},RoomAutomationFeature.Shop=>data with{AutoShopEnabled=value},
+        RoomAutomationFeature.Events=>data with{AutoEventsEnabled=value},RoomAutomationFeature.Camp=>data with{AutoCampEnabled=value},_=>data};
+    internal bool RoomAutomationTogglesConfiguredForTesting=>_roomAutomationToggles.Count==4
+        &&_roomAutomationToggles.All(p=>p.Value.ButtonPressed==ReadRoomAutomationFlag(SolverSettings.Current,p.Key));
+    internal void SetRoomAutomationToggleForTesting(RoomAutomationFeature feature,bool value)=>_roomAutomationToggles[feature].ButtonPressed=value;
+    internal void ScrollRoomAutomationIntoViewForTesting()
+    {
+        if(_generalPage is ScrollContainer scroll&&scroll.GetChildCount()>0)
+            scroll.ScrollVertical=Math.Max(0,(int)(_roomAutomationToggles[RoomAutomationFeature.Rewards].GlobalPosition.Y-scroll.GetChild<Control>(0).GlobalPosition.Y)-120);
     }
 
     private void ReloadGeneralPage(SolverSettingsData data)

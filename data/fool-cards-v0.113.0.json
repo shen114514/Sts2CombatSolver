@@ -1,0 +1,4416 @@
+﻿[
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ALL_IS_WELL",
+                      "className":  "AllIsWell",
+                      "name":  "AllIsWell",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "AllIsWellPower":  4
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ALL_IS_WELL",
+                         "className":  "AllIsWell",
+                         "name":  "AllIsWell",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "AllIsWellPower":  4
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ANGUISH",
+                      "className":  "Anguish",
+                      "name":  "Anguish",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "CalculationBase":  6,
+                                        "ExtraDamage":  6,
+                                        "CalculatedDamage":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ANGUISH",
+                         "className":  "Anguish",
+                         "name":  "Anguish",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "CalculationBase":  6,
+                                           "ExtraDamage":  6,
+                                           "CalculatedDamage":  6
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ARCHERY",
+                      "className":  "Archery",
+                      "name":  "Archery",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "AimPower":  4
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ARCHERY",
+                         "className":  "Archery",
+                         "name":  "Archery",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "AimPower":  4
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ARROW_STAB",
+                      "className":  "ArrowStab",
+                      "name":  "ArrowStab",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  9
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ARROW_STAB",
+                         "className":  "ArrowStab",
+                         "name":  "ArrowStab",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  9
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.BLOSSOM_SHOT",
+                      "className":  "BlossomShot",
+                      "name":  "BlossomShot",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  11
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.BLOSSOM_SHOT",
+                         "className":  "BlossomShot",
+                         "name":  "BlossomShot",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  11
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.BLOT_OUT_THE_SKY",
+                      "className":  "BlotOutTheSky",
+                      "name":  "BlotOutTheSky",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust"
+                                   ],
+                      "variables":  {
+
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.BLOT_OUT_THE_SKY",
+                         "className":  "BlotOutTheSky",
+                         "name":  "BlotOutTheSky",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust"
+                                      ],
+                         "variables":  {
+
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.BOUNCE",
+                      "className":  "Bounce",
+                      "name":  "Bounce",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "StretchPower":  10
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.BOUNCE",
+                         "className":  "Bounce",
+                         "name":  "Bounce",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "StretchPower":  10
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.BOW_SMACK",
+                      "className":  "BowSmack",
+                      "name":  "BowSmack",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  8,
+                                        "Energy":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.BOW_SMACK",
+                         "className":  "BowSmack",
+                         "name":  "BowSmack",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  8,
+                                           "Energy":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.BRACE",
+                      "className":  "Brace",
+                      "name":  "Brace",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "AimPower":  8
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.BRACE",
+                         "className":  "Brace",
+                         "name":  "Brace",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "AimPower":  8
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.BRIGHTEN_UP",
+                      "className":  "BrightenUp",
+                      "name":  "BrightenUp",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust"
+                                   ],
+                      "variables":  {
+                                        "Joy":  2,
+                                        "Sadness":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.BRIGHTEN_UP",
+                         "className":  "BrightenUp",
+                         "name":  "BrightenUp",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust"
+                                      ],
+                         "variables":  {
+                                           "Joy":  2,
+                                           "Sadness":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CHO_BARBS",
+                      "className":  "ChoBarbs",
+                      "name":  "ChoBarbs",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  7,
+                                        "ChoBarbsPower":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CHO_BARBS",
+                         "className":  "ChoBarbs",
+                         "name":  "ChoBarbs",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  7,
+                                           "ChoBarbsPower":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CHO_CHORUS",
+                      "className":  "ChoChorus",
+                      "name":  "ChoChorus",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  3,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  12
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CHO_CHORUS",
+                         "className":  "ChoChorus",
+                         "name":  "ChoChorus",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  3,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  12
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CHO_FIRM",
+                      "className":  "ChoFirm",
+                      "name":  "ChoFirm",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CHO_FIRM",
+                         "className":  "ChoFirm",
+                         "name":  "ChoFirm",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  6
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CHO_KI",
+                      "className":  "ChoKi",
+                      "name":  "ChoKi",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  8
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CHO_KI",
+                         "className":  "ChoKi",
+                         "name":  "ChoKi",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  8
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CHO_LIMBS",
+                      "className":  "ChoLimbs",
+                      "name":  "ChoLimbs",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  5
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CHO_LIMBS",
+                         "className":  "ChoLimbs",
+                         "name":  "ChoLimbs",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  5
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CHO_READY",
+                      "className":  "ChoReady",
+                      "name":  "ChoReady",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  8,
+                                        "AimPower":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CHO_READY",
+                         "className":  "ChoReady",
+                         "name":  "ChoReady",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  8,
+                                           "AimPower":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.CODA",
+                      "className":  "Coda",
+                      "name":  "Coda",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  6,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  40
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.CODA",
+                         "className":  "Coda",
+                         "name":  "Coda",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  6,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  40
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "MultiplayerOnly",
+        "basic":  {
+                      "id":  "CARD.COMPOST",
+                      "className":  "Compost",
+                      "name":  "Compost",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Energy":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.COMPOST",
+                         "className":  "Compost",
+                         "name":  "Compost",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Energy":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "MultiplayerOnly",
+        "basic":  {
+                      "id":  "CARD.COVERING_FIRE",
+                      "className":  "CoveringFire",
+                      "name":  "CoveringFire",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "CoveringFirePower":  8
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.COVERING_FIRE",
+                         "className":  "CoveringFire",
+                         "name":  "CoveringFire",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "CoveringFirePower":  8
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.DEEP_STRETCH",
+                      "className":  "DeepStretch",
+                      "name":  "DeepStretch",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Cards":  1,
+                                        "StretchPower":  7
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.DEEP_STRETCH",
+                         "className":  "DeepStretch",
+                         "name":  "DeepStretch",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Cards":  1,
+                                           "StretchPower":  7
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.DEFEND_FOOL",
+                      "className":  "DefendFool",
+                      "name":  "DefendFool",
+                      "type":  "Skill",
+                      "rarity":  "Basic",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  5
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.DEFEND_FOOL",
+                         "className":  "DefendFool",
+                         "name":  "DefendFool",
+                         "type":  "Skill",
+                         "rarity":  "Basic",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  5
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.DISLIKE_YOU",
+                      "className":  "DislikeYou",
+                      "name":  "DislikeYou",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  8,
+                                        "DislikeYouPower":  50
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.DISLIKE_YOU",
+                         "className":  "DislikeYou",
+                         "name":  "DislikeYou",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  8,
+                                           "DislikeYouPower":  50
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.DIVINE_SHOT",
+                      "className":  "DivineShot",
+                      "name":  "DivineShot",
+                      "type":  "Attack",
+                      "rarity":  "Ancient",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Retain"
+                                   ],
+                      "variables":  {
+                                        "Damage":  40
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.DIVINE_SHOT",
+                         "className":  "DivineShot",
+                         "name":  "DivineShot",
+                         "type":  "Attack",
+                         "rarity":  "Ancient",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Retain"
+                                      ],
+                         "variables":  {
+                                           "Damage":  40
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ECSTASY",
+                      "className":  "Ecstasy",
+                      "name":  "Ecstasy",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Cards":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ECSTASY",
+                         "className":  "Ecstasy",
+                         "name":  "Ecstasy",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Cards":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ENCORE",
+                      "className":  "Encore",
+                      "name":  "Encore",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Energy":  1,
+                                        "Cards":  2,
+                                        "EncorePower":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ENCORE",
+                         "className":  "Encore",
+                         "name":  "Encore",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Energy":  1,
+                                           "Cards":  2,
+                                           "EncorePower":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.ENNUI",
+                      "className":  "Ennui",
+                      "name":  "Ennui",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "EnnuiPower":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ENNUI",
+                         "className":  "Ennui",
+                         "name":  "Ennui",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "EnnuiPower":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "MultiplayerOnly",
+        "basic":  {
+                      "id":  "CARD.ENRAPTURE",
+                      "className":  "Enrapture",
+                      "name":  "Enrapture",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "VigorPower":  6,
+                                        "StretchPower":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ENRAPTURE",
+                         "className":  "Enrapture",
+                         "name":  "Enrapture",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "VigorPower":  6,
+                                           "StretchPower":  6
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "MultiplayerOnly",
+        "basic":  {
+                      "id":  "CARD.ENSEMBLE",
+                      "className":  "Ensemble",
+                      "name":  "Ensemble",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  3,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust"
+                                   ],
+                      "variables":  {
+                                        "Cards":  4
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.ENSEMBLE",
+                         "className":  "Ensemble",
+                         "name":  "Ensemble",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  3,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust"
+                                      ],
+                         "variables":  {
+                                           "Cards":  4
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.EPIC_RETRIEVAL",
+                      "className":  "EpicRetrieval",
+                      "name":  "EpicRetrieval",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  15,
+                                        "Energy":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.EPIC_RETRIEVAL",
+                         "className":  "EpicRetrieval",
+                         "name":  "EpicRetrieval",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  15,
+                                           "Energy":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.EXPLOSIVE_ARROWS",
+                      "className":  "ExplosiveArrows",
+                      "name":  "ExplosiveArrows",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "ExplosiveArrowsPower":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.EXPLOSIVE_ARROWS",
+                         "className":  "ExplosiveArrows",
+                         "name":  "ExplosiveArrows",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "ExplosiveArrowsPower":  6
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.FLORESCENCE",
+                      "className":  "Florescence",
+                      "name":  "Florescence",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust"
+                                   ],
+                      "variables":  {
+
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.FLORESCENCE",
+                         "className":  "Florescence",
+                         "name":  "Florescence",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust"
+                                      ],
+                         "variables":  {
+
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.GROWTH",
+                      "className":  "Growth",
+                      "name":  "Growth",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "CalculationBase":  0,
+                                        "CalculationExtra":  4,
+                                        "CalculatedStretch":  0
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.GROWTH",
+                         "className":  "Growth",
+                         "name":  "Growth",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "CalculationBase":  0,
+                                           "CalculationExtra":  4,
+                                           "CalculatedStretch":  0
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.HARMONIC_SHIELD",
+                      "className":  "HarmonicShield",
+                      "name":  "HarmonicShield",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "CalculationBase":  0,
+                                        "CalculationExtra":  5,
+                                        "CalculatedBlock":  0
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.HARMONIC_SHIELD",
+                         "className":  "HarmonicShield",
+                         "name":  "HarmonicShield",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "CalculationBase":  0,
+                                           "CalculationExtra":  5,
+                                           "CalculatedBlock":  0
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.HEAVY_SHOT",
+                      "className":  "HeavyShot",
+                      "name":  "HeavyShot",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  20,
+                                        "AimMultiplier":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.HEAVY_SHOT",
+                         "className":  "HeavyShot",
+                         "name":  "HeavyShot",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  20,
+                                           "AimMultiplier":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.HIDDEN_ROOTS",
+                      "className":  "HiddenRoots",
+                      "name":  "HiddenRoots",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "HiddenRootsPower":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.HIDDEN_ROOTS",
+                         "className":  "HiddenRoots",
+                         "name":  "HiddenRoots",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "HiddenRootsPower":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.HOBBLING_SHOT",
+                      "className":  "HobblingShot",
+                      "name":  "HobblingShot",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  13,
+                                        "Power":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.HOBBLING_SHOT",
+                         "className":  "HobblingShot",
+                         "name":  "HobblingShot",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  13,
+                                           "Power":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.HONING",
+                      "className":  "Honing",
+                      "name":  "Honing",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  3,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "HoningPower":  50
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.HONING",
+                         "className":  "Honing",
+                         "name":  "Honing",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  3,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "HoningPower":  50
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.JEST",
+                      "className":  "Jest",
+                      "name":  "Jest",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  14,
+                                        "Cards":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.JEST",
+                         "className":  "Jest",
+                         "name":  "Jest",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  14,
+                                           "Cards":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.KI_CHANT",
+                      "className":  "KiChant",
+                      "name":  "KiChant",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Cards":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.KI_CHANT",
+                         "className":  "KiChant",
+                         "name":  "KiChant",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Cards":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.KI_HOP",
+                      "className":  "KiHop",
+                      "name":  "KiHop",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  7,
+                                        "Cards":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.KI_HOP",
+                         "className":  "KiHop",
+                         "name":  "KiHop",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  7,
+                                           "Cards":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.KI_REST",
+                      "className":  "KiRest",
+                      "name":  "KiRest",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Energy":  5
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.KI_REST",
+                         "className":  "KiRest",
+                         "name":  "KiRest",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Energy":  5
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.KI_VERSE",
+                      "className":  "KiVerse",
+                      "name":  "KiVerse",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "KiVersePower":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.KI_VERSE",
+                         "className":  "KiVerse",
+                         "name":  "KiVerse",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "KiVersePower":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.KI_WHIP",
+                      "className":  "KiWhip",
+                      "name":  "KiWhip",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  5,
+                                        "Energy":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.KI_WHIP",
+                         "className":  "KiWhip",
+                         "name":  "KiWhip",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  5,
+                                           "Energy":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.LOCKED_IN",
+                      "className":  "LockedIn",
+                      "name":  "LockedIn",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.LOCKED_IN",
+                         "className":  "LockedIn",
+                         "name":  "LockedIn",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.FOOLISH_SHOT",
+                      "className":  "FoolishShot",
+                      "name":  "FoolishShot",
+                      "type":  "Attack",
+                      "rarity":  "Basic",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  15
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.FOOLISH_SHOT",
+                         "className":  "FoolishShot",
+                         "name":  "FoolishShot",
+                         "type":  "Attack",
+                         "rarity":  "Basic",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  15
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.LOST_LUTE",
+                      "className":  "LostLute",
+                      "name":  "LostLute",
+                      "type":  "Power",
+                      "rarity":  "Ancient",
+                      "description":  "",
+                      "cost":  3,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "LostLutePower":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.LOST_LUTE",
+                         "className":  "LostLute",
+                         "name":  "LostLute",
+                         "type":  "Power",
+                         "rarity":  "Ancient",
+                         "description":  "",
+                         "cost":  3,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "LostLutePower":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.LULLABY",
+                      "className":  "Lullaby",
+                      "name":  "Lullaby",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "LullabyPower":  20
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.LULLABY",
+                         "className":  "Lullaby",
+                         "name":  "Lullaby",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "LullabyPower":  20
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.MELODIC_SHOT",
+                      "className":  "MelodicShot",
+                      "name":  "MelodicShot",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  12,
+                                        "CalculationBase":  1,
+                                        "CalculationExtra":  1,
+                                        "CalculatedHits":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.MELODIC_SHOT",
+                         "className":  "MelodicShot",
+                         "name":  "MelodicShot",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  12,
+                                           "CalculationBase":  1,
+                                           "CalculationExtra":  1,
+                                           "CalculatedHits":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.MOTIF",
+                      "className":  "Motif",
+                      "name":  "Motif",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "MotifPower":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.MOTIF",
+                         "className":  "Motif",
+                         "name":  "Motif",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "MotifPower":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.MOURNING_BLOW",
+                      "className":  "MourningBlow",
+                      "name":  "MourningBlow",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  10
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.MOURNING_BLOW",
+                         "className":  "MourningBlow",
+                         "name":  "MourningBlow",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  10
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.MYTHIC_FORM",
+                      "className":  "MythicForm",
+                      "name":  "MythicForm",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  3,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.MYTHIC_FORM",
+                         "className":  "MythicForm",
+                         "name":  "MythicForm",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  3,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.NAIL",
+                      "className":  "Nail",
+                      "name":  "Nail",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  20,
+                                        "Power":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.NAIL",
+                         "className":  "Nail",
+                         "name":  "Nail",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  20,
+                                           "Power":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.NOCK",
+                      "className":  "Nock",
+                      "name":  "Nock",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "AimPower":  5
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.NOCK",
+                         "className":  "Nock",
+                         "name":  "Nock",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "AimPower":  5
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.PUNCH_OF_JOY",
+                      "className":  "PunchOfJoy",
+                      "name":  "PunchOfJoy",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  13
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.PUNCH_OF_JOY",
+                         "className":  "PunchOfJoy",
+                         "name":  "PunchOfJoy",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  13
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.QUICK_SHOT",
+                      "className":  "QuickShot",
+                      "name":  "QuickShot",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  10
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.QUICK_SHOT",
+                         "className":  "QuickShot",
+                         "name":  "QuickShot",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  10
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.QUIETUS",
+                      "className":  "Quietus",
+                      "name":  "Quietus",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust"
+                                   ],
+                      "variables":  {
+                                        "QuietusPower":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.QUIETUS",
+                         "className":  "Quietus",
+                         "name":  "Quietus",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust"
+                                      ],
+                         "variables":  {
+                                           "QuietusPower":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.QUIVER",
+                      "className":  "Quiver",
+                      "name":  "Quiver",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Repeat":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.QUIVER",
+                         "className":  "Quiver",
+                         "name":  "Quiver",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Repeat":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.RAIN_SHOT",
+                      "className":  "RainShot",
+                      "name":  "RainShot",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  12
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.RAIN_SHOT",
+                         "className":  "RainShot",
+                         "name":  "RainShot",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  12
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.RAPID_SHOT",
+                      "className":  "RapidShot",
+                      "name":  "RapidShot",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  3,
+                                        "HitCount":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.RAPID_SHOT",
+                         "className":  "RapidShot",
+                         "name":  "RapidShot",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  3,
+                                           "HitCount":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.RECALL",
+                      "className":  "Recall",
+                      "name":  "Recall",
+                      "type":  "Skill",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.RECALL",
+                         "className":  "Recall",
+                         "name":  "Recall",
+                         "type":  "Skill",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.REPEAT_SHOT",
+                      "className":  "RepeatShot",
+                      "name":  "RepeatShot",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  15
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.REPEAT_SHOT",
+                         "className":  "RepeatShot",
+                         "name":  "RepeatShot",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  15
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.RHYTHM_STRIKE",
+                      "className":  "RhythmStrike",
+                      "name":  "RhythmStrike",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  4,
+                                        "CalculationBase":  1,
+                                        "CalculationExtra":  1,
+                                        "CalculatedHits":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.RHYTHM_STRIKE",
+                         "className":  "RhythmStrike",
+                         "name":  "RhythmStrike",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  4,
+                                           "CalculationBase":  1,
+                                           "CalculationExtra":  1,
+                                           "CalculatedHits":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.RUMMAGE",
+                      "className":  "Rummage",
+                      "name":  "Rummage",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Cards":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.RUMMAGE",
+                         "className":  "Rummage",
+                         "name":  "Rummage",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Cards":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "MultiplayerOnly",
+        "basic":  {
+                      "id":  "CARD.SELF_DEPRECATE",
+                      "className":  "SelfDeprecate",
+                      "name":  "SelfDeprecate",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Joy":  2,
+                                        "Sadness":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SELF_DEPRECATE",
+                         "className":  "SelfDeprecate",
+                         "name":  "SelfDeprecate",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Joy":  2,
+                                           "Sadness":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.SERRATED_ARROWS",
+                      "className":  "SerratedArrows",
+                      "name":  "SerratedArrows",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "SerratedArrowsPower":  25
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SERRATED_ARROWS",
+                         "className":  "SerratedArrows",
+                         "name":  "SerratedArrows",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "SerratedArrowsPower":  25
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.SHOW_OFF",
+                      "className":  "ShowOff",
+                      "name":  "ShowOff",
+                      "type":  "Skill",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust"
+                                   ],
+                      "variables":  {
+                                        "BaseAim":  5,
+                                        "AimPower":  5,
+                                        "ShowOffPower":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SHOW_OFF",
+                         "className":  "ShowOff",
+                         "name":  "ShowOff",
+                         "type":  "Skill",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust"
+                                      ],
+                         "variables":  {
+                                           "BaseAim":  5,
+                                           "AimPower":  5,
+                                           "ShowOffPower":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.SIMPLETON",
+                      "className":  "Simpleton",
+                      "name":  "Simpleton",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "SimpletonPower":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SIMPLETON",
+                         "className":  "Simpleton",
+                         "name":  "Simpleton",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "SimpletonPower":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.SKY_SHOT",
+                      "className":  "SkyShot",
+                      "name":  "SkyShot",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+                                       "Exhaust",
+                                       "Innate"
+                                   ],
+                      "variables":  {
+                                        "Damage":  30
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SKY_SHOT",
+                         "className":  "SkyShot",
+                         "name":  "SkyShot",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+                                          "Exhaust",
+                                          "Innate"
+                                      ],
+                         "variables":  {
+                                           "Damage":  30
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.SONG_PATH",
+                      "className":  "SongPath",
+                      "name":  "SongPath",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "SongPathPower":  5
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SONG_PATH",
+                         "className":  "SongPath",
+                         "name":  "SongPath",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "SongPathPower":  5
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.SORROWFUL_STRIKE",
+                      "className":  "SorrowfulStrike",
+                      "name":  "SorrowfulStrike",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  13,
+                                        "Cards":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.SORROWFUL_STRIKE",
+                         "className":  "SorrowfulStrike",
+                         "name":  "SorrowfulStrike",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  13,
+                                           "Cards":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.STEADY_CADENCE",
+                      "className":  "SteadyCadence",
+                      "name":  "SteadyCadence",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  10,
+                                        "CalculationBase":  0,
+                                        "CalculationExtra":  1,
+                                        "CalculatedCards":  0
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.STEADY_CADENCE",
+                         "className":  "SteadyCadence",
+                         "name":  "SteadyCadence",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  10,
+                                           "CalculationBase":  0,
+                                           "CalculationExtra":  1,
+                                           "CalculatedCards":  0
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.STRIKE_FOOL",
+                      "className":  "StrikeFool",
+                      "name":  "StrikeFool",
+                      "type":  "Attack",
+                      "rarity":  "Basic",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.STRIKE_FOOL",
+                         "className":  "StrikeFool",
+                         "name":  "StrikeFool",
+                         "type":  "Attack",
+                         "rarity":  "Basic",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  6
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.TIMBER",
+                      "className":  "Timber",
+                      "name":  "Timber",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  3,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  20,
+                                        "OnKillDamage":  30
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.TIMBER",
+                         "className":  "Timber",
+                         "name":  "Timber",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  3,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  20,
+                                           "OnKillDamage":  30
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.TRICK_SHOT",
+                      "className":  "TrickShot",
+                      "name":  "TrickShot",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  12
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.TRICK_SHOT",
+                         "className":  "TrickShot",
+                         "name":  "TrickShot",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  12
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.TUNE",
+                      "className":  "Tune",
+                      "name":  "Tune",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Energy":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.TUNE",
+                         "className":  "Tune",
+                         "name":  "Tune",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Energy":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.UPROOT",
+                      "className":  "Uproot",
+                      "name":  "Uproot",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "VulnerablePower":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.UPROOT",
+                         "className":  "Uproot",
+                         "name":  "Uproot",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "VulnerablePower":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.VIOLENT_CHORD",
+                      "className":  "ViolentChord",
+                      "name":  "ViolentChord",
+                      "type":  "Power",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "ViolentChordPower":  9
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.VIOLENT_CHORD",
+                         "className":  "ViolentChord",
+                         "name":  "ViolentChord",
+                         "type":  "Power",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "ViolentChordPower":  9
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.VITRIOL",
+                      "className":  "Vitriol",
+                      "name":  "Vitriol",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "WeakPower":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.VITRIOL",
+                         "className":  "Vitriol",
+                         "name":  "Vitriol",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "WeakPower":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_BLAST",
+                      "className":  "WahBlast",
+                      "name":  "WahBlast",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  14
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_BLAST",
+                         "className":  "WahBlast",
+                         "name":  "WahBlast",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  14
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_CHO",
+                      "className":  "WahCho",
+                      "name":  "WahCho",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  3,
+                                        "Block":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_CHO",
+                         "className":  "WahCho",
+                         "name":  "WahCho",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  3,
+                                           "Block":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_CHO_KI",
+                      "className":  "WahChoKi",
+                      "name":  "WahChoKi",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  9,
+                                        "Block":  9,
+                                        "Cards":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_CHO_KI",
+                         "className":  "WahChoKi",
+                         "name":  "WahChoKi",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  9,
+                                           "Block":  9,
+                                           "Cards":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_HAMMER",
+                      "className":  "WahHammer",
+                      "name":  "WahHammer",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  9
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_HAMMER",
+                         "className":  "WahHammer",
+                         "name":  "WahHammer",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  9
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_KI",
+                      "className":  "WahKi",
+                      "name":  "WahKi",
+                      "type":  "Attack",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  2,
+                                        "HitCount":  2,
+                                        "Cards":  1,
+                                        "Energy":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_KI",
+                         "className":  "WahKi",
+                         "name":  "WahKi",
+                         "type":  "Attack",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  2,
+                                           "HitCount":  2,
+                                           "Cards":  1,
+                                           "Energy":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_SYMPHONY",
+                      "className":  "WahSymphony",
+                      "name":  "WahSymphony",
+                      "type":  "Attack",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  2,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "CalculationBase":  6,
+                                        "ExtraDamage":  4,
+                                        "CalculatedDamage":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_SYMPHONY",
+                         "className":  "WahSymphony",
+                         "name":  "WahSymphony",
+                         "type":  "Attack",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  2,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "CalculationBase":  6,
+                                           "ExtraDamage":  4,
+                                           "CalculatedDamage":  6
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_SWEEP",
+                      "className":  "WahSweep",
+                      "name":  "WahSweep",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  8
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_SWEEP",
+                         "className":  "WahSweep",
+                         "name":  "WahSweep",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  8
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WAH_TOUCH",
+                      "className":  "WahTouch",
+                      "name":  "WahTouch",
+                      "type":  "Attack",
+                      "rarity":  "Common",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Damage":  6,
+                                        "VulnerablePower":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WAH_TOUCH",
+                         "className":  "WahTouch",
+                         "name":  "WahTouch",
+                         "type":  "Attack",
+                         "rarity":  "Common",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Damage":  6,
+                                           "VulnerablePower":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WHISTLING_ARROWS",
+                      "className":  "WhistlingArrows",
+                      "name":  "WhistlingArrows",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Block":  3
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WHISTLING_ARROWS",
+                         "className":  "WhistlingArrows",
+                         "name":  "WhistlingArrows",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Block":  3
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.WREST",
+                      "className":  "Wrest",
+                      "name":  "Wrest",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  0,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Cards":  2
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.WREST",
+                         "className":  "Wrest",
+                         "name":  "Wrest",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  0,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Cards":  2
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "None",
+        "basic":  {
+                      "id":  "CARD.YAH",
+                      "className":  "Yah",
+                      "name":  "Yah",
+                      "type":  "Power",
+                      "rarity":  "Rare",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "Energy":  1
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.YAH",
+                         "className":  "Yah",
+                         "name":  "Yah",
+                         "type":  "Power",
+                         "rarity":  "Rare",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "Energy":  1
+                                       }
+                     }
+    },
+    {
+        "pool":  "FoolCardPool",
+        "multiplayerConstraint":  "MultiplayerOnly",
+        "basic":  {
+                      "id":  "CARD.YOGA",
+                      "className":  "Yoga",
+                      "name":  "Yoga",
+                      "type":  "Skill",
+                      "rarity":  "Uncommon",
+                      "description":  "",
+                      "cost":  1,
+                      "costsX":  false,
+                      "upgradeLevel":  0,
+                      "canUpgrade":  true,
+                      "modified":  false,
+                      "enchantment":  null,
+                      "enchantmentAmount":  0,
+                      "affliction":  null,
+                      "keywords":  [
+
+                                   ],
+                      "variables":  {
+                                        "StretchPower":  6
+                                    }
+                  },
+        "upgraded":  {
+                         "id":  "CARD.YOGA",
+                         "className":  "Yoga",
+                         "name":  "Yoga",
+                         "type":  "Skill",
+                         "rarity":  "Uncommon",
+                         "description":  "",
+                         "cost":  1,
+                         "costsX":  false,
+                         "upgradeLevel":  1,
+                         "canUpgrade":  false,
+                         "modified":  false,
+                         "enchantment":  null,
+                         "enchantmentAmount":  0,
+                         "affliction":  null,
+                         "keywords":  [
+
+                                      ],
+                         "variables":  {
+                                           "StretchPower":  6
+                                       }
+                     }
+    }
+]

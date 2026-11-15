@@ -24,7 +24,7 @@ internal static class AutoRoute
     }
     internal static void Tick()
     {
-        if(!Entry.Enabled||!SolverSettings.Current.AutoRouteEnabled||StandaloneSmokeTest.PauseRouting
+        if(!Entry.Enabled||!SolverSettings.Current.AutoRouteEnabled||StandaloneSmokeTest.PauseRouting||RoomAutomation.IsBusy||SolverOverlay.SettingsVisibleForAutomation
             ||SolverController.IsMultiplayerSession||CombatManager.Instance.IsInProgress
             ||System.Environment.TickCount64<_next)return;
         _next=System.Environment.TickCount64+700;
@@ -34,6 +34,8 @@ internal static class AutoRoute
             if(!manager.IsInProgress||manager.State is not {} run||run.Players.Count!=1)return;
             var map=NMapScreen.Instance;
             if(map==null)return;
+            if(MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext.ActiveScreenContext.Instance?.GetCurrentScreen()
+                is not (NMapScreen or MegaCrit.Sts2.Core.Nodes.Rooms.NMapRoom))return;
             if(!map.IsOpen)
             {
                 if(run.CurrentRoom is MapRoom)map.Open();
