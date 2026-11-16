@@ -2610,8 +2610,10 @@ internal static partial class SolverController
         CombatState? current = CombatManager.Instance.DebugOnlyGetState();
         if (!CombatManager.Instance.IsInProgress || current == null)
         {
-            if (_combat.State != null || SolverOverlay.IsVisible)
+            if (_combat.State != null)
                 Reset("combat_inactive");
+            if (NGame.Instance is { } idleHost && idleHost.IsNodeReady())
+                SolverOverlay.ShowOutsideCombat(idleHost);
             return;
         }
 

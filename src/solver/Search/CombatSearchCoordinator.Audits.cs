@@ -38,7 +38,9 @@ internal static partial class CombatSearchCoordinator
                 selected = AuditRequiredPotionUse(auditContext, selected);
             if (ResolveTakeoverResult(selected, policy.Interaction) is { } requiredTakeoverResult)
                 return requiredTakeoverResult;
+            // The spend-everything fight still runs its potion audit even when the loss target is already met.
             if (!policy.PotionStrategy.HasForcedDirectives
+                && !root.PotionSpend.SpendsEverything
                 && HasReachedAcceptableBattleHpLoss(policy, selected))
                 return selected;
             long minimumMilliseconds = SmartPotionAuditMinimumMilliseconds(context, selected);
@@ -687,6 +689,11 @@ internal static partial class CombatSearchCoordinator
         Action<SolverResult>? interimResultCallback = context.InterimResultCallback;
         if (policy.PotionPolicy != SolverPotionPolicy.Smart)
             return primary;
+        // Where the run ends with this fight there is nothing to save the belt for: run one dedicated pass that
+        // spends as many potions as the fight can actually absorb, rather than enumerating "exactly N" layers and
+        // then refusing the extra ones as too expensive.
+        if (root.PotionSpend.SpendsEverything && !policy.PotionStrategy.HasForcedDirectives)
+            return RunSpendAllPotionAudit(context, primary);
         try
         {
             SolverResult gradient = SearchSmartPotionGradient(
@@ -965,6 +972,80 @@ internal static partial class CombatSearchCoordinator
         SolverResult candidate,
         SolverResult current)
         => IsBetterPotionPolicyResult(root, policy, candidate, current);
+
+    /// <summary>
+    /// Spends the belt in a fight the run ends on: finds the largest potion count that still wins without leaving
+    /// the route worse than the potion-free one.
+    /// </summary>
+    /// <remarks>
+    /// Counts descend from "every searchable potion" so the first accepted route is the most potions the fight can
+    /// absorb. A count the model cannot complete raises <see cref="PotionPolicyUnsatisfiedException"/> and is
+    /// skipped, which is the only case where a lower count is tried. Acceptance deliberately compares strategic
+    /// deficit rather than the potion reserve: at this point the reserve is zero, and "not worse" is the strongest
+    /// statement the simulation can make about a resource that expires with the run.
+    /// </remarks>
+    private static SolverResult RunSpendAllPotionAudit(
+        SearchPassContext context,
+        SolverResult primary)
+    {
+        CombatRootSnapshot root = context.Root;
+        SearchPolicySnapshot policy = context.Policy;
+        if (root.SearchablePotionCount == 0)
+            return primary;
+        int searchable = MaximumSmartPotionUses(root, policy,
+            potionFreeWon: true, potionFreeHpDeficit: int.MaxValue / 8);
+        if (searchable <= 0)
+            return primary;
+        SolverResult selected = primary;
+        int selectedDeficit = StrategicHpDeficit(root, policy, primary);
+        Entry.Logger.Info(
+            $"[z] POTION_SPEND_ALL_BEGIN ascension={root.AscensionLevel} " +
+            $"relief={root.BossHpRelief} searchable={searchable} " +
+            $"potion_free_deficit={selectedDeficit} potion_free_won={IsCompleteVictory(primary)}");
+        for (int count = searchable; count >= 1; count--)
+        {
+            context.CancellationToken.ThrowIfCancellationRequested();
+            SolverResult candidate;
+            try
+            {
+                candidate = new CombatBeamSolver(
+                    root,
+                    context.DisplayNames,
+                    context.BattleDamage,
+                    policy,
+                    context.CancellationToken,
+                    context.ProgressCallback,
+                    context.Profile,
+                    potionPolicyOverride: SolverPotionPolicy.RequireAtLeastOne,
+                    maximumPotionUses: count,
+                    minimumPotionUses: count,
+                    directSearchPurpose: DirectSearchPurpose.SmartPotionGradient).Solve();
+            }
+            catch (PotionPolicyUnsatisfiedException)
+            {
+                Entry.Logger.Info($"[z] POTION_SPEND_ALL count={count} route_missing=true");
+                continue;
+            }
+            if (candidate.ResultScope != SolverResultScope.SearchCompletion)
+                return candidate;
+            PopulateSingleSessionTotals(candidate);
+            bool won = IsCompleteVictory(candidate);
+            int deficit = StrategicHpDeficit(root, policy, candidate);
+            bool acceptable = won && deficit <= selectedDeficit;
+            Entry.Logger.Info(
+                $"[z] POTION_SPEND_ALL count={count} won={won} hp_deficit={deficit} " +
+                $"baseline={selectedDeficit} hp_lost={candidate.ProjectedBattleHpLost} " +
+                $"accepted={acceptable}");
+            if (!acceptable)
+                continue;
+            selected = candidate;
+            break;
+        }
+        Entry.Logger.Info(
+            $"[z] POTION_SPEND_ALL_END selected_potions={selected.ExplicitPotionCount} " +
+            $"hp_deficit={selectedDeficit}");
+        return selected;
+    }
 
     private static SolverResult SearchSmartPotionGradient(
         SearchPassContext context,

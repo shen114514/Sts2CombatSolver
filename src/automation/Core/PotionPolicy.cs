@@ -54,7 +54,7 @@ public static class PotionPolicy
             "Ashwater"=>5+Math.Min(9,statuses*2+v.Exhaust),"GlowwaterPotion"=>12+Math.Min(6,statuses),
             "TouchOfInsanity"=>expensive>0?15:2,
             "SneckoOil"=>s.Deck.Count(c=>c.Cost<=1)>s.Deck.Length*.7?2:12,
-            "DistilledChaos"=>10,"PowerPotion"=>boss?13:9,"AttackPotion"=>late?5:8,"SkillPotion"=>9,
+            "DistilledChaos"=>10,"PowerPotion"=>boss?18:14,"AttackPotion"=>late?5:8,"SkillPotion"=>9,
             "ColorlessPotion"=>10,"CosmicConcoction"=>13,"OrobicAcid"=>14,
             "FruitJuice"=>7+Math.Min(5,v.Horizon*2),
             "SoldiersStew"=>Math.Min(20,s.Deck.Count(c=>c.ClassName.Contains("Strike"))*3),
@@ -82,10 +82,14 @@ public static class PotionPolicy
         if(p.Name=="FoulPotion")return CourierPolicy.MayReplace(s)?450:0;
         if(p.Name is "EntropicBrew" or "FairyInABottle")return 500;
         if(model.Value<=0)return 0;
-        if(model.Value<4)return 10+(int)model.Value; // Poor fit cannot displace a useful potion solely by rarity.
-        var tier=p.Rarity switch{"Common"=>100,"Uncommon"=>200,"Rare"=>300,"Event"=>300,"Token"=>100,_=>-1};
-        if(tier<0)return -1;
-        return tier+(model.Defense?30:0)+(int)Math.Clamp(model.Value,0,29);
+        // Effect first. The old formula made rarity worth 100/200/300 while clamping the effect contribution to 29,
+        // so a Common Power Potion could never outrank any Uncommon or Rare drop even when its effect is the reason
+        // to hold it. Rarity is now a small tiebreak and the effect term carries the range; the result stays
+        // strictly increasing in value so a poor fit still cannot displace a useful potion.
+        int effect=(int)Math.Round(Math.Clamp(model.Value,0,30)*10);
+        int rarity=p.Rarity switch{"Common"=>0,"Uncommon"=>12,"Rare"=>24,"Event"=>24,"Token"=>0,_=>-1};
+        if(rarity<0)return -1;
+        return 100+effect+rarity+(model.Defense?10:0);
     }
     public static int Replacement(RunSnapshot s,IReadOnlyList<PotionCandidate> belt,PotionCandidate incoming)
     {

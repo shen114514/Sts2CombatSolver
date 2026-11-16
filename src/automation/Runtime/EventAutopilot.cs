@@ -48,6 +48,7 @@ internal sealed partial class PartialAutopilot
         if((OwnsCurrentEvent || OwnsPickup || ownedRestSelection!=null&&ReferenceEquals(ownedRestSelection,service.RestRoom)) && screen is Control selector && selector is NDeckCardSelectScreen or NDeckUpgradeSelectScreen or NDeckTransformSelectScreen or NDeckEnchantSelectScreen or NSimpleCardSelectScreen)
         {SelectEventCards(selector);return true;}
         if(screen is not NEventRoom room)return false;
+        if(AdvanceAncientDialogue(room))return true;
         var plan=EventAdapter.Read(service,room);
         if(plan==null)
         {
@@ -57,9 +58,22 @@ internal sealed partial class PartialAutopilot
         }
         service.PresentEvent(plan);
         var target=plan.Buttons.FirstOrDefault(b=>b.GetInstanceId().ToString()==plan.Evaluation.RecommendedKey);
-        var fallback=false;
-
-        if(target==null){Manual("该事件存在未核验分支或致死选项，请手动处理。");return true;}
+        var fallback=target==null;
+        if(target==null)
+        {
+            // Nothing on this screen could be scored. Keep the automation in control instead of handing the
+            // screen back: prefer walking out of the event, then the best raw benefit, and never a lethal option.
+            var usable=plan.Buttons
+                .Where(b=>b.Option!=null&&b.IsEnabled&&b.MouseFilter!=Control.MouseFilterEnum.Ignore)
+                .Select(b=>(Button:b,Choice:plan.Choices.FirstOrDefault(c=>c.Key==b.GetInstanceId().ToString())))
+                .Where(x=>x.Choice is {Enabled:true,Lethal:false})
+                .ToArray();
+            target=usable.Where(x=>x.Button.Option!.IsProceed).Select(x=>x.Button).FirstOrDefault()
+                ?? usable.OrderByDescending(x=>x.Choice!.Benefit-x.Choice.Burden)
+                    .ThenBy(x=>x.Button.Option!.TextKey,StringComparer.Ordinal)
+                    .Select(x=>x.Button).FirstOrDefault();
+            if(target==null){Manual("该事件的选项全部不可用，请手动处理。");return true;}
+        }
         var choice=plan.Choices.Single(c=>c.Key==target.GetInstanceId().ToString());
         Wait("接管中 · 事件选择 "+choice.Name);
         var fingerprint=JsonSerializer.Serialize(new{plan.State,plan.Choices});
@@ -73,6 +87,29 @@ internal sealed partial class PartialAutopilot
         }
         return true;
     }
+    /// <summary>
+    /// Clicks through an Ancient (opening blessing) dialogue until its option buttons are reachable.
+    /// </summary>
+    /// <remarks>
+    /// <c>NAncientEventLayout</c> hides and disables the option hitbox until the last dialogue line, and advances
+    /// only when its own hitbox is clicked. Nothing else in the automation clicks it, so a repeat visit with more
+    /// than one line left the opening blessing waiting for the player.
+    /// </remarks>
+    private bool AdvanceAncientDialogue(NEventRoom room)
+    {
+        var layout=GameActions.Descendants<MegaCrit.Sts2.Core.Nodes.Events.NAncientEventLayout>(room).FirstOrDefault();
+        if(layout==null)return false;
+        if(GameActions.Field(layout,"_dialogue") is not System.Collections.ICollection dialogue
+            || GameActions.Field(layout,"_currentDialogueLine") is not int line)return false;
+        if(dialogue.Count==0||line>=dialogue.Count-1)return false;
+        if(GameActions.Field(layout,"_dialogueHitbox") is not MegaCrit.Sts2.Core.Nodes.GodotExtensions.NClickableControl hitbox
+            || !hitbox.IsVisibleInTree())return false;
+        Wait("接管中 · 推进先古对话");
+        if(Claim("ancient-dialogue:"+layout.GetInstanceId()+":"+line,delay:600))
+            GameActions.Invoke(layout,"OnDialogueHitboxClicked",hitbox);
+        return true;
+    }
+
     private void SelectEventCards(Control screen)
     {
         if(GameActions.Field(screen,"_cards") is not IEnumerable<CardModel> list || GameActions.Field(screen,"_prefs") is not CardSelectorPrefs prefs ||

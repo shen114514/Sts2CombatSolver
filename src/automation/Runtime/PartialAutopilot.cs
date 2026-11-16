@@ -178,6 +178,10 @@ internal sealed partial class PartialAutopilot
         {Manual("当前动作需要手动完成选择。");operationStarted=Time.GetTicksMsec();return;}
         if(screen is NTreasureRoom treasure)
         {
+            // v0.113.1 has no _hasChestBeenOpened field. Use the native finished
+            // state after either an automatic or a manual relic pick.
+            if(GameActions.Field(treasure,"_proceedButtonState")?.ToString()=="Proceed")
+            {Proceed(treasure,treasure.ProceedButton,"OnProceedButtonReleased");return;}
             var collection=GameActions.Descendants<NTreasureRoomRelicCollection>(treasure).FirstOrDefault(c=>c.IsVisibleInTree());
             var holders=collection==null?[]:GameActions.Descendants<NTreasureRoomRelicHolder>(collection).Where(h=>h.IsVisibleInTree() && h.IsEnabled && h.MouseFilter!=Control.MouseFilterEnum.Ignore).ToArray();
             var holder=holders.FirstOrDefault(h=>h.Relic.Model.Rarity!=RelicRarity.Ancient);
@@ -190,14 +194,14 @@ internal sealed partial class PartialAutopilot
             }
             if(holders.Length>0){Manual("先古遗物请手动选择。");return;}
             if(chestOperation!=null){Wait("接管中 · 等待宝箱处理完成");return;}
-            if(GameActions.Field(treasure,"_hasChestBeenOpened") is not true)
+            var chest=(NClickableControl)GameActions.Field(treasure,"_chestButton")!;
+            if(chest.IsEnabled && chest.IsVisibleInTree() && chest.MouseFilter!=Control.MouseFilterEnum.Ignore)
             {
-                var chest=(NClickableControl)GameActions.Field(treasure,"_chestButton")!;
                 Wait("接管中 · 打开宝箱");
                 if(Claim("chest:"+treasure.GetInstanceId(),chest.IsEnabled))
                 {chest.Disable();chestOperation=(Task)GameActions.Invoke(treasure,"OpenChest")!;}return;
             }
-            Proceed(treasure,treasure.ProceedButton,"OnProceedButtonReleased");return;
+            Wait("接管中 · 等待宝箱遗物处理完成");return;
         }
         // Sleep/dig/relic tasks await their reward overlay. Drive that child overlay while
         // retaining the parent task, but do not click another button on a still-busy source.

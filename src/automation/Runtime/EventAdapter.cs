@@ -49,8 +49,6 @@ internal static class EventAdapter
                 var nodes=RouteAdapter.Nodes(model.Owner.RunState);
                 var start=nodes.OrderBy(n=>n.Row).FirstOrDefault()?.Id;
                 result=NeowPolicy.Evaluate(relic.Id.Entry,s,start==null?0:NeowPolicy.BootsOpportunity(nodes,start));
-                if(NeowPolicy.Excluded(relic.Id.Entry))
-                    return new(key,name,Enabled:false,Notes:["当前助手不支持此跨角色／多人奖励，排除自动选择。"]);
             }
             choice=new(key,name,Supported:result.Supported,Benefit:result.Value,Selection:result.Selection,Notes:[result.Note]);
             // Resource costs already included in valuation, but must still veto lethal native effects.

@@ -25,4 +25,14 @@ Check(CardMechanics.Upgrade(state,Card("WahChoKi"))>0,"contextual camp upgrade i
 Check(PriorityShopPolicy.Evaluate(state,[new("bag","BAG_OF_PREPARATION","准备背包",175)],
  [new("filler",Card("ArrowStab"),50)])?.Relic.Key=="bag","strong relic budget survives card competition");
 Check(PriorityShopPolicy.Evaluate(state with{Gold=174},[new("bag","BAG_OF_PREPARATION","准备背包",175)],[])==null,"actual affordability retained");
+var wuppyVars=new Dictionary<string,double>{{"ImmediateWuppyHp",60},{"CautiousWuppyHp",30},{"HpLoss",state.Hp*.05}};
+EventChoice Wuppy(string option)=>EventRules.Describe("WUPPY_IN_TROUBLE","WUPPY_IN_TROUBLE.pages.INITIAL.options."+option,option,state,wuppyVars);
+var petOptions=new[]{Wuppy("HELP_IMMEDIATELY"),Wuppy("BE_CAUTIOUS"),Wuppy("IGNORE")};
+Check(petOptions.All(c=>c.Supported),"native Wuppy branches no longer force a manual stop");
+var petPlan=EventPolicy.Evaluate(state,petOptions);
+Check(petPlan.RecommendedKey==petOptions[0].Key||petPlan.RecommendedKey==petOptions[1].Key,
+    "healthy deck chooses a pet after comparing curse and life opportunity costs");
+Check(!EventRules.Describe("WUPPY_IN_TROUBLE","future-unknown-option","unknown",state,wuppyVars).Supported,"new unknown Wuppy branches stay manual");
+Check(EventPolicy.Evaluate(state with{Hp=1},[petOptions[1] with{Lethal=true},petOptions[2]]).RecommendedKey==petOptions[2].Key,
+    "native lethal option veto overrides pet value");
 Console.WriteLine($"{checks} independent flags, delayed cancellation and decision regression checks passed");

@@ -21,6 +21,8 @@ internal static class StandaloneSmokeTest
     internal static bool IsRunning => !string.IsNullOrWhiteSpace(DirectoryPath);
     internal static bool PauseAutomaticSearch {get;private set;}=IsRunning;
     internal static bool PauseRouting {get;private set;}=IsRunning;
+    internal static void SetRoutingForFlowTest(bool enabled)
+    {if(!IsRunning)throw new InvalidOperationException("Developer flow test required");PauseRouting=!enabled;}
     internal static void TryStart(NGame? host)
     {
         if(IsRunning&&host!=null)_=RunAsync(host);
@@ -34,6 +36,8 @@ internal static class StandaloneSmokeTest
             if(!Path.IsPathFullyQualified(DirectoryPath!))throw new InvalidOperationException("Absolute evidence path required.");
             Directory.CreateDirectory(DirectoryPath!);
             await host.GameStartupComplete;
+            SolverSettings.ApplyForTesting(SolverSettings.Current with
+            {AutoRewardsEnabled=false,AutoShopEnabled=false,AutoEventsEnabled=false,AutoCampEnabled=false});
             if(RunManager.Instance.IsInProgress)throw new InvalidOperationException("Preserve existing run.");
             if(!Entry.Enabled)throw new InvalidOperationException("Required patch installation failed.");
             var expected=new[]{"0Harmony","GodotSharp","sts2"};
@@ -42,6 +46,7 @@ internal static class StandaloneSmokeTest
             if(AppDomain.CurrentDomain.GetAssemblies().Any(a=>a.GetName().Name!.Contains("Ritsu",StringComparison.OrdinalIgnoreCase)))
                 throw new InvalidOperationException("Framework still loaded.");
             evidence.Add("NoFrameworkAssemblyReferenceOrLoadedAssembly");
+            if(RoomFlowNativeTest.IsRequested)await RoomFlowNativeTest.CheckMenuAsync(host,evidence);
             stage="start_non_saving_run";
             string character=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_CHARACTER")??"FOOL";
             CharacterModel model=character=="IRONCLAD"?ModelDb.Character<Ironclad>():ModelDb.Character<Fool>();
@@ -50,6 +55,13 @@ internal static class StandaloneSmokeTest
             if(RunManager.Instance.ShouldSave)throw new InvalidOperationException("Saving test refused.");
             var run=RunManager.Instance.DebugOnlyGetState()!;
             var player=LocalContext.GetMe(run)!;
+            if(RoomFlowNativeTest.IsRequested)
+            {
+                stage="room_flow";
+                await RoomFlowNativeTest.RunAsync(host,run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             if(RoomOptionsNativeTest.IsRequested)
             {
                 stage="room_options";

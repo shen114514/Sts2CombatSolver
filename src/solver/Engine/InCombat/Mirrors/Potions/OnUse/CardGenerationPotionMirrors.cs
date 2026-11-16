@@ -46,8 +46,10 @@ internal static class CardGenerationPotionMirrors
         else
         {
             context.History.CardGenerationOptions(result.Cards);
-            // The options are deterministic, but the selected card and its addition to hand remain unresolved.
-            context.History.RecordRisk(PredictionRiskReason.UnresolvedPlayerChoice);
+            // The search expands this potion into one branch per generated option (PotionChoiceSupport), so the
+            // choice is resolved by construction and must not be flagged as an unresolved player choice. Flagging
+            // it latched PredictionRisk on every branch that used the potion, which kept those routes out of the
+            // provable/early-stop paths and made attack/skill/power/colorless potions look uniformly worthless.
         }
     }
 

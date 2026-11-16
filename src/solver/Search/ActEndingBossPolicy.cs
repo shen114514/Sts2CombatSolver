@@ -215,4 +215,27 @@ internal static class ActEndingBossPolicy
 
     public static bool IsRecoveryFight(CombatState combatState)
         => ResolveHpRelief(combatState) != BossHpRelief.None;
+
+    /// <summary>
+    /// Captures how freely potions may be spent in this fight, including the Ascension-10 double-boss layout.
+    /// </summary>
+    /// <remarks>
+    /// See <see cref="PotionSpendPolicy.Resolve"/>: the run-ending fight spends everything, the first of two
+    /// final-act bosses keeps the normal reserve, and every other fight keeps it too.
+    /// </remarks>
+    public static PotionSpendContext ResolvePotionSpendContext(CombatState combatState)
+    {
+        RunState? runState = combatState.RunState as RunState;
+        int ascensionLevel = runState?.AscensionLevel ?? 0;
+        var secondBoss = runState?.Act.SecondBossEncounter;
+        bool isSecondBoss = secondBoss is not null
+            && secondBoss.Id == combatState.Encounter?.Id;
+        return new PotionSpendContext(
+            PotionSpendPolicy.Resolve(
+                ResolveHpRelief(combatState),
+                ascensionLevel,
+                actHasSecondBoss: secondBoss is not null,
+                isSecondBoss),
+            ascensionLevel);
+    }
 }

@@ -159,6 +159,9 @@ internal static class SolverOverlay
 
     // Ctrl+F9 的隐藏意图跨战斗保持，图层每次呈现均采用该状态。
     private static bool _userHiddenFromShortcut;
+    private static bool _outsideCombatShown;
+    private static CanvasLayer? _restoreLayer;
+    private static Button? _restoreButton;
     // 战斗（重）开始后，是否仍需要在可操作边界初始化一次界面。
     private static bool _initializationPending = true;
 
@@ -174,7 +177,18 @@ internal static class SolverOverlay
     internal static void MarkInitializationPending()
     {
         _initializationPending = true;
+        _outsideCombatShown = false;
     }
+
+    internal static void ShowOutsideCombat(Node host)
+    {
+        if (_outsideCombatShown && _layer != null && GodotObject.IsInstanceValid(_layer)) return;
+        Show(host,"战斗外待命。可以打开设置，调整选路和房间自动操作；隐藏后点击“显示求解器”或按 Ctrl＋F9 恢复。");
+        _outsideCombatShown=true;
+    }
+
+    internal static bool RestoreButtonVisibleForTesting=>_restoreButton?.IsVisibleInTree()==true;
+    internal static void RestoreFromButtonForTesting()=>_restoreButton?.EmitSignal(Button.SignalName.Pressed);
 
     internal static bool TheftPolicyVisibleForTesting
         => _theftPolicyControls != null
@@ -1986,6 +2000,16 @@ internal static class SolverOverlay
         layer.AddChild(_cornerResizeHandle);
         layer.AddChild(new SolverOverlayMotionDriver { Name = "CombatSolverOverlayMotion" });
         host.AddChild(layer);
+        if(_restoreLayer==null||!GodotObject.IsInstanceValid(_restoreLayer))
+        {
+            _restoreLayer=new CanvasLayer{Name="CombatSolverRestore",Layer=121,Visible=_userHiddenFromShortcut};
+            _restoreButton=CreateHeaderButton("显示求解器",130);
+            _restoreButton.Position=new Vector2(12,90);
+            _restoreButton.TooltipText="显示求解器；也可以按 Ctrl＋F9。";
+            _restoreButton.Pressed+=()=>SetUserHidden(false);
+            _restoreLayer.AddChild(_restoreButton);
+            host.AddChild(_restoreLayer);
+        }
         _layer = layer;
         _panel = panel;
         ApplyOverlayOpacity();
@@ -2055,6 +2079,11 @@ internal static class SolverOverlay
         _settingsButton = CreateHeaderButton(SolverText.Get("设置"), 54);
         _settingsButton.Pressed += ToggleSettings;
         header.AddChild(_settingsButton);
+
+        var hideButton=CreateHeaderButton("隐藏",48);
+        hideButton.TooltipText="隐藏求解器；点击显示按钮或按 Ctrl＋F9 恢复。";
+        hideButton.Pressed+=()=>SetUserHidden(true);
+        header.AddChild(hideButton);
 
         _collapseButton = CreateHeaderButton(SolverText.Get("−  收起"), 54);
         _collapseButton.Pressed += ToggleCollapsed;
@@ -2637,21 +2666,18 @@ internal static class SolverOverlay
         _initializationPending = false;
         if (_layer != null)
             _layer.Visible = !_userHiddenFromShortcut;
+        if(_restoreLayer!=null&&GodotObject.IsInstanceValid(_restoreLayer))_restoreLayer.Visible=_userHiddenFromShortcut;
     }
 
     internal static bool ToggleVisibilityFromShortcut()
     {
-        CombatState? state = CombatManager.Instance.DebugOnlyGetState();
         if (_layer == null
             || !GodotObject.IsInstanceValid(_layer)
-            || !CombatManager.Instance.IsInProgress
-            || state == null
-            || state.Players.Count != 1)
+            || !_layer.IsInsideTree())
         {
             return false;
         }
-        _userHiddenFromShortcut = !_userHiddenFromShortcut;
-        _layer.Visible = !_userHiddenFromShortcut;
+        SetUserHidden(!_userHiddenFromShortcut);
         Entry.Logger.Info($"[CombatSolver/Test] UI_ACTION action=toggle_visibility visible={_layer.Visible}");
         return true;
     }
@@ -2665,6 +2691,7 @@ internal static class SolverOverlay
         _userHiddenFromShortcut = hidden;
         if (_layer != null && GodotObject.IsInstanceValid(_layer))
             _layer.Visible = !hidden;
+        if(_restoreLayer!=null&&GodotObject.IsInstanceValid(_restoreLayer))_restoreLayer.Visible=hidden;
         Entry.Logger?.Info($"[CombatSolver/Test] UI_ACTION action=set_visibility hidden={hidden}");
     }
 

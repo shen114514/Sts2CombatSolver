@@ -781,7 +781,10 @@ internal static partial class CombatSearchCoordinator
             }
             if (!policy.PotionStrategy.HasForcedDirectives || hasForcedBaseline)
             {
-                if (!hasForcedBaseline && HasReachedAcceptableBattleHpLoss(policy, passResult))
+                // A fight the run ends on still runs the spend-everything audit even when the potion-free route
+                // already meets the loss target: the point there is to leave nothing in the belt, not to improve HP.
+                if (!hasForcedBaseline && !root.PotionSpend.SpendsEverything
+                    && HasReachedAcceptableBattleHpLoss(policy, passResult))
                     return CapturePassResult(passResult, null, true);
                 passResult = RunSupplementalAudits(
                     policy.NoveltySearch == null
@@ -1038,6 +1041,16 @@ internal static partial class CombatSearchCoordinator
         }
     }
 
+    /// <summary>
+    /// What a route's potion reserve is worth against its strategic HP deficit, in the same units.
+    /// </summary>
+    /// <remarks>
+    /// This used to return the "HP the potion must save to qualify" threshold, multiplied by five at an
+    /// act-ending boss and set to <c>int.MaxValue / 4</c> at the run-ending boss, and that threshold was then added
+    /// to the route's deficit when two routes were compared. At the run's last fight that made every potion route
+    /// rank below every potion-free route no matter how much HP it saved. The reserve is now a single flat number
+    /// (zero when the run ends here), so a route that spends a potion is ranked on the HP it actually saves.
+    /// </remarks>
     private static int SmartPotionHpRequired(
         CombatRootSnapshot root,
         SearchPolicySnapshot policy,
@@ -1051,16 +1064,12 @@ internal static partial class CombatSearchCoordinator
             - forced.ForcedAmbergrisCount;
         int explicitPotionCount = result.BestNode.Actions.Count(action =>
             action.Kind == PlanActionKind.UsePotion) - forced.ForcedUseCount;
-        int strategicHpCost = PotionUsePolicy.EffectiveStrategicHpCost(
+        int reserve = root.PotionSpend.ReserveHp * Math.Max(0, explicitPotionCount);
+        return PotionUsePolicy.EffectiveStrategicHpCost(
             PotionUsePolicy.ApplyReplacementCredit(
-                Math.Max(0, result.PotionStrategicCostByTurn.Values.Sum() - forced.ForcedStrategicHpCost),
-                explicitPotionCount,
-                root.PotionRewardOutlook.ReplacementHpCredit),
+                reserve, explicitPotionCount, root.PotionRewardOutlook.ReplacementHpCredit),
             ambergrisCount,
             root.InitialPlayerMaxHp);
-        return PotionUsePolicy.SmartRequiredHpSaved(
-            strategicHpCost,
-            StrategicBossHpRelief(root, policy));
     }
 
     private static int StrategicHpDeficit(
@@ -1128,22 +1137,21 @@ internal static partial class CombatSearchCoordinator
         int searchablePotionUses = allowedPotions.Length + generatedPotionCapacity;
         if (!potionFreeWon || policy.TheftPolicy == SolverTheftPolicy.PreserveResources)
             return searchablePotionUses;
-        BossHpRelief bossHpRelief = StrategicBossHpRelief(root, policy);
-        int paidPotionHpRequired = PotionUsePolicy.SmartRequiredHpSaved(
-            SolverWeights.PotionMinimumHpSaved,
-            bossHpRelief);
+        // Where the run ends with this fight there is nothing to keep a potion for, so every searchable potion is
+        // a candidate; the exact-count layers below then find the largest set the fight can actually use.
+        if (root.PotionSpend.SpendsEverything)
+            return searchablePotionUses;
+        int paidPotionHpRequired = root.PotionSpend.ReserveHp;
+        if (paidPotionHpRequired <= 0)
+            return searchablePotionUses;
         // The reward credit is taken off a route once, so only the first paid potion gets the cheaper bar.
-        int firstPaidPotionHpRequired = PotionUsePolicy.SmartRequiredHpSaved(
-            PotionUsePolicy.ApplyReplacementCredit(
-                SolverWeights.PotionMinimumHpSaved,
-                1,
-                root.PotionRewardOutlook.ReplacementHpCredit),
-            bossHpRelief);
-        int paidPotionCapacity = paidPotionHpRequired >= int.MaxValue / 4
+        int firstPaidPotionHpRequired = PotionUsePolicy.ApplyReplacementCredit(
+            paidPotionHpRequired,
+            1,
+            root.PotionRewardOutlook.ReplacementHpCredit);
+        int paidPotionCapacity = Math.Max(0, potionFreeHpDeficit) < firstPaidPotionHpRequired
             ? 0
-            : Math.Max(0, potionFreeHpDeficit) < firstPaidPotionHpRequired
-                ? 0
-                : 1 + (Math.Max(0, potionFreeHpDeficit) - firstPaidPotionHpRequired) / paidPotionHpRequired;
+            : 1 + (Math.Max(0, potionFreeHpDeficit) - firstPaidPotionHpRequired) / paidPotionHpRequired;
         return Math.Min(
             searchablePotionUses,
             allowedPotions.Count(potion => potion.StrategicHpCost == 0)

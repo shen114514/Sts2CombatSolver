@@ -5,6 +5,9 @@ namespace SpireStrategist.Core;
 public static class NeowPolicy
 {
     public static bool Supports(RunSnapshot s)=>!s.IsMultiplayer&&DefectStrategy.Supported(s.Character);
+    // Kept for callers that want to know these two are cross-character rewards. They are no longer a hard veto:
+    // excluding an option used to make the whole opening screen unsupported, and the automation then waited for a
+    // manual pick. They are scored low instead.
     public static bool Excluded(string id)=>id is "KALEIDOSCOPE" or "MASSIVE_SCROLL";
     public static RelicAssessment Evaluate(string id,RunSnapshot s,double bootsOpportunity=0)
     {
@@ -26,11 +29,14 @@ public static class NeowPolicy
             "BOOMING_CONCH" or "POMANDER"=>3,
             "FISHING_ROD" or "LAVA_ROCK" or "NEOWS_TALISMAN"=>1,
             "DOWSING_ROD"=>0,
-            "KALEIDOSCOPE" or "MASSIVE_SCROLL"=>-100,
+            // Cross-character rewards stay selectable at a low prior instead of being vetoed; the previous
+            // exclusion turned the whole opening screen into a manual pick whenever one of them was offered.
+            "KALEIDOSCOPE"=>4,
+            "MASSIVE_SCROLL"=>2,
             // Unranked middle choices retain their relative old estimate in a bounded tier.
             _=>16+Math.Clamp(RelicValue.Evaluate(id,s,true).Value,-4,4)
         };
-        return new(value,selection,"捏奥共用实战优先级：所有已适配角色采用用户排序先验，非胜率；赠牌／变化另计实际结果与构筑适配。",!Excluded(id));
+        return new(value,selection,"捏奥共用实战优先级：所有已适配角色采用用户排序先验，非胜率；赠牌／变化另计实际结果与构筑适配。",true);
     }
     // Keep the opening prior even when the known card needs components not yet owned.
     // Its current deck fit is a bounded adjustment, not a replacement for that prior.

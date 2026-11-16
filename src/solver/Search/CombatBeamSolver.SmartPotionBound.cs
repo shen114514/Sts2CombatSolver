@@ -28,8 +28,7 @@ internal sealed partial class CombatBeamSolver
             ? SmartPotionEligibilityHpCeiling(potionFreePolicyBaseline,
                 minimumPotionUses.Value, root.MinimumSearchablePotionStrategicCost!.Value,
                 root.PotionRewardOutlook.ReplacementHpCredit,
-                ActEndingBossPolicy.ResolveStrategicHpRelief(root.BossHpRelief,
-                    policy.ActTransitionBossHpStrategy, policy.FinalBossHpStrategy))
+                root.PotionSpend.ReserveHp)
             : null;
 
     internal static bool CanUseComponentSmartPotionEligibility(CombatRootSnapshot root, SearchPolicySnapshot policy)
@@ -48,17 +47,21 @@ internal sealed partial class CombatBeamSolver
     internal bool ComponentSmartBoundEnabledForTesting => _smartPotionEligibilityHpCeiling is not null;
     internal int ComponentSmartBoundPrunedForTesting => _smartPotionEligibilityBranchesPruned;
 
+    /// <remarks>
+    /// The reserve is a flat per-potion amount (zero when the run ends with this fight). It used to be the
+    /// "worth saving" threshold scaled by the boss relief factor, which at the run-ending boss pushed the ceiling
+    /// far below any reachable deficit and pruned the entire potion layer before it could find anything.
+    /// </remarks>
     internal static int? SmartPotionEligibilityHpCeiling(
         PotionFreePolicyBaseline? baseline, int exactPotionUses,
-        int minimumPotionStrategicCost, int replacementHpCredit, BossHpRelief bossHpRelief)
+        int minimumPotionStrategicCost, int replacementHpCredit, int reserveHp)
     {
         if (baseline is not { Won: true, DeathSaveUseCount: 0 } audited
-            || exactPotionUses <= 0 || minimumPotionStrategicCost < 0)
+            || exactPotionUses <= 0 || minimumPotionStrategicCost < 0 || reserveHp < 0)
             return null;
-        int minimumCost = checked(exactPotionUses * minimumPotionStrategicCost);
-        int requiredHpSaved = PotionUsePolicy.SmartRequiredHpSaved(
-            PotionUsePolicy.ApplyReplacementCredit(minimumCost, exactPotionUses, replacementHpCredit),
-            bossHpRelief);
+        int minimumCost = checked(exactPotionUses * Math.Max(minimumPotionStrategicCost, reserveHp));
+        int requiredHpSaved = PotionUsePolicy.ApplyReplacementCredit(
+            minimumCost, exactPotionUses, replacementHpCredit);
         return audited.HpDeficit - requiredHpSaved;
     }
 

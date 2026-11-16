@@ -28,7 +28,12 @@ public static class EventPolicy
             return new OptionScore(c.Key,c.Name,true,true,Math.Round(parts.Sum(p=>p.Value),3),parts.Where(p=>p.Value!=0).ToArray(),c.Notes??[]);
         }).ToArray();
         var enabled=scores.Where(s=>s.Enabled).ToArray();
-        var best=enabled.All(s=>s.Supported)?enabled.Where(s=>s.Score> -9999).OrderByDescending(s=>s.Score).ThenBy(s=>s.Key,StringComparer.Ordinal).FirstOrDefault()?.Key:null;
+        // A single option this build cannot score must not hand the whole screen back to the player: the opening
+        // blessing in particular mixes scored relics with rare cross-character ones, and vetoing the screen there
+        // is what made the opening choice manual. The best scored option wins; callers may fall back further when
+        // nothing is scored at all.
+        var best=enabled.Where(s=>s.Supported && s.Score> -9999)
+            .OrderByDescending(s=>s.Score).ThenBy(s=>s.Key,StringComparer.Ordinal).FirstOrDefault()?.Key;
         return new(Version,best,scores,["点评作为条件假设；分数为人工先验，尚未经过跨种子胜率校准。","只将已核验的副本预测称为确定结果；未预测的随机收益按期望和风险计分。"]);
     }
 }

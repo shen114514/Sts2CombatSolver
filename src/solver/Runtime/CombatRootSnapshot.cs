@@ -47,6 +47,16 @@ internal sealed class CombatRootSnapshot
     public RoomType? EncounterRoomType { get; }
     public BossHpRelief BossHpRelief { get; }
     public bool IsActEndingBoss => BossHpRelief != BossHpRelief.None;
+    /// <summary>
+    /// How freely potions may be spent here, including the Ascension-10 two-boss layout.
+    /// </summary>
+    /// <remarks>
+    /// Captured once with the root so every search pass and every continuation reaches the same answer instead
+    /// of re-deriving it from a possibly different live run state.
+    /// </remarks>
+    public PotionSpendContext PotionSpend { get; }
+    public PotionSpendMode PotionSpendMode => PotionSpend.Mode;
+    public int AscensionLevel => PotionSpend.AscensionLevel;
     public double CaptureElapsedMilliseconds { get; }
     public int CapturedCardCount { get; }
     public IReadOnlySet<string> PlayerCardIds { get; }
@@ -98,6 +108,7 @@ internal sealed class CombatRootSnapshot
         PlayerTurnPhase playerPhase,
         RoomType? encounterRoomType,
         BossHpRelief bossHpRelief,
+        PotionSpendContext potionSpend,
         double captureElapsedMilliseconds,
         int capturedCardCount,
         IReadOnlySet<string> playerCardIds,
@@ -138,6 +149,7 @@ internal sealed class CombatRootSnapshot
         PlayerPhase = playerPhase;
         EncounterRoomType = encounterRoomType;
         BossHpRelief = bossHpRelief;
+        PotionSpend = potionSpend;
         CaptureElapsedMilliseconds = captureElapsedMilliseconds;
         CapturedCardCount = capturedCardCount;
         PlayerCardIds = playerCardIds;
@@ -307,6 +319,7 @@ internal sealed class CombatRootSnapshot
             playerState.Phase,
             state.Encounter?.RoomType,
             ActEndingBossPolicy.ResolveHpRelief(state),
+            ActEndingBossPolicy.ResolvePotionSpendContext(state),
             stopwatch.Elapsed.TotalMilliseconds,
             cardCount,
             playerCardIds,

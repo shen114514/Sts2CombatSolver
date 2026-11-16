@@ -94,6 +94,12 @@ public static class EventRules
             "WELLSPRING"=>o switch{"BATHE"=>WellspringBathe(c,s),"BOTTLE"=>c with{Potions=1},_=>Unknown()},
             "WHISPERING_HOLLOW"=>o switch{"GOLD"=>c with{Gold=-V("Gold"),Potions=2},"HUG"=>c with{HpLoss=V("HpLoss"),Transform=1,Selection="transform"},_=>Unknown()},
             "WOOD_CARVINGS"=>o switch{"BIRD"=>c with{Benefit=6+v.Strength*2,Selection="transform"},"TORUS"=>c with{Benefit=5+Math.Max(0,4-v.Block),Selection="transform"},"SNAKE"=>Enchant("SLITHER"),_=>Unknown()},
+            "WUPPY_IN_TROUBLE"=>o switch{
+                "HELP_IMMEDIATELY"=>c with{Benefit=V("ImmediateWuppyHp")*.45*Math.Clamp(v.Horizon,.5,1.5),Burden=v.Curse("Injury"),
+                    Notes=["原生：获得60生命瓦皮并加入一张受伤；宠物价值按剩余路线折算，尚非试战结论。"]},
+                "BE_CAUTIOUS"=>c with{HpLoss=V("HpLoss"),Benefit=V("CautiousWuppyHp")*.45*Math.Clamp(v.Horizon,.5,1.5),
+                    Notes=["原生：损失当前生命5%，获得30生命瓦皮；比较生命代价与受伤负担，伤害不提前截断。"]},
+                "IGNORE"=>c with{Potions=1,Notes=["原生：放弃瓦皮，获得一瓶随机药水；按实际空药水栏估值。"]},_=>Unknown()},
             "ZEN_WEAVER"=>o switch{"ARACHNID_ACUPUNCTURE"=>c with{Gold=-V("ArachnidAcupunctureCost"),Remove=2,Selection="remove"},"EMOTIONAL_AWARENESS"=>c with{Gold=-V("EmotionalAwarenessCost"),Remove=1,Selection="remove"},"BREATHING_TECHNIQUES"=>c with{Gold=-V("BreathingTechniquesCost"),Benefit=s.Deck.Count(d=>d.Cost>=2)*2-4},_=>Unknown()},
             _=>Unknown()
         };
