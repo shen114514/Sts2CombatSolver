@@ -3,7 +3,7 @@
   "name": "战斗求解器 · 独立版",
   "author": "shen114514; Torch1230 and contributors; hotwords123; motion-less; shaokangqian4-art",
   "description": "独立战斗求解器与自动选路；奖励拿牌、商店、事件、火堆可分别开启自动操作。无外部框架依赖，无联网交互。",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "has_pck": false,
   "has_dll": true,
   "affects_gameplay": true,

@@ -50,7 +50,7 @@ internal static partial class SolverController
     private static bool _solverDisabled;
     private static bool _stopFullAutoOnCombatEnd;
     private static bool _stopFullAutoOnDeathTurn = true;
-    private static bool _stopFullAutoOnWorseRecalculation = true;
+    private static bool _stopFullAutoOnWorseRecalculation;
     private static readonly SearchFramePressureSignal FramePressureSignal = new();
     private static readonly HashSet<string> DeployedCardIdsForTesting = new(StringComparer.OrdinalIgnoreCase);
     private static readonly HashSet<string> DeployedPotionIdsForTesting = new(StringComparer.OrdinalIgnoreCase);

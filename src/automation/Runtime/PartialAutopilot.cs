@@ -217,7 +217,7 @@ internal sealed partial class PartialAutopilot
                 d.Evaluation.Options.FirstOrDefault(o=>o.Key==chosen?.Key)?.Score<=0))
             {Proceed(rest,rest.ProceedButton,"OnProceedButtonReleased");return;}
             var option=rest.Options.FirstOrDefault(o=>o.OptionId==chosen?.Key);
-            if(option is not (HealRestSiteOption or SmithRestSiteOption or CookRestSiteOption or CloneRestSiteOption or HatchRestSiteOption or KindleRestSiteOption or LiftRestSiteOption or DigRestSiteOption)) {Manual("营火含未适配选项，请手动操作。");return;}
+            if(option is not (HealRestSiteOption or SmithRestSiteOption or RestoreRestSiteOption or CookRestSiteOption or CloneRestSiteOption or HatchRestSiteOption or KindleRestSiteOption or LiftRestSiteOption or DigRestSiteOption)) {Manual("营火含未适配选项，请手动操作。");return;}
             var button=rest.GetButtonForOption(option);
             Wait("接管中 · 即将"+chosen!.Name);
             if(!Claim("decision:"+d.Id,button?.IsEnabled==true && button.IsVisibleInTree()))return;

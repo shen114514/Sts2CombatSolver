@@ -1,0 +1,16 @@
+{
+  "status": "Passed",
+  "stage": "camp_restore",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "EnabledRestoreRecognizedAsModeledEffect",
+    "RestoreDoesNotVetoBetterSmithDecision",
+    "NativeSmithCompletesWithoutSleepOrPetRestore",
+    "CampOffPreservesDeadPetAndMakesNoSelection",
+    "NativeRestoreRevivesPetAndDoesNotHealPlayer",
+    "CriticalPlayerHpChoosesSleepInsteadOfPetRestore"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T13:58:50.5027287+08:00"
+}

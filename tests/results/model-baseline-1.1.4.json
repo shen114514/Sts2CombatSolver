@@ -1,0 +1,38 @@
+[
+  {
+    "name": "MightyShield",
+    "passed": false,
+    "generatedDazed": 3,
+    "autoPlays": 0,
+    "differences": [
+      "field=D[0] expected={STRIKE_IRONCLAD\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Damage=6,]/private=-/keywords=[]/baselib=-} actual={DAZED\u002B0/False:-1/False:-1/0/False/False/False/False/False/-:0:0/-:0[]/private=-/keywords=[Ethereal,Unplayable]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[1] expected={DEFEND_IRONCLAD\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Block=5,]/private=-/keywords=[]/baselib=-} actual={STRIKE_IRONCLAD\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Damage=6,]/private=-/keywords=[]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[2] expected={POMMEL_STRIKE\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Cards=1,Damage=9,]/private=-/keywords=[]/baselib=-} actual={DAZED\u002B0/False:-1/False:-1/0/False/False/False/False/False/-:0:0/-:0[]/private=-/keywords=[Ethereal,Unplayable]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[3] expected={\u003Cmissing\u003E} actual={DEFEND_IRONCLAD\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Block=5,]/private=-/keywords=[]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[4] expected={\u003Cmissing\u003E} actual={POMMEL_STRIKE\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Cards=1,Damage=9,]/private=-/keywords=[]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[5] expected={\u003Cmissing\u003E} actual={DAZED\u002B0/False:-1/False:-1/0/False/False/False/False/False/-:0:0/-:0[]/private=-/keywords=[Ethereal,Unplayable]/baselib=-} expected_count=3 actual_count=6",
+      "field=R.shuffle expected={1:9654126481770707444:8381205844740214545:5994300170244239476:16382978312815148498} actual={4:10899689610237985045:1263378813188560858:8154493453553751036:723902164390031177}"
+    ]
+  },
+  {
+    "name": "MightyShield\u002B",
+    "passed": false,
+    "generatedDazed": 3,
+    "autoPlays": 0,
+    "differences": [
+      "field=D[1] expected={DEFEND_IRONCLAD\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Block=5,]/private=-/keywords=[]/baselib=-} actual={DAZED\u002B0/False:-1/False:-1/0/False/False/False/False/False/-:0:0/-:0[]/private=-/keywords=[Ethereal,Unplayable]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[2] expected={POMMEL_STRIKE\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Cards=1,Damage=9,]/private=-/keywords=[]/baselib=-} actual={DAZED\u002B0/False:-1/False:-1/0/False/False/False/False/False/-:0:0/-:0[]/private=-/keywords=[Ethereal,Unplayable]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[3] expected={\u003Cmissing\u003E} actual={DAZED\u002B0/False:-1/False:-1/0/False/False/False/False/False/-:0:0/-:0[]/private=-/keywords=[Ethereal,Unplayable]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[4] expected={\u003Cmissing\u003E} actual={DEFEND_IRONCLAD\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Block=5,]/private=-/keywords=[]/baselib=-} expected_count=3 actual_count=6",
+      "field=D[5] expected={\u003Cmissing\u003E} actual={POMMEL_STRIKE\u002B0/False:1/False:-1/0/False/False/False/False/False/-:0:0/-:0[Cards=1,Damage=9,]/private=-/keywords=[]/baselib=-} expected_count=3 actual_count=6",
+      "field=R.shuffle expected={5:10142322462990350726:17861699651607610675:4523141055560127209:3391882804058854408} actual={8:14760982270043252007:12448489274311193105:14531316053289475999:15505135838633849968}"
+    ]
+  },
+  {
+    "name": "HellraiserPommelDrawChain",
+    "passed": true,
+    "generatedDazed": 0,
+    "autoPlays": 21,
+    "differences": []
+  }
+]

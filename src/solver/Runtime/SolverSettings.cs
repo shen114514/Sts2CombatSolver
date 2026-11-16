@@ -85,7 +85,7 @@ internal sealed record SolverSettingsData
 
     public bool StopFullAutoOnCombatEnd { get; init; }
     public bool StopFullAutoOnDeathTurn { get; init; } = true;
-    public bool StopFullAutoOnWorseRecalculation { get; init; } = true;
+    public bool StopFullAutoOnWorseRecalculation { get; init; }
     public bool EnableDetailedDiagnosticLogs { get; init; }
     public bool RetainAllCombatLogs { get; init; }
     public bool ShowBattleDamagePerformanceHint { get; init; } = true;

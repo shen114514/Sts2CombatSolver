@@ -28,6 +28,14 @@ internal static class CampMechanics
     internal static double? Effect(AdvisorService service,RestSiteOption option,RunSnapshot s)
     {
         if(option is HealRestSiteOption)return HealExtra(service,s);
+        if(option is RestoreRestSiteOption)
+        {
+            // Native RESTORE fills Wuppy's HP, including reviving a pet at zero HP;
+            // it does not heal the player. Use the same transparent HP prior as its event.
+            var missing=service.Player.Relics.OfType<Wuppy>().Sum(p=>Math.Max(0,p.MaxHp-p.CurrentHp));
+            var healthBudget=Math.Clamp((s.Hp/Math.Max(1d,s.MaxHp)-.1)/.5,0,1);
+            return missing*.45*Math.Clamp(new StrategicValue(s).Horizon,.5,1.5)*healthBudget;
+        }
         if(option is KindleRestSiteOption&&KindleUses(service,s)==0)return 0;
         if(option is CookRestSiteOption)
         {
@@ -52,7 +60,7 @@ internal static class CampMechanics
                 DigRestSiteOption=>12,
                 KindleRestSiteOption=>KindleUses(service,s),
                 // Deck-changing options are credited once; actual room completion rebuilds the projection.
-                CookRestSiteOption or CloneRestSiteOption or HatchRestSiteOption=>1,
+                CookRestSiteOption or CloneRestSiteOption or HatchRestSiteOption or RestoreRestSiteOption=>1,
                 _=>0
             })).ToArray();
 }

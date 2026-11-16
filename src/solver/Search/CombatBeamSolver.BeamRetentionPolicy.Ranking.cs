@@ -679,6 +679,7 @@ internal sealed partial class CombatBeamSolver
                 SearchRouteTraits.RevivalWindow => snapshot.RevivingEnemyCount * 1024
                     - snapshot.RawEnemyHp * 4
                     - snapshot.MaxCurrentEnemyHp * 8,
+                SearchRouteTraits.CentipedePreparation=>snapshot.Centipede.PreparationValue,
                 SearchRouteTraits.DeclinedExtraTurn => 0,
                 SearchRouteTraits.ReactiveDamage => snapshot.ReactiveDamageValue,
                 SearchRouteTraits.EndTurnDeckCompression => snapshot.Energy * 64

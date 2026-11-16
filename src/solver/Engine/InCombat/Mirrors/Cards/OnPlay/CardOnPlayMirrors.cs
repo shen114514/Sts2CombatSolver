@@ -221,6 +221,7 @@ internal static partial class CardOnPlayMirrors
         registry.Register<Distraction>(CardGenerationCardMirrors.DistractionOnPlay);
         registry.Register<Discovery>(CardGenerationCardMirrors.DiscoveryOnPlay);
         registry.Register<InfernalBlade>(CardGenerationCardMirrors.InfernalBladeOnPlay);
+        registry.Register<MightyShield>(CardGenerationCardMirrors.MightyShieldOnPlay);
         registry.Register<JackOfAllTrades>(CardGenerationCardMirrors.JackOfAllTradesOnPlay);
         registry.Register<Jackpot>(CardGenerationCardMirrors.JackpotOnPlay);
         registry.Register<Largesse>(CardGenerationCardMirrors.LargesseOnPlay);

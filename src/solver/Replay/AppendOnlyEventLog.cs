@@ -113,6 +113,9 @@ internal sealed class AppendOnlyEventLog<T> : IDisposable
                     file.Write(bytes);
                     file.WriteByte((byte)'\n');
                     count++;
+                    // Do not leave the last actions in the managed 64-KiB buffer
+                    // indefinitely: an abrupt native crash bypasses Dispose.
+                    if(!_messages.Reader.TryPeek(out _))file.Flush();
                 }
                 catch (Exception error) when (error is IOException or UnauthorizedAccessException or System.Text.Json.JsonException or NotSupportedException)
                 { SetError("event_write_failed:" + error.Message); }

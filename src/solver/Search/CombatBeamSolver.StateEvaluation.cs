@@ -55,6 +55,7 @@ internal sealed partial class CombatBeamSolver
         int rawEnemyHp = 0;
         int maxCurrentEnemyHp = 0;
         int revivingEnemyCount = 0;
+        CentipedeProgress centipede=default;
         int aliveEnemyCount = 0;
         ulong aliveEnemyMask = 0;
         EnemyDurabilityVectorBuilder enemyDurabilityBuilder =
@@ -65,6 +66,8 @@ internal sealed partial class CombatBeamSolver
             Creature creature = combat.KnownEnemies[index];
             SimCreatureState enemy = simulator.State.GetCreature(creature);
             int effectiveHp = combat.EffectiveEnemyHp(creature, enemy);
+            if(_coordinateCentipede&&creature.Monster is MegaCrit.Sts2.Core.Models.Monsters.DecimillipedeSegment)
+                centipede=centipede.Add(enemy.CurrentHp,effectiveHp);
             enemyCombatDistribution.Add(creature.CombatId ?? uint.MaxValue);
             enemyCombatDistribution.Add(enemy.CurrentHp);
             enemyCombatDistribution.Add(enemy.Block);
@@ -211,6 +214,7 @@ internal sealed partial class CombatBeamSolver
         if (won && !uncertainVictory)
             score += SolverWeights.VictoryBonus;
         score += enemyHp * SolverWeights.EnemyHp;
+        if(!won&&!dead)score+=centipede.BeamAdjustment;
         // 负偏置登记过的牌和状态牌、诅咒同样按牌库杂质计。
         //
         // 少了这一条，消耗一张非状态非诅咒的牌在打分里的收益**正好是零**：牌库里少一张不进任何
@@ -605,6 +609,7 @@ internal sealed partial class CombatBeamSolver
             simulator.TerminalStamp)
         {
             DefensiveBlockValue = MeasureDefensiveBlockReserve(combat, player, threat),
+            Centipede=centipede,
             ExplicitPotionStrategicCost = combat.PotionUses
                 .Where(use => !use.Automatic).Sum(use => use.StrategicHpCost),
             GrowthHpCredit = growthHpCredit,

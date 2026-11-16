@@ -37,6 +37,8 @@ internal sealed class SolvedRouteCache(string path)
             Schema = 1,
             Solver = typeof(SolvedRouteCache).Module.ModuleVersionId,
             SearchFaultProbeCard = System.Environment.GetEnvironmentVariable("STS2_WHALE_TEST_BAD_CARD"),
+            CentipedeBaseline = StandaloneSmokeTest.IsRunning
+                ?System.Environment.GetEnvironmentVariable("COMBATSOLVER_CENTIPEDE_BASELINE"):null,
             Game = typeof(CombatState).Module.ModuleVersionId,
             Mods = ModManager.Mods.Select(mod => new
             {

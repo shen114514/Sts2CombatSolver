@@ -1,0 +1,113 @@
+{
+  "gameVersion": "0.113.1",
+  "solverVersion": "1.1.3",
+  "published": false,
+  "fixture": "One saved centipede encounter replayed from its room entry, not four independent runs",
+  "settings": {
+    "beamWidth": 12,
+    "parallelism": 1,
+    "observationLimitMinutes": 3,
+    "timeLimitSeconds": 5,
+    "ignoreLongTermRewards": true,
+    "maxCardBranches": 8,
+    "maxExpandedNodes": 15000
+  },
+  "caveats": [
+    "Wall-clock bounded search varies between replays; caches are separated between baseline and optimized variants.",
+    "A baseline Failed status at the observation limit is not a recorded death or a prediction failure.",
+    "baseline-repeat exceeded the orchestrator exit deadline, then exited on its own with code zero. A manual shutdown minidump was retained; no process was forcibly terminated.",
+    "Repeated saved-copy trials are not natural-run wins or a win-rate estimate."
+  ],
+  "cases": [
+    {
+      "case": "baseline-first",
+      "baseline": true,
+      "won": false,
+      "turns": 17,
+      "startHp": 63,
+      "endHp": 10,
+      "revives": 10,
+      "status": "Failed",
+      "shouldSave": false,
+      "stopReason": "three_minute_observation_limit",
+      "nativeExitCode": 0,
+      "unhandledExceptionDumps": 0,
+      "manualShutdownDump": false,
+      "dllHash": "CE906F6F55576AA4E612B4F2152A3C2590A81C2F5429FC5103242F4CE052DCC6",
+      "checks": [
+        "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+        "NativeCentipede:Won=False:Turns=17:Hp=10:Revives=10"
+      ]
+    },
+    {
+      "case": "optimized-first",
+      "baseline": false,
+      "won": true,
+      "turns": 10,
+      "startHp": 63,
+      "endHp": 33,
+      "revives": 3,
+      "status": "Passed",
+      "shouldSave": false,
+      "stopReason": "victory",
+      "nativeExitCode": 0,
+      "unhandledExceptionDumps": 0,
+      "manualShutdownDump": false,
+      "dllHash": "CE906F6F55576AA4E612B4F2152A3C2590A81C2F5429FC5103242F4CE052DCC6",
+      "checks": [
+        "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+        "NativeCentipede:Won=True:Turns=10:Hp=33:Revives=3"
+      ]
+    },
+    {
+      "case": "optimized-repeat",
+      "baseline": false,
+      "won": true,
+      "turns": 10,
+      "startHp": 63,
+      "endHp": 23,
+      "revives": 3,
+      "status": "Passed",
+      "shouldSave": false,
+      "stopReason": "victory",
+      "nativeExitCode": 0,
+      "unhandledExceptionDumps": 0,
+      "manualShutdownDump": false,
+      "dllHash": "CE906F6F55576AA4E612B4F2152A3C2590A81C2F5429FC5103242F4CE052DCC6",
+      "checks": [
+        "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+        "NativeCentipede:Won=True:Turns=10:Hp=23:Revives=3"
+      ]
+    },
+    {
+      "case": "baseline-repeat",
+      "baseline": true,
+      "won": false,
+      "turns": 20,
+      "startHp": 63,
+      "endHp": 1,
+      "revives": 12,
+      "status": "Failed",
+      "shouldSave": false,
+      "stopReason": "three_minute_observation_limit",
+      "nativeExitCode": 0,
+      "unhandledExceptionDumps": 0,
+      "manualShutdownDump": true,
+      "dllHash": "CE906F6F55576AA4E612B4F2152A3C2590A81C2F5429FC5103242F4CE052DCC6",
+      "checks": [
+        "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+        "NativeCentipede:Won=False:Turns=20:Hp=1:Revives=12"
+      ]
+    }
+  ],
+  "regressionChecks": {
+    "decision": 110,
+    "centipede": 10,
+    "il": 7,
+    "route": 9
+  },
+  "build": {
+    "warnings": 8,
+    "errors": 0
+  }
+}

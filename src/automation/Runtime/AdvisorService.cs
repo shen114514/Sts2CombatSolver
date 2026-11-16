@@ -90,7 +90,7 @@ internal sealed class AdvisorService
             RestRoom=(NRestSiteRoom)screen;
             if(RestBusy)return;
             options=RestRoom.Options.Select(o=>new DecisionOption(o.OptionId,o.Title.GetFormattedText(),
-                o is HealRestSiteOption?"heal":o is SmithRestSiteOption?"smith":RestEffect(o,snapshot)!=null?"effect":"unknown",o.IsEnabled,
+                o is HealRestSiteOption?"heal":o is SmithRestSiteOption?"smith":CampMechanics.Effect(this,o,snapshot)!=null?"effect":"unknown",o.IsEnabled,
                 HealAmount:o is HealRestSiteOption?(double)HealRestSiteOption.GetHealAmount(Player):0,
                 SmithCount:o is SmithRestSiteOption smith?ApiCompatHelpers.SmithCount(smith):1,
                 EffectValue:CampMechanics.Effect(this,o,snapshot))).ToArray();

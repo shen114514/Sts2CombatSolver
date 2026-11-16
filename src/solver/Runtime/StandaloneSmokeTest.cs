@@ -23,6 +23,8 @@ internal static class StandaloneSmokeTest
     internal static bool PauseRouting {get;private set;}=IsRunning;
     internal static void SetRoutingForFlowTest(bool enabled)
     {if(!IsRunning)throw new InvalidOperationException("Developer flow test required");PauseRouting=!enabled;}
+    internal static void EnableContinuationReplay()
+    {if(!NativeCrashReplayTest.IsRequested)throw new InvalidOperationException("Saved-run diagnostic required");PauseRouting=false;PauseAutomaticSearch=false;}
     internal static void TryStart(NGame? host)
     {
         if(IsRunning&&host!=null)_=RunAsync(host);
@@ -46,6 +48,20 @@ internal static class StandaloneSmokeTest
             if(AppDomain.CurrentDomain.GetAssemblies().Any(a=>a.GetName().Name!.Contains("Ritsu",StringComparison.OrdinalIgnoreCase)))
                 throw new InvalidOperationException("Framework still loaded.");
             evidence.Add("NoFrameworkAssemblyReferenceOrLoadedAssembly");
+            if(CentipedeNativeTest.IsRequested)
+            {
+                stage="centipede_native";
+                await CentipedeNativeTest.RunAsync(host,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
+            if(NativeCrashReplayTest.IsRequested)
+            {
+                stage="saved_crash_replay";
+                await NativeCrashReplayTest.RunAsync(host,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             if(RoomFlowNativeTest.IsRequested)await RoomFlowNativeTest.CheckMenuAsync(host,evidence);
             stage="start_non_saving_run";
             string character=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_CHARACTER")??"FOOL";
@@ -55,6 +71,20 @@ internal static class StandaloneSmokeTest
             if(RunManager.Instance.ShouldSave)throw new InvalidOperationException("Saving test refused.");
             var run=RunManager.Instance.DebugOnlyGetState()!;
             var player=LocalContext.GetMe(run)!;
+            if(ModelRepairsNativeTest.IsRequested)
+            {
+                stage="model_repairs";
+                await ModelRepairsNativeTest.RunAsync(host,run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
+            if(CampRestoreNativeTest.IsRequested)
+            {
+                stage="camp_restore";
+                await CampRestoreNativeTest.RunAsync(run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             if(RoomFlowNativeTest.IsRequested)
             {
                 stage="room_flow";

@@ -84,6 +84,7 @@ internal enum SearchRouteTraits
     EndTurnDeckCompression = 1 << 6,
     LongTermResource = 1 << 7,
     HpInvestment = 1 << 8,
+    CentipedePreparation = 1 << 9,
 }
 
 [Flags]
@@ -1287,6 +1288,7 @@ internal sealed class SimulationSnapshot(
     public EnemyDurabilityVector EnemyDurabilityByCombatId { get; } =
         enemyDurabilityByCombatId;
     public int RevivingEnemyCount { get; } = revivingEnemyCount;
+    public CentipedeProgress Centipede { get; init; }
     public int PersistentBuffValue { get; } = persistentBuffValue;
     public StrategicEffectVector StrategicEffects { get; } = strategicEffects;
     public PersistentSetupTraits PersistentSetupTraits { get; } = persistentSetupTraits;

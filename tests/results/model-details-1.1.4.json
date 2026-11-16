@@ -1,0 +1,42 @@
+[
+  {
+    "name": "CrimsonMantle",
+    "passed": true,
+    "generatedDazed": 0,
+    "autoPlays": 0,
+    "differences": []
+  },
+  {
+    "name": "CrimsonMantleForkAndTurnStart",
+    "passed": true,
+    "isolated": true,
+    "differences": []
+  },
+  {
+    "name": "MightyShield",
+    "passed": true,
+    "generatedDazed": 3,
+    "autoPlays": 0,
+    "differences": []
+  },
+  {
+    "name": "MightyShield\u002B",
+    "passed": true,
+    "generatedDazed": 3,
+    "autoPlays": 0,
+    "differences": []
+  },
+  {
+    "name": "HellraiserPommelDrawChain",
+    "passed": true,
+    "generatedDazed": 0,
+    "autoPlays": 21,
+    "differences": []
+  },
+  {
+    "name": "WorseRouteUnattended",
+    "passed": true,
+    "ProjectedBattleHpLossIncrease": 4,
+    "won": true
+  }
+]

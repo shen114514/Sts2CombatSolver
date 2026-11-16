@@ -1,0 +1,13 @@
+{
+  "status": "Passed",
+  "stage": "saved_crash_replay",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "SavedRunCloneReloadWithoutSavingOrIncrementingOfficialReloads",
+    "OriginalSavedTreasureRewardAndProceedCompleted",
+    "ContinuationObservationEnded:From=MapCoord (4, 12):To=:Act=1:Hp=38"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T13:56:33.1300653+08:00"
+}

@@ -161,6 +161,21 @@ internal sealed partial class CombatBeamSolver
         if (revivalWindowCandidate is { } revivalCandidate)
             Add(revivalCandidate, allowOverflow: true);
 
+        // Keep a nonlethal high-HP-target branch as well as the existing knockdown
+        // branch. Otherwise narrow action quotas can discard the coordinated finish
+        // before the next hand is ever searched.
+        ActionCandidate? preparation=null;
+        foreach(var candidate in candidates)
+        {
+            var after=candidate.Node.Snapshot;
+            if(after.PlayerDead||after.ProjectedPlayerHp<=0||
+                !CentipedeProgress.IsPreparation(parent.Snapshot.Centipede,after.Centipede))continue;
+            if(preparation==null||after.Centipede.PreparationValue>preparation.Value.Node.Snapshot.Centipede.PreparationValue||
+                after.Centipede.PreparationValue==preparation.Value.Node.Snapshot.Centipede.PreparationValue&&
+                after.ProjectedPlayerHp>preparation.Value.Node.Snapshot.ProjectedPlayerHp)preparation=candidate;
+        }
+        if(preparation is {} prepare)Add(prepare,allowOverflow:true);
+
         ReadOnlySpan<ActionOptionFamily> families =
         [
             ActionOptionFamily.ImmediateDefense,
@@ -356,6 +371,8 @@ internal sealed partial class CombatBeamSolver
         {
             traits |= SearchRouteTraits.RevivalWindow;
         }
+        if(CentipedeProgress.IsPreparation(before.Centipede,after.Centipede))
+            traits|=SearchRouteTraits.CentipedePreparation;
         return traits;
     }
 

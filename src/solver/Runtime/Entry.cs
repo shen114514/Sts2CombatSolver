@@ -71,6 +71,8 @@ public static class Entry
 
         patcher.RegisterPatch<CombatReplayRecordingPatch>();
         patcher.RegisterPatch<StandaloneTestProgressIsolationPatch>();
+        patcher.RegisterPatch<NativeReplayNoReloadWritePatch>();
+        patcher.RegisterPatch<NativeReplayNoSavingPatch>();
         patcher.RegisterPatch<SpireStrategist.Mod.ParasolRemovalPatch>();
 
 

@@ -1243,6 +1243,12 @@ internal sealed partial class CombatBeamSolver
                     (SearchNode?)null,
                     (best, node) => IsBetterCompletedVictory(node, best) ? node : best), limit);
             }
+            if(limit>=3&&ranked.Any(node=>node.Snapshot.Centipede.CanPrepare))
+            {
+                AddRequired(required,bestDefensive,limit);
+                AddRequired(required,FindBestLane(ranked.Where(node=>node.Snapshot.Centipede.CanPrepare).ToList(),
+                    SearchRouteTraits.CentipedePreparation),limit);
+            }
             if (preserveDefensiveRoute)
             {
                 foreach (IGrouping<int, SearchNode> potionGroup in ranked

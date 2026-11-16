@@ -11,6 +11,16 @@ namespace CombatSolver.Engine.InCombat.Mirrors.Cards.OnPlay;
 
 internal static class CardGenerationCardMirrors
 {
+    public static void MightyShieldOnPlay(MightyShield card, CardOnPlayMirrorContext context)
+    {
+        context.GainBlock(card.Owner.Creature);
+        // Native creates and inserts each Dazed separately, consuming Shuffle RNG
+        // at each insertion. These are fixed cards, not random card generation.
+        for (int i = 0; i < card.DynamicVars.Cards.IntValue; i++)
+            context.Simulator.CreateAndAddGeneratedCardsToCombat<Dazed>(
+                card.Owner, PileType.Draw, 1, creator: null, CardPilePosition.Random);
+    }
+
     public static void AbundanceOnPlay(Abundance card, CardOnPlayMirrorContext context)
     {
         var cards = context.Simulator.GetDistinctUnlockedCharacterCardsForCombat(

@@ -1,0 +1,18 @@
+{
+  "status": "Passed",
+  "stage": "model_repairs",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "CrimsonMantle:FullStateAndRngMatch",
+    "CrimsonMantleForkAndNativeTurnStartMatch",
+    "MightyShield:FullStateAndRngMatch",
+    "MightyShield\u002B:FullStateAndRngMatch",
+    "HellraiserPommelDrawChain:FullStateAndRngMatch",
+    "ExplicitWorseRoutePauseStillAvailable",
+    "WorseRecalculationContinuesToNativeVictoryWhenPauseDisabled",
+    "ModelFixtureAutomaticSearchPaused"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T16:44:18.0922284+08:00"
+}
