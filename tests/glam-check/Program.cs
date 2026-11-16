@@ -1,0 +1,27 @@
+using System.Text.Json;
+using SpireStrategist.Core;
+int checks=0;
+void Check(bool value,string name){if(!value)throw new Exception(name);checks++;Console.WriteLine("PASS "+name);}
+using var doc=JsonDocument.Parse(File.ReadAllText(args[0]));
+var json=new JsonSerializerOptions{PropertyNameCaseInsensitive=true};
+var state=doc.RootElement.GetProperty("state").Deserialize<RunSnapshot>(json)!;
+var options=doc.RootElement.GetProperty("options").Deserialize<DecisionOption[]>(json)!;
+var old=DefectPolicy.Evaluate(state,options);
+Check(old.RecommendedKey==null&&old.Options.Count(o=>!o.Supported)==3,"original exact three-Glam reward veto reproduced");
+var policy=new Policy();
+var result=policy.Evaluate(state,options);
+Check(result.Options.All(o=>o.Supported&&o.Score.HasValue),"all three actual Glam rewards evaluated");
+Check(options.Single(o=>o.Key==result.RecommendedKey).Kind=="card","actual reward recommends a card instead of waiting or skipping everything");
+Check(result.Options.Where(o=>o.Key.StartsWith("card:")).All(o=>o.Parts.Count(p=>p.Reason.StartsWith("华彩"))==1),"first-use replay counted once per candidate");
+var more=options.Select(o=>o.Card==null?o:o with{Card=o.Card with{EnchantmentAmount=9}}).ToArray();
+Check(policy.Evaluate(state,more).Options.Select(o=>o.Score).SequenceEqual(result.Options.Select(o=>o.Score)),"Glam Amount does not multiply native Times=1");
+var unknown=options.Select(o=>o.Key=="card:0"?o with{Card=o.Card! with{ClassName="UnknownFutureCard"}}:o).ToArray();
+Check(policy.Evaluate(state,unknown).RecommendedKey==null,"Glam never hides an unknown base card");
+var afflicted=options.Select(o=>o.Card==null?o:o with{Card=o.Card with{Affliction="AFFLICTION.UNKNOWN"}}).ToArray();
+Check(policy.Evaluate(state,afflicted).RecommendedKey==null,"unknown affliction still reported");
+var variable=options.Select(o=>o.Key=="card:0"?o with{Card=o.Card! with{CostsX=true}}:o).ToArray();
+Check(policy.Evaluate(state,variable).RecommendedKey==null,"unmodelled variable-resource replay is explicit");
+var plain=options.Select(o=>o.Card==null?o:o with{Card=o.Card with{Enchantment=null,EnchantmentAmount=0,Modified=false}}).ToArray();
+Check(JsonSerializer.Serialize(policy.Evaluate(state,plain))==JsonSerializer.Serialize(DefectPolicy.Evaluate(state,plain)),"plain-card character policy unchanged");
+if(args.Length>1)File.WriteAllText(args[1],JsonSerializer.Serialize(result,new JsonSerializerOptions{WriteIndented=true}));
+Console.WriteLine($"{checks} Glam reward checks passed");

@@ -5,7 +5,7 @@ namespace SpireStrategist.Core;
 // Reviewed deterministic priors shared with tools/DefectDraft; no game references.
 public static class DefectPolicy
 {
-    public const string Version = "defect-draft-0.14";
+    public const string Version = "defect-draft-0.15-orbs";
     public const string Scope = "机器人接管：选牌、营火、路线、商店与原生事件；战斗需要 CombatSolver。未知效果会记录并采用明确后备策略。";
     private sealed record Profile(double Base, double[] Phase, double Duplicate, double UpgradeDelta, string[] Tags);
     private sealed record Coefficients(double CardTax, double DamageNeed, double BlockNeed, double DuplicateQuadratic, double SynergyCap);
@@ -164,7 +164,7 @@ public static class DefectPolicy
             else if(storm>0||deck.Any(d=>d.ClassName=="Thunder"))Synergy("扩容会推迟依赖顶球的激发",-1.2);
         }
         if(A("orb_payoff","orb_attack")&&name!="Loop")Synergy("球占用率与质量折扣",Math.Min(4,producers*.9)-2);
-        if(name=="Loop")Synergy("循环只重复最右侧被动，不因球多就视为核心",N("dark")>0?Math.Min(2,N("dark")*.7+N("focus")*.3):N("focus")>=2&&frost>0?1:-2.5);
+        if(name=="Loop")Synergy("循环按首球被动质量和供球能力估值",N("dark")>0?Math.Min(2,N("dark")*.7+N("focus")*.3):frost>0||lightning>0?Math.Min(1.5,.4+N("focus")*.5):-2.5);
         if(A("evoke","evoke_all"))
         {
             Synergy("激发黑暗与等离子",Math.Min(3,N("dark")+N("plasma")));
@@ -250,7 +250,7 @@ public static class DefectPolicy
         if(name is "Storm" or "Subroutine")Synergy("现有能力引擎互相触发",Math.Min(1.5,deck.Count(d=>d.ClassName!=name&&d.ClassName is "Storm" or "Thunder" or "Subroutine")*.75));
         if(name=="Storm"&&n==0&&powers>=2)Synergy("补齐已有雷霆或子程序的产电核心",Math.Min(2,N("power_energy")+deck.Count(d=>d.ClassName=="Thunder")));
         if(name=="Voltaic")Synergy("雷暴产电与雷霆终端配合",storm>0?Math.Min(3,storm*.8+N("lightning_payoff")*.6):0);
-        if(name=="CreativeAi")Synergy("随机慢启动需要成熟的防守与费用",defense>=5&&energySupport>=2&&powers>=3?1.5:-1.5);
+        if(name=="CreativeAi")Synergy("随机慢启动需要防守与费用，生成能力不要求已有多张能力",defense>=4&&energySupport>=1?1.5:-1.5);
         var positive=synergies.Sum(p=>Math.Max(0,p.Value));var factor=positive>0?Math.Min(1,k.SynergyCap/positive):1;
         foreach(var part in synergies)Add(part.Reason,part.Value>0?part.Value*factor:part.Value);
         Add("明确核心搭档的成型收益（含联动上限补偿）",Math.Min(DefectEngineLinks.Budget(s,c),2+Math.Max(0,positive-k.SynergyCap)));
@@ -281,9 +281,7 @@ public static class DefectPolicy
         // not a draw engine, and another marginal copy is not a new capability.
         if(name=="Coolheaded"&&c.UpgradeLevel==0)
         {
-            Add("未敲冷静仅自替换，升级与现有核心竞争",-1.5-Math.Min(1.5,upgradeBacklog*.5));
-            if(act==1&&N("focus")==0&&DefectStrategy.Readiness(s).Offense<.65)
-                Add("一幕缺即时战力，未敲冷静不能替代输出过渡",-1.5);
+            Add("冷静已用通用抽牌成本计费，升级积压仅折扣升级潜力",-Math.Min(.75,upgradeBacklog*.15));
         }
         if((name is "Turbo" or "Hotfix")&&n>0)
             Add("重复短效资源牌需要明确收益余量",-1);
@@ -328,6 +326,7 @@ public static class DefectPolicy
         if(CopyEngine.Swift(c)&&!CopyEngine.SelfCopies(c))Add("迅捷首次打出抽牌，普通牌不重复触发",Math.Min(4,c.EnchantmentAmount*1.2));
         foreach(var part in CopyEngine.Adjustments(s,c))Add(part.Reason,part.Value);
         foreach(var part in DefectComposition.TransitionAdjustments(s,c))Add(part.Reason,part.Value);
+        foreach(var part in DefectOrbPlan.Adjustments(s,c))Add(part.Reason,part.Value);
         if(name=="Compact"&&n>0)
         {
             if(DefectComposition.NeedsSecondCompact(s))

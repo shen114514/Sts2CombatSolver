@@ -270,6 +270,7 @@ internal sealed partial class SolverSettingsPanel
         content.AddChild(_roomAutomationStatus);
         RoomAutomation.StatusChanged+=UpdateRoomAutomationStatus;
         TreeExiting+=()=>RoomAutomation.StatusChanged-=UpdateRoomAutomationStatus;
+        AddAutoNextRunSettings(content);
 
         GridContainer interfaceGrid = CreateSettingsGrid();
         _overlayTheme = CreateOverlayThemeInput();

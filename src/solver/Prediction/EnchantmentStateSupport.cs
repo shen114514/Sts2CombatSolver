@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Text;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
@@ -7,9 +6,6 @@ namespace CombatSolver;
 
 internal static class EnchantmentStateSupport
 {
-    private static readonly FieldInfo GlamUsedField = RequiredField(typeof(Glam), "_usedThisCombat");
-    private static readonly FieldInfo MomentumExtraDamageField = RequiredField(typeof(Momentum), "_extraDamage");
-
     public static void Append(ref StateFingerprintBuilder key, EnchantmentModel? enchantment)
     {
         key.Add(enchantment?.Id.Entry);
@@ -20,11 +16,8 @@ internal static class EnchantmentStateSupport
         key.Add((int)enchantment.Status);
         switch (enchantment)
         {
-            case Glam glam:
-                key.Add((bool)GlamUsedField.GetValue(glam)!);
-                break;
             case Momentum momentum:
-                key.Add((int)MomentumExtraDamageField.GetValue(momentum)!);
+                key.Add(momentum._extraDamage);
                 break;
         }
     }
@@ -42,11 +35,8 @@ internal static class EnchantmentStateSupport
             .Append(':').Append((int)enchantment.Status);
         switch (enchantment)
         {
-            case Glam glam:
-                text.Append(':').Append((bool)GlamUsedField.GetValue(glam)!);
-                break;
             case Momentum momentum:
-                text.Append(':').Append((int)MomentumExtraDamageField.GetValue(momentum)!);
+                text.Append(':').Append(momentum._extraDamage);
                 break;
         }
     }
@@ -58,7 +48,7 @@ internal static class EnchantmentStateSupport
         return text.ToString();
     }
 
-    private static FieldInfo RequiredField(Type type, string name)
-        => type.GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)
-           ?? throw new MissingFieldException(type.FullName, name);
+    // Glam's once-per-combat state is Status (already included above) in 0.113.1.
+    // Direct publicized access to Momentum makes a removed field a build error,
+    // rather than poisoning this entire class, including plain-card fingerprints.
 }

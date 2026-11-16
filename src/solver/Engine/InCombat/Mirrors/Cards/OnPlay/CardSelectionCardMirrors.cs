@@ -35,12 +35,13 @@ internal static class CardSelectionCardMirrors
 
     public static void BeatDownOnPlay(BeatDown card, CardOnPlayMirrorContext context)
     {
+        context.Simulator.RejectExecutionContinuation();
         var selectedCards = context.OwnerState.DiscardPile.Cards
             .Where(predictedCard =>
                 predictedCard.Preview.Type == CardType.Attack &&
                 !predictedCard.HasKeyword(context.State, CardKeyword.Unplayable))
             .ToList()
-            .StableShuffle(context.Rng.Shuffle)
+            .StableShuffle(context.Rng.CombatCardSelection)
             .Take(card.DynamicVars.Cards.IntValue)
             .ToList();
         if (selectedCards.Count == 0)
@@ -75,6 +76,10 @@ internal static class CardSelectionCardMirrors
 
     public static void CatastropheOnPlay(Catastrophe card, CardOnPlayMirrorContext context)
     {
+        // Nested random auto-plays may suspend for a choice. Replay this complete
+        // action with its choice cursor; a partial continuation would skip the
+        // remaining random plays (and any Echo Form repeat of the outer card).
+        context.Simulator.RejectExecutionContinuation();
         for (var i = 0; i < card.DynamicVars.Cards.IntValue; i++)
         {
             var drawPileCards = context.OwnerState.DrawPile.Cards;
@@ -82,19 +87,21 @@ internal static class CardSelectionCardMirrors
                 .Where(predictedCard =>
                     !predictedCard.HasKeyword(context.State, CardKeyword.Unplayable))
                 .ToList();
-            CombatBeamSolver.StableShuffleProjection(eligibleCards, context.Rng.Shuffle);
+            CombatBeamSolver.StableShuffleProjection(eligibleCards, context.Rng.CombatCardSelection);
             var selectedCard = eligibleCards.FirstOrDefault();
 
             if (selectedCard is null)
             {
                 List<PredictedCard> fallbackCards = drawPileCards.ToList();
-                CombatBeamSolver.StableShuffleProjection(fallbackCards, context.Rng.Shuffle);
+                CombatBeamSolver.StableShuffleProjection(fallbackCards, context.Rng.CombatCardSelection);
                 selectedCard = fallbackCards.FirstOrDefault();
             }
 
             if (selectedCard is null)
             {
-                break;
+                // Native still performs both stable shuffles on each remaining
+                // iteration. Even empty shuffles consume selection RNG.
+                continue;
             }
 
             context.Simulator.History.CardsSelected([selectedCard]);
@@ -252,6 +259,7 @@ internal static class CardSelectionCardMirrors
 
     public static void UproarOnPlay(Uproar card, CardOnPlayMirrorContext context)
     {
+        context.Simulator.RejectExecutionContinuation();
         context.AttackSingle(hitCount: 2);
         if (context.Simulator.HasPendingChoice)
             return;
@@ -263,11 +271,11 @@ internal static class CardSelectionCardMirrors
         var selectedCard = attackCards
             .Where(predictedCard => !predictedCard.HasKeyword(context.State, CardKeyword.Unplayable))
             .ToList()
-            .StableShuffle(context.Rng.Shuffle)
+            .StableShuffle(context.Rng.CombatCardSelection)
             .FirstOrDefault();
 
         selectedCard ??= attackCards
-            .StableShuffle(context.Rng.Shuffle)
+            .StableShuffle(context.Rng.CombatCardSelection)
             .FirstOrDefault();
 
         if (selectedCard is null)

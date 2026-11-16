@@ -750,7 +750,14 @@ internal static partial class CombatSearchCoordinator
             if (ResolveTakeoverResult(passResult, policy.Interaction) is { } passTakeover)
                 return CapturePassResult(passResult, passTakeover, false);
             if (policy.IncludeTurnSetup)
+            {
+                // Turn-start roots also use a potion-free primary. Returning it
+                // here used to bypass every Smart potion layer, even on defeat.
+                if (SmartPotionAuditMinimumMilliseconds(passContext, passResult) > 0)
+                    passResult = SearchSmartPotionGradientWithMinimumBudget(
+                        passContext, passResult, memoryForecast);
                 return CapturePassResult(passResult, null, false);
+            }
             SearchPassContext auditContext = passContext;
             // Smart 无强制指令时主路线应无药。插入药由确定性路线引入；开目标变体等预审计
             // continuation 也可能把带插入药的首回合前缀带回主路线。两种情况都先重派生无药

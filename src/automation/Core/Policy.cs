@@ -14,6 +14,8 @@ public sealed class Policy
 
     public Evaluation Evaluate(RunSnapshot state, IReadOnlyList<DecisionOption> options)
     {
+        if (options.Any(o => o.Kind == "card" && o.Card is { Enchantment: "ENCHANTMENT.GLAM", Affliction: null }))
+            return GlamRewardPolicy.Evaluate(state, options, Evaluate);
         if (HeroPolicy.Supports(state.Character)) return HeroPolicy.Evaluate(state, options);
         if (state.Character == "Silent") return SilentPolicy.Evaluate(state, options);
         if (state.Character == "Defect") return DefectPolicy.Evaluate(state, options);

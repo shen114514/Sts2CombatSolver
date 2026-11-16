@@ -674,10 +674,35 @@ internal static partial class SolverController
         return policy;
     }
 
+    // Native room/turn events are outside prediction ownership. A solver failure
+    // must never fault the game's event invocation and strand the real turn loop.
+    internal static void RunNativeCombatEvent(ICombatState? state, string stage, Action operation)
+    {
+        try { operation(); }
+        catch (Exception error)
+        {
+            try
+            {
+                if (state is CombatState combat) IsolatePredictionFailure(combat, error, stage);
+                else Entry.Logger.Error($"[recovery] NATIVE_EVENT_ISOLATED stage={stage} native_control=true error={error}");
+            }
+            catch (Exception cleanupError)
+            {
+                _combat.FullAutoEnabled = false;
+                // Even failed diagnostics/cleanup may not escape this boundary.
+                try { Entry.Logger.Error($"[recovery] NATIVE_EVENT_CLEANUP_FAILED stage={stage} error={error} cleanup={cleanupError}"); }
+                catch (Exception) { }
+            }
+        }
+    }
+
+    internal static Action? TestBeforeBeginCombat { get; set; }
+
     public static void BeginCombat(ICombatState? state)
     {
         AssertMainThread();
         ResetCore("combat_starting");
+        if (StandaloneSmokeTest.IsRunning) TestBeforeBeginCombat?.Invoke();
         if (state is CombatState contentState)
             _combat.UploadPolicy.Observe(contentState);
         _combat.FullAutoEnabled = !_solverDisabled

@@ -7,10 +7,13 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Models.Enchantments;
 namespace CombatSolver;
 internal static class NativeCrashReplayTest
 {
-    internal static bool IsRequested=>StandaloneSmokeTest.IsRunning&&System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "CRASH_REPLAY" or "CRASH_CONTINUE" or "CENTIPEDE_REPLAY";
+    internal static bool IsRequested=>StandaloneSmokeTest.IsRunning&&System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "CRASH_REPLAY" or "CRASH_CONTINUE" or "CENTIPEDE_REPLAY" or "GLAM_SAVED" or "CATASTROPHE_SAVED";
     private static async Task Until(Func<bool> condition,string label)
     {var end=DateTime.UtcNow.AddSeconds(30);while(!condition()&&DateTime.UtcNow<end)await Task.Delay(100);if(!condition())throw new InvalidOperationException(label+": "+RoomAutomation.Status);}
     internal static async Task RunAsync(NGame host,List<string> checks)
@@ -28,6 +31,43 @@ internal static class NativeCrashReplayTest
             AutoEventsEnabled=false,AutoShopEnabled=false});
         int before=run.Players[0].Relics.Count;
         await host.LoadRun(run,save.PreFinishedRoom);
+        if(System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "GLAM_SAVED" or "CATASTROPHE_SAVED")
+        {
+            bool catastrophe=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE")=="CATASTROPHE_SAVED";
+            var player=run.Players.Single();
+            await Until(()=>player.PlayerCombatState?.Phase==PlayerTurnPhase.Play,"saved Glam combat enters native Play");
+            var state=CombatManager.Instance.DebugOnlyGetState()!;
+            if(!(catastrophe?player.Deck.Cards.Any(c=>c is MegaCrit.Sts2.Core.Models.Cards.Catastrophe):player.Deck.Cards.Any(c=>c.Enchantment is Glam))||SolverController.PredictionFailure!=null)
+                throw new InvalidOperationException("Original Glam deck did not recover");
+            var root=CombatRootSnapshot.Capture(state);
+            host.GetViewport().GetTexture().GetImage().SavePng(Path.Combine(
+                System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_DIR")!,"saved-glam-combat.png"));
+            checks.Add($"OriginalSavedCombatRecovered:Kind={(catastrophe?"Catastrophe":"Glam")}:Coord={run.CurrentMapCoord}:Ascension={run.AscensionLevel}:Encounter={state.Encounter?.Id.Entry}");
+            _=root.ForkSimulator();
+            checks.Add("OriginalGlamSaveRootAndSimulationForkSucceeded");
+            SolverSettings.ApplyForTesting(SolverSettings.Current with{AutoRewardsEnabled=false,AutoCampEnabled=false,
+                PerformancePreset=SolverPerformancePreset.Custom,SearchTimeLimitSeconds=catastrophe?15:5,SearchBeamWidth=catastrophe?30:20,
+                SearchMaxExpandedNodes=catastrophe?50000:10000,SearchMaxDegreeOfParallelism=1,IgnoreLongTermRewards=true});
+            StandaloneSmokeTest.EnableReplayCombatOnly();
+            bool won=false;
+            void OnWon(CombatRoom room){won=true;}
+            CombatManager.Instance.CombatWon+=OnWon;
+            try
+            {
+                SolverController.SetFullAuto(host,state,true);
+                if(!SolverController.FullAutoEnabled)throw new InvalidOperationException("Saved-run fixture failed to enable full auto");
+                var deadline=DateTime.UtcNow.AddSeconds(catastrophe?180:100);
+                while(!won&&DateTime.UtcNow<deadline)
+                {
+                    await Task.Delay(100);
+                    if(SolverController.PredictionFailure!=null)throw new InvalidOperationException(SolverController.PredictionFailure);
+                }
+                if(!won||player.Creature.CurrentHp<=0)throw new InvalidOperationException("Saved Glam combat did not complete alive");
+                checks.Add($"OriginalSecondCombatCloneWon:Hp={player.Creature.CurrentHp}:ManualResponses=0");
+            }
+            finally {CombatManager.Instance.CombatWon-=OnWon;}
+            return;
+        }
         await Until(()=>NMapScreen.Instance?.IsOpen==true,"saved treasure pickup and proceed");
         if(run.Players[0].Relics.Count!=before+1)throw new InvalidOperationException("Saved treasure reward mismatch");
         checks.Add("OriginalSavedTreasureRewardAndProceedCompleted");

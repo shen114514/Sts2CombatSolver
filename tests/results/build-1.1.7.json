@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-11-16T20:45:29.5762056+08:00",
+  "version": "1.1.7",
+  "saveFiles": 219,
+  "saveDifferences": [],
+  "currentRunExistedBefore": false,
+  "currentRunExistsNow": false,
+  "settingsUnchanged": true,
+  "dllHash": "BFADBC5D62DC7A7A46347DA4790F7DF8890D6CDAF9F113FD85650F4C49E12930",
+  "installedHash": "BFADBC5D62DC7A7A46347DA4790F7DF8890D6CDAF9F113FD85650F4C49E12930",
+  "packagedHash": "BFADBC5D62DC7A7A46347DA4790F7DF8890D6CDAF9F113FD85650F4C49E12930",
+  "nativeTests": [
+    {
+      "name": "auto-next",
+      "status": "Passed",
+      "exitCode": 0,
+      "shouldSave": false,
+      "checks": 15,
+      "dumps": 0,
+      "dllHash": "BFADBC5D62DC7A7A46347DA4790F7DF8890D6CDAF9F113FD85650F4C49E12930"
+    },
+    {
+      "name": "room-flow",
+      "status": "Passed",
+      "exitCode": 0,
+      "shouldSave": false,
+      "checks": 13,
+      "dumps": 0,
+      "dllHash": "BFADBC5D62DC7A7A46347DA4790F7DF8890D6CDAF9F113FD85650F4C49E12930"
+    }
+  ],
+  "manifestMatches": true,
+  "zipHash": "1157F2F7877514D24C6F61FA1D847C93EF2C7533EB8D345F04CC622EB62CF35C",
+  "installerHash": "2106013C3F372A7A19F8758737D5D70655F1674933FF63CDD6F6ACF83F7EBE0D",
+  "embeddedZipMatches": true,
+  "packageEntries": [
+    "Sts2CombatSolver.dll",
+    "Sts2CombatSolver.json",
+    "LICENSE"
+  ],
+  "regressionChecks": 175,
+  "buildErrors": 0,
+  "buildWarnings": 8,
+  "gameProcesses": 0,
+  "captureProcesses": 0,
+  "publishedToGitHub": false
+}

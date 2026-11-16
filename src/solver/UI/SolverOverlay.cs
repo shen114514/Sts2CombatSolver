@@ -23,6 +23,43 @@ internal static class SolverOverlay
     }
 
     private const string LayerName = "CombatSolverOverlay";
+    internal static async Task<IReadOnlyList<Vector2>> ExerciseStableSearchLayoutForTestingAsync(NGame host)
+    {
+        if (!StandaloneSmokeTest.IsRunning) throw new InvalidOperationException("Developer fixture required");
+        EnsureCreated(host);
+        var originalSize = _customPanelSize;
+        var sizes = new List<Vector2>();
+        try
+        {
+            foreach (Vector2? size in new Vector2?[] { null, new(700, 480), new(596, 386) })
+            {
+                _customPanelSize = size;
+                ShowSearching(host, 1, false, 0);
+                Vector2? baseline = null;
+                for (int index = 0; index < 4; index++)
+                {
+                    _summaryText!.Text = index % 2 == 0 ? "已查阅 10 条世界线" : "已查阅 123,456,789 条世界线（1,234,567 条每秒）";
+                    _progressText!.Visible = index != 0;
+                    _progressText.Text = $"计算已用 {index * 10} 秒";
+                    SetReviewText(index % 2 == 0 ? null : "正在搜索药水分支，比较可存活路线");
+                    SetSearchLimitHint(index % 2 == 0 ? null : "搜索预算已到，正在比较药水救命路线");
+                    SetPerformanceHintVisible(index % 2 != 0);
+                    QueueResponsiveLayout();
+                    for (int frame = 0; frame < 3; frame++)
+                        await host.ToSignal(host.GetTree(), Godot.SceneTree.SignalName.ProcessFrame);
+                    Vector2 actual = _panel!.Size;
+                    if (_body!.Size.X < _bodyScroll!.Size.X - 24)
+                        throw new InvalidOperationException("Search content did not fill the scroll viewport width");
+                    sizes.Add(actual);
+                    if (baseline is { } expected && actual.DistanceTo(expected) > 1)
+                        throw new InvalidOperationException($"Search panel changed size: {expected} -> {actual}");
+                    baseline = actual;
+                }
+            }
+            return sizes;
+        }
+        finally { _customPanelSize = originalSize; }
+    }
     private const long ResizeLayoutIntervalMilliseconds = 16;
     private const double ActiveSearchProgressMaximum = 0.95d;
     private const double MaxElapsedClockLeadSeconds = 1d;
@@ -42,6 +79,7 @@ internal static class SolverOverlay
     private static Color Success => SolverUiTokens.Palette.Success;
 
     private static CanvasLayer? _layer;
+    private static ScrollContainer? _bodyScroll;
     private static SolverOverlayInputBridge? _inputBridge;
     private static PanelContainer? _panel;
     private static Viewport? _viewport;
@@ -1693,6 +1731,7 @@ internal static class SolverOverlay
             _viewport.SizeChanged -= ApplyResponsiveLayout;
         _layer = null;
         _panel = null;
+        _bodyScroll = null;
         _viewport = null;
         _rightResizeHandle = null;
         _bottomResizeHandle = null;
@@ -1808,10 +1847,6 @@ internal static class SolverOverlay
         panel.AddChild(root);
 
         root.AddChild(CreateHeader());
-        root.AddChild(CreateSpeedXWarning());
-        root.AddChild(CreateNoveltyPortfolioHint());
-        root.AddChild(CreateSearchLimitHint());
-        root.AddChild(CreatePerformanceHint());
         root.AddChild(CreateBossHpStrategyHint());
 
         HBoxContainer contentColumns = new()
@@ -1871,12 +1906,27 @@ internal static class SolverOverlay
         _body = new VBoxContainer
         {
             Name = "Body",
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
             SizeFlagsVertical = Control.SizeFlags.ExpandFill,
             MouseFilter = Control.MouseFilterEnum.Ignore,
         };
         _body.AddThemeConstantOverride("separation", SolverUiTokens.Spacing.Sm);
-        lowerStack.AddChild(_body);
+        // Search status text changes often. Keep its minimum height inside a
+        // scroll viewport so it cannot resize the user's panel on every update.
+        _bodyScroll = new ScrollContainer
+        {
+            Name = "BodyScroll",
+            SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
+        };
+        _bodyScroll.AddChild(_body);
+        lowerStack.AddChild(_bodyScroll);
 
+        _body.AddChild(CreateSpeedXWarning());
+        _body.AddChild(CreateNoveltyPortfolioHint());
+        _body.AddChild(CreateSearchLimitHint());
+        _body.AddChild(CreatePerformanceHint());
         _body.AddChild(CreateSummarySection());
         _routeOutcomePanel = CreateSectionPanel("RouteOutcomePanel");
         _routeHeadingRow = new HFlowContainer
@@ -2966,6 +3016,8 @@ internal static class SolverOverlay
             _mainStack.Visible = !_settingsVisible || _collapsed;
         if (_body != null)
             _body.Visible = !_collapsed && !_settingsVisible;
+        if (_bodyScroll != null)
+            _bodyScroll.Visible = !_collapsed && !_settingsVisible;
         if (_rightResizeHandle != null)
             _rightResizeHandle.Visible = !_collapsed;
         if (_bottomResizeHandle != null)
@@ -3049,9 +3101,7 @@ internal static class SolverOverlay
             float maximumHeight = _settingsVisible
                 ? 540f
                 : SolverUiTokens.Size.ExpandedMaxHeight;
-            height = Math.Min(
-                _panel.GetCombinedMinimumSize().Y,
-                Math.Min(maximumHeight, availableHeight));
+            height = Math.Min(maximumHeight, availableHeight);
         }
 
         ApplyPanelBounds(viewportSize, width, height);

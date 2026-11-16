@@ -1,0 +1,24 @@
+{
+  "status": "Passed",
+  "stage": "auto_next_run",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "OldSettingsDefaultOffAndFixedIronclad",
+    "SettingsUiEnablesFixedDefect",
+    "RandomChoiceAndEnabledFlagRoundTrip",
+    "EnablingInMainMenuNeverStartsOverExistingSave",
+    "LiveRunNotInterruptedAndFixtureDoesNotSave",
+    "SwitchOffDuringDeathScreenPreventsContinuation",
+    "UnfinishedSaveConditionPreventsNewRunWithoutFileMutation",
+    "TimelineNativeUnlockAndBackBeforeNextRun",
+    "OpenSettingsOrModalConditionCancelsCountdown",
+    "DeathToFixedDefectUsesRememberedDifficultyWithoutSaving",
+    "NoDuplicateLaunchAfterFirstStart",
+    "WinToRepeatedFixedDefectUsesFreshSeed",
+    "RandomNextRunIsUnlockedAndUsesItsOwnRememberedDifficulty",
+    "SwitchOffDuringCountdownCancelsNextLaunch"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T20:38:31.9641259+08:00"
+}

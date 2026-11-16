@@ -1,0 +1,29 @@
+{
+  "status": "Passed",
+  "stage": "enchantment_contract",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "PreflightRecognizesOriginalRequiredFieldGlamFailure",
+    "CurrentNativeContentContractsExported:Models=1138:Registries=76:Enchantments=24",
+    "GlamDeckNativeCombatEntryAndFirstPlayPhase",
+    "GlamDeckRootCaptureWithoutObsoleteField",
+    "GlamFirstPlay:FullStateForkAndRngMatch",
+    "GlamDisablesAfterFirstSeries",
+    "GlamUsedStateDistinguishesFingerprints",
+    "GlamReturnedCardSecondPlay:FullStateForkAndRngMatch",
+    "MomentumExtraDamageDistinguishesFingerprints",
+    "CheckpointTypeInitializerFailureDoesNotFaultNativeCombatEntry",
+    "SolverSetupFailureIsolatedNativeCombatStillReachesPlay",
+    "NativeCardPlayStillWorksAfterSolverSetupFailure",
+    "NextCombatClearsPriorFailureWithoutReusingPlan",
+    "GlamResetsInNextNativeCombat",
+    "ContractFixtureAutomaticSearchPaused",
+    "SilkenTressNativeRewardModificationApplied",
+    "AllThreeNativeRewardCandidatesHaveGlam",
+    "ThreeGlamRewardsAutomaticallyChooseAndAddNativeCardManualResponsesZero",
+    "AfterGlamRewardNextNativeCombatReachesPlayAndCapturesRoot"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T19:46:06.8906268+08:00"
+}

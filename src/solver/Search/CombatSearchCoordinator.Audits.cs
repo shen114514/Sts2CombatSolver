@@ -626,10 +626,9 @@ internal static partial class CombatSearchCoordinator
     /// time-bound primary spends the whole request budget, a zero floor would skip the audit on exactly the roots
     /// where the primary could not finish, so a potion that wins outright would never be considered.
     /// </summary>
-    private static long SmartPotionAuditMinimumMilliseconds(SearchPassContext context, SolverResult primary)
+    internal static long SmartPotionAuditMinimumMilliseconds(SearchPassContext context, SolverResult primary)
         => context.Policy.PotionPolicy == SolverPotionPolicy.Smart
             && !context.Policy.PotionStrategy.HasForcedDirectives
-            && !context.Policy.IncludeTurnSetup
             && primary.ResultScope == SolverResultScope.SearchCompletion
             && primary.ExplicitPotionCount == 0
             && context.Root.SearchablePotions.Count > 0
@@ -642,11 +641,11 @@ internal static partial class CombatSearchCoordinator
     /// audit is extended.
     /// </summary>
     /// <remarks>
-    /// The first optional-potion layer receives the floor as its soft budget and retains its anytime result.
-    /// The linked token allows one sixth of the floor for completion. The explicit layer limit bounds the
-    /// number of members independently of how quickly the first member completes.
+    /// Each optional-potion layer receives the floor as its soft budget. A losing baseline may need
+    /// several potions together; allow up to three layers under a combined deadline. Turn-start choices
+    /// remain part of the captured search root, with the same potion safety budget as settled hands.
     /// </remarks>
-    private static SolverResult SearchSmartPotionGradientWithMinimumBudget(
+    internal static SolverResult SearchSmartPotionGradientWithMinimumBudget(
         SearchPassContext context, SolverResult primary, SmartLayerMemoryForecast memoryForecast)
     {
         CancellationToken callerCancellationToken = context.CancellationToken;
@@ -655,7 +654,11 @@ internal static partial class CombatSearchCoordinator
             $"[CombatSolver/Test] SMART_POTION_AUDIT_MINIMUM_BUDGET " +
             $"remaining_ms={context.RemainingMilliseconds} minimum_ms={minimumMilliseconds}");
         using CancellationTokenSource deadline = CancellationTokenSource.CreateLinkedTokenSource(callerCancellationToken);
-        deadline.CancelAfter(TimeSpan.FromMilliseconds(minimumMilliseconds + minimumMilliseconds / 6));
+        int layers = IsCompleteVictory(primary) ? 1 : Math.Min(3,
+            MaximumSmartPotionUses(context.Root, context.Policy, false,
+                StrategicHpDeficit(context.Root, context.Policy, primary)));
+        layers = Math.Max(1, layers);
+        deadline.CancelAfter(TimeSpan.FromMilliseconds(layers * minimumMilliseconds + minimumMilliseconds / 6));
         SearchPassContext minimumContext = context with
         {
             CancellationToken = deadline.Token,
@@ -664,7 +667,7 @@ internal static partial class CombatSearchCoordinator
         try
         {
             return SearchSmartPotionGradient(
-                minimumContext, callerCancellationToken, primary, memoryForecast, out _, maximumLayers: 1);
+                minimumContext, callerCancellationToken, primary, memoryForecast, out _, maximumLayers: layers);
         }
         catch (OperationCanceledException)
             when (deadline.IsCancellationRequested && !callerCancellationToken.IsCancellationRequested)

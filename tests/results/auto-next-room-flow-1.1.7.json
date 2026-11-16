@@ -1,0 +1,22 @@
+{
+  "status": "Passed",
+  "stage": "room_flow",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "OverlayVisibleBeforeStartingAnyCombat",
+    "HideWorksOutsideCombatAndLeavesRestoreButton",
+    "IdleRefreshRespectsUserHide",
+    "NativeRestoreButtonShowsPanelOutsideCombat",
+    "WuppyAllThreeNativeInitialOptionsModeled",
+    "WuppyCostsIncludeHpCurseAndPotionAlternative",
+    "WuppyRemainsManualWhenEventSwitchOff",
+    "WuppyAutomaticallyObtainedNativePetInsteadOfSkipping",
+    "OverlayRemainsVisibleAfterEvent",
+    "AutoChestOpensPicksOnceAndProceedsToMap",
+    "ManualChestPickAlsoResumesAutomaticProceedWithoutReopening",
+    "AutoRouteTravelsAfterTreasureCompletion"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T20:41:51.7880122+08:00"
+}

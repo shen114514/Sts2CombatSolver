@@ -25,6 +25,8 @@ internal static class StandaloneSmokeTest
     {if(!IsRunning)throw new InvalidOperationException("Developer flow test required");PauseRouting=!enabled;}
     internal static void EnableContinuationReplay()
     {if(!NativeCrashReplayTest.IsRequested)throw new InvalidOperationException("Saved-run diagnostic required");PauseRouting=false;PauseAutomaticSearch=false;}
+    internal static void EnableReplayCombatOnly()
+    {if(!NativeCrashReplayTest.IsRequested)throw new InvalidOperationException("Saved-run diagnostic required");PauseRouting=true;PauseAutomaticSearch=false;}
     internal static void TryStart(NGame? host)
     {
         if(IsRunning&&host!=null)_=RunAsync(host);
@@ -48,6 +50,13 @@ internal static class StandaloneSmokeTest
             if(AppDomain.CurrentDomain.GetAssemblies().Any(a=>a.GetName().Name!.Contains("Ritsu",StringComparison.OrdinalIgnoreCase)))
                 throw new InvalidOperationException("Framework still loaded.");
             evidence.Add("NoFrameworkAssemblyReferenceOrLoadedAssembly");
+            if(AutoNextRunNativeTest.IsRequested)
+            {
+                stage="auto_next_run";
+                await AutoNextRunNativeTest.RunAsync(host,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             if(CentipedeNativeTest.IsRequested)
             {
                 stage="centipede_native";
@@ -65,12 +74,33 @@ internal static class StandaloneSmokeTest
             if(RoomFlowNativeTest.IsRequested)await RoomFlowNativeTest.CheckMenuAsync(host,evidence);
             stage="start_non_saving_run";
             string character=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_CHARACTER")??"FOOL";
-            CharacterModel model=character=="IRONCLAD"?ModelDb.Character<Ironclad>():ModelDb.Character<Fool>();
+            CharacterModel model=character=="IRONCLAD"?ModelDb.Character<Ironclad>():character=="DEFECT"?ModelDb.Character<Defect>():ModelDb.Character<Fool>();
             var testPlayer=Player.CreateForNewRun(model,new MegaCrit.Sts2.Core.Unlocks.UnlockState(SaveManager.Instance.Progress),1UL);
             await host.StartNewSingleplayerRun(testPlayer,false,ActModel.GetDefaultList(),[],"STANDALONE-20261115",GameMode.Standard,isCustomGame:false,ascensionLevel:2);
             if(RunManager.Instance.ShouldSave)throw new InvalidOperationException("Saving test refused.");
             var run=RunManager.Instance.DebugOnlyGetState()!;
             var player=LocalContext.GetMe(run)!;
+            if(CatastropheNativeTest.IsRequested)
+            {
+                stage="catastrophe";
+                await CatastropheNativeTest.RunAsync(host,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
+            if(EnchantmentNativeTest.IsRequested)
+            {
+                stage="enchantment_contract";
+                await EnchantmentNativeTest.RunAsync(host,run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
+            if(DefectRevisionNativeTest.IsRequested)
+            {
+                stage="defect_revision";
+                await DefectRevisionNativeTest.RunAsync(host,run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             if(ModelRepairsNativeTest.IsRequested)
             {
                 stage="model_repairs";
@@ -147,6 +177,9 @@ internal sealed class StandaloneTestProgressIsolationPatch:IPatchMethod
 {
     public static ModPatchTarget[] GetTargets()=>[
         new(typeof(SaveManager),nameof(SaveManager.UpdateProgressAfterCombatWon),[typeof(Player),typeof(CombatRoom)]),
-        new(typeof(SaveManager),nameof(SaveManager.SaveProgressFile),[])];
+        new(typeof(SaveManager),nameof(SaveManager.SaveProgressFile),[]),
+        new(typeof(MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen.NGameOverScreen),"SaveBadgesToProgress",
+            HarmonyLib.AccessTools.Method(typeof(MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen.NGameOverScreen),
+                "SaveBadgesToProgress").GetParameters().Select(p=>p.ParameterType).ToArray())];
     public static bool Prefix()=>!StandaloneSmokeTest.IsRunning;
 }

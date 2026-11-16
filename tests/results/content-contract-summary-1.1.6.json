@@ -1,0 +1,185 @@
+{
+  "schema": 1,
+  "gameAssemblySha256": "62ECBE91093E1FA862DE4329AAC865209DCB297804CAF0F0520D92D8C0B4A9C3",
+  "counts": {
+    "CardModel": 724,
+    "EnchantmentModel": 24,
+    "EventModel": 74,
+    "RelicModel": 316
+  },
+  "registryCount": 76,
+  "registryErrors": [],
+  "literalMemberContracts": [
+    {
+      "source": "solver\\Prediction\\BranchMonsterAi.cs",
+      "type": "MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine.MonsterMoveStateMachine",
+      "kind": "Field",
+      "name": "_initialState",
+      "exists": true
+    },
+    {
+      "source": "solver\\Runtime\\NativeChoiceRuntime.cs",
+      "type": "MegaCrit.Sts2.Core.Nodes.Screens.CardSelection.NChooseACardSelectionScreen",
+      "kind": "Field",
+      "name": "_cards",
+      "exists": true
+    },
+    {
+      "source": "solver\\Runtime\\NativeChoiceRuntime.cs",
+      "type": "MegaCrit.Sts2.Core.Nodes.Screens.CardSelection.NChooseACardSelectionScreen",
+      "kind": "Field",
+      "name": "_openedTicks",
+      "exists": true
+    },
+    {
+      "source": "solver\\Runtime\\NativeChoiceRuntime.cs",
+      "type": "MegaCrit.Sts2.Core.Nodes.Screens.CardSelection.NChooseACardSelectionScreen",
+      "kind": "Field",
+      "name": "_completionSource",
+      "exists": true
+    },
+    {
+      "source": "solver\\Runtime\\NativeChoiceRuntime.cs",
+      "type": "MegaCrit.Sts2.Core.Nodes.Combat.NPlayerHand",
+      "kind": "Field",
+      "name": "_selectedCards",
+      "exists": true
+    },
+    {
+      "source": "solver\\Runtime\\SolverDisplayNames.cs",
+      "type": "MegaCrit.Sts2.Core.Nodes.Rooms.NCombatRoom",
+      "kind": "Property",
+      "name": "EncounterSlots",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Powers.NemesisPower",
+      "kind": "Field",
+      "name": "_shouldApplyIntangible",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Powers.TenderPower",
+      "kind": "Field",
+      "name": "_cardsPlayedThisTurn",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.cs",
+      "type": "MegaCrit.Sts2.Core.Combat.CombatState",
+      "kind": "Field",
+      "name": "_nextCreatureId",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.cs",
+      "type": "MegaCrit.Sts2.Core.Combat.CombatState",
+      "kind": "Field",
+      "name": "_allCards",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.cs",
+      "type": "MegaCrit.Sts2.Core.Models.MultiplayerScalingModel",
+      "kind": "Field",
+      "name": "_runState",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.cs",
+      "type": "MegaCrit.Sts2.Core.Models.MultiplayerScalingModel",
+      "kind": "Field",
+      "name": "_combatState",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.PowerLifecycle.cs",
+      "type": "MegaCrit.Sts2.Core.Models.PowerModel",
+      "kind": "Field",
+      "name": "_internalData",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.PowerRelics.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Relics.RuinedHelmet",
+      "kind": "Field",
+      "name": "_usedThisCombat",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.PowerRelics.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Relics.UnsettlingLamp",
+      "kind": "Field",
+      "name": "_isFinishedTriggering",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.Relics.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Relics.ArtOfWar",
+      "kind": "Field",
+      "name": "_anyAttacksPlayedLastTurn",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.Relics.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Relics.ArtOfWar",
+      "kind": "Field",
+      "name": "_anyAttacksPlayedThisTurn",
+      "exists": true
+    },
+    {
+      "source": "solver\\Search\\SimulatedCombatState.Relics.cs",
+      "type": "MegaCrit.Sts2.Core.Models.Relics.BeltBuckle",
+      "kind": "Field",
+      "name": "_dexterityApplied",
+      "exists": true
+    },
+    {
+      "source": "solver\\Engine\\Common\\DynamicVarSetAccess.cs",
+      "type": "MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVarSet",
+      "kind": "Field",
+      "name": "_vars",
+      "exists": true
+    },
+    {
+      "source": "solver\\Engine\\Common\\PredictionUtils.cs",
+      "type": "MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost",
+      "kind": "Field",
+      "name": "_localModifiers",
+      "exists": true
+    },
+    {
+      "source": "solver\\Engine\\InCombat\\Simulation\\ArrowStateCapture.cs",
+      "type": "MegaCrit.Sts2.Core.Models.PowerModel",
+      "kind": "Field",
+      "name": "_internalData",
+      "exists": true
+    }
+  ],
+  "dataErrors": [
+    "MegaCrit.Sts2.Core.Models.Cards.Mocks.MockTurnEndInHandRecorderCard:Key=MOCK_TURN_END_IN_HAND_RECORDER_CARD.title not found in table=cards",
+    "MegaCrit.Sts2.Core.Models.Events.DeprecatedAncientEvent:Key=DEPRECATED_ANCIENT_EVENT.title not found in table=ancients"
+  ],
+  "scope": "All concrete built-in card/relic/event/enchantment types, including debug/unreachable content. Registration is not differential validation; unregistered may be native read-only or another facade.",
+  "contractScope": "Literal typeof(T).GetField/GetProperty and RequiredField/AccessTools.Field(typeof(T), name). Dynamic names, requested binding flags and third-party types require separate review.",
+  "hookRegistrationCounts": [
+    {
+      "count": 312,
+      "coverage": "Handled"
+    },
+    {
+      "count": 20,
+      "coverage": "Ignored"
+    },
+    {
+      "count": 520,
+      "coverage": "InferenceAvailableNeedsValidation"
+    },
+    {
+      "count": 1307,
+      "coverage": "UnregisteredOrDirectNativeNeedsReview"
+    }
+  ]
+}

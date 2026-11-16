@@ -30,9 +30,12 @@ public static class Entry
         SolverSettings.Load();
         SolverUiTokens.ConfigureTheme(SolverSettings.Current.OverlayTheme);
         SolverController.ApplyPersistentSettings(SolverSettings.Capture());
-        CombatManager.Instance.CombatSetUp += state => SolverController.BeginCombat(state);
-        CombatManager.Instance.CombatEnded += _ => SolverController.Reset("combat_ended");
-        CombatManager.Instance.TurnStarted += OnTurnStarted;
+        CombatManager.Instance.CombatSetUp += state => SolverController.RunNativeCombatEvent(
+            state, "combat_setup", () => SolverController.BeginCombat(state));
+        CombatManager.Instance.CombatEnded += _ => SolverController.RunNativeCombatEvent(
+            null, "combat_ended", () => SolverController.Reset("combat_ended"));
+        CombatManager.Instance.TurnStarted += state => SolverController.RunNativeCombatEvent(
+            state, "turn_started", () => OnTurnStarted(state));
 
         var patcher = new CombatSolver.Patching.SolverPatcher(ModId);
         patcher.RegisterPatch<PlayerTurnSetupPatch>();

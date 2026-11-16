@@ -1,0 +1,137 @@
+{
+  "PolicyVersion": "defect-draft-0.15-orbs",
+  "RecommendedKey": "card:2",
+  "Options": [
+    {
+      "Key": "card:0",
+      "Name": "\u6C61\u79FD\u653B\u51FB",
+      "Supported": true,
+      "Enabled": true,
+      "Score": -0.611,
+      "Parts": [
+        {
+          "Reason": "\u57FA\u7840\u5148\u9A8C\uFF08\u5C1A\u672A\u62DF\u5408\uFF09",
+          "Value": 3
+        },
+        {
+          "Reason": "\u524D\uFF0F\u4E2D\uFF0F\u540E\u671F\u9700\u6C42",
+          "Value": 2
+        },
+        {
+          "Reason": "\u5360\u7528\u4E00\u6B21\u62BD\u724C\u7684\u57FA\u51C6\u6210\u672C",
+          "Value": -2.5
+        },
+        {
+          "Reason": "\u5373\u65F6\u8F93\u51FA\u7F3A\u53E3",
+          "Value": 0.912
+        },
+        {
+          "Reason": "\u72B6\u6001\u540E\u7EED\u62BD\u724C\u4EE3\u4EF7",
+          "Value": -1.5
+        },
+        {
+          "Reason": "\u6C61\u79FD\u653B\u51FB\u7F3A\u5C11\u589E\u529B\u6216\u72B6\u6001\u5904\u7406\uFF0C\u4E0D\u7528\u4F4E\u6548\u4EA7\u72B6\u6001\u8865\u4F24\u5BB3",
+          "Value": -3.5
+        },
+        {
+          "Reason": "\u8FC7\u6E21\u724C\u6309\u5B9E\u9645\u653B\u9632\u8986\u76D6\u9012\u51CF\uFF0C\u4E0D\u6309\u975E\u57FA\u7840\u724C\u5F20\u6570\u5C01\u9876",
+          "Value": -0.24
+        },
+        {
+          "Reason": "\u534E\u5F69\u6BCF\u573A\u9996\u6B21\u6253\u51FA\u8FFD\u52A0\u4E00\u6B21\u7ED3\u7B97\uFF08\u6709\u9650\u5148\u9A8C\uFF0C\u4E0D\u6309\u65E0\u9650\u91CD\u653E\uFF09",
+          "Value": 1.217
+        }
+      ],
+      "Notes": [
+        "\u5DF2\u53C2\u8003\u9996\u6279\u4EBA\u5DE5\u5B9E\u6218\u6821\u51C6\uFF1B\u5C1A\u672A\u72EC\u7ACB\u9A8C\u8BC1\uFF0C\u5206\u6570\u4E0D\u662F\u80DC\u7387\u3002",
+        "\u534E\u5F69\u6309\u5F53\u524D\u7248\u672C\u6BCF\u573A\u9996\u6B21\u91CD\u653E\u4E00\u6B21\u4F30\u503C\uFF0C\u672A\u505A\u5B8C\u6574\u6218\u6597\u6A21\u62DF\u3002"
+      ]
+    },
+    {
+      "Key": "card:1",
+      "Name": "\u91CE\u6027",
+      "Supported": true,
+      "Enabled": true,
+      "Score": -7.54,
+      "Parts": [
+        {
+          "Reason": "\u524D\uFF0F\u4E2D\uFF0F\u540E\u671F\u9700\u6C42",
+          "Value": -1
+        },
+        {
+          "Reason": "\u5360\u7528\u4E00\u6B21\u62BD\u724C\u7684\u57FA\u51C6\u6210\u672C",
+          "Value": -2.5
+        },
+        {
+          "Reason": "\u73B0\u6709\u96F6\u8D39\u5BC6\u5EA6\u548C\u8D28\u91CF",
+          "Value": -3
+        },
+        {
+          "Reason": "\u534E\u5F69\u6BCF\u573A\u9996\u6B21\u6253\u51FA\u8FFD\u52A0\u4E00\u6B21\u7ED3\u7B97\uFF08\u6709\u9650\u5148\u9A8C\uFF0C\u4E0D\u6309\u65E0\u9650\u91CD\u653E\uFF09",
+          "Value": -1.04
+        }
+      ],
+      "Notes": [
+        "\u5DF2\u53C2\u8003\u9996\u6279\u4EBA\u5DE5\u5B9E\u6218\u6821\u51C6\uFF1B\u5C1A\u672A\u72EC\u7ACB\u9A8C\u8BC1\uFF0C\u5206\u6570\u4E0D\u662F\u80DC\u7387\u3002",
+        "\u534E\u5F69\u6309\u5F53\u524D\u7248\u672C\u6BCF\u573A\u9996\u6B21\u91CD\u653E\u4E00\u6B21\u4F30\u503C\uFF0C\u672A\u505A\u5B8C\u6574\u6218\u6597\u6A21\u62DF\u3002"
+      ]
+    },
+    {
+      "Key": "card:2",
+      "Name": "\u7F16\u8BD1\u51B2\u51FB",
+      "Supported": true,
+      "Enabled": true,
+      "Score": 8.274,
+      "Parts": [
+        {
+          "Reason": "\u57FA\u7840\u5148\u9A8C\uFF08\u5C1A\u672A\u62DF\u5408\uFF09",
+          "Value": 3
+        },
+        {
+          "Reason": "\u524D\uFF0F\u4E2D\uFF0F\u540E\u671F\u9700\u6C42",
+          "Value": 1
+        },
+        {
+          "Reason": "\u5360\u7528\u4E00\u6B21\u62BD\u724C\u7684\u57FA\u51C6\u6210\u672C",
+          "Value": -2.5
+        },
+        {
+          "Reason": "\u5373\u65F6\u8F93\u51FA\u7F3A\u53E3",
+          "Value": 1.597
+        },
+        {
+          "Reason": "\u53EF\u5B9E\u73B0\u7403\u79CD\u7684\u8FC7\u724C\u6298\u6263",
+          "Value": 0.7
+        },
+        {
+          "Reason": "\u8FC7\u6E21\u724C\u6309\u5B9E\u9645\u653B\u9632\u8986\u76D6\u9012\u51CF\uFF0C\u4E0D\u6309\u975E\u57FA\u7840\u724C\u5F20\u6570\u5C01\u9876",
+          "Value": -0.24
+        },
+        {
+          "Reason": "\u534E\u5F69\u6BCF\u573A\u9996\u6B21\u6253\u51FA\u8FFD\u52A0\u4E00\u6B21\u7ED3\u7B97\uFF08\u6709\u9650\u5148\u9A8C\uFF0C\u4E0D\u6309\u65E0\u9650\u91CD\u653E\uFF09",
+          "Value": 4.717
+        }
+      ],
+      "Notes": [
+        "\u5DF2\u53C2\u8003\u9996\u6279\u4EBA\u5DE5\u5B9E\u6218\u6821\u51C6\uFF1B\u5C1A\u672A\u72EC\u7ACB\u9A8C\u8BC1\uFF0C\u5206\u6570\u4E0D\u662F\u80DC\u7387\u3002",
+        "\u534E\u5F69\u6309\u5F53\u524D\u7248\u672C\u6BCF\u573A\u9996\u6B21\u91CD\u653E\u4E00\u6B21\u4F30\u503C\uFF0C\u672A\u505A\u5B8C\u6574\u6218\u6597\u6A21\u62DF\u3002"
+      ]
+    },
+    {
+      "Key": "alternative:0",
+      "Name": "\u8DF3\u8FC7",
+      "Supported": true,
+      "Enabled": true,
+      "Score": 0,
+      "Parts": [],
+      "Notes": []
+    }
+  ],
+  "Warnings": [
+    "\u8F93\u51FA\u89C4\u5212\uFF1A\u5C1A\u672A\u5EFA\u7ACB\u7A33\u5B9A\u4E3B\u7EBF\uFF1B\u8FD0\u8F6C\u4E0E\u8FC7\u6E21\u653B\u51FB\u4E0D\u80FD\u4EE3\u66FF\u8F93\u51FA\u6838\u5FC3\u3002",
+    "\u673A\u5668\u4EBA\u63A5\u7BA1\uFF1A\u9009\u724C\u3001\u8425\u706B\u3001\u8DEF\u7EBF\u3001\u5546\u5E97\u4E0E\u539F\u751F\u4E8B\u4EF6\uFF1B\u6218\u6597\u9700\u8981 CombatSolver\u3002\u672A\u77E5\u6548\u679C\u4F1A\u8BB0\u5F55\u5E76\u91C7\u7528\u660E\u786E\u540E\u5907\u7B56\u7565\u3002",
+    "\u5DF2\u53C2\u8003\u9996\u6279\u4EBA\u5DE5\u5B9E\u6218\u6821\u51C6\uFF1B\u5C1A\u672A\u72EC\u7ACB\u9A8C\u8BC1\uFF0C\u5206\u6570\u4E0D\u662F\u80DC\u7387\u3002",
+    "\u672A\u5B8C\u6574\u5EFA\u6A21\u65E0\u8272\u724C\u3001\u9057\u7269\u3001\u5177\u4F53\u654C\u4EBA\u53CA\u6C42\u89E3\u5668\u6267\u884C\u6C34\u5E73\u3002",
+    "\u534E\u5F69\u6536\u76CA\u53EA\u8BA1\u6BCF\u573A\u9996\u6B21\u7ED3\u7B97\uFF1B\u672A\u77E5\u5361\u53CA\u5176\u4ED6\u672A\u9002\u914D\u5F02\u53D8\u7EE7\u7EED\u660E\u786E\u6807\u8BB0\u3002"
+  ]
+}

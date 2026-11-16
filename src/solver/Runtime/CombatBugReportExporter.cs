@@ -569,6 +569,8 @@ internal static class CombatBugReportExporter
         BeginCombat(state);
     }
 
+    internal static Action<string>? TestBeforeCheckpointCapture { get; set; }
+
     private static void RecordCheckpointCore(
         CombatState state, string label, SolverResult? result, string replanAudit)
     {
@@ -589,10 +591,13 @@ internal static class CombatBugReportExporter
         bool queued = false;
         try
         {
+            if (StandaloneSmokeTest.IsRunning) TestBeforeCheckpointCapture?.Invoke(label);
             CaptureCheckpointCore(state, label, result, replanAudit);
             queued = true;
         }
-        catch (Exception error) when (error is InvalidOperationException or NotSupportedException or JsonException or IOException)
+        // Checkpoints are optional diagnostics. Reflection/schema and initializer
+        // failures are as non-fatal to native gameplay as I/O failures.
+        catch (Exception error)
         {
             RegisterBackgroundFailure(session, label, error);
         }

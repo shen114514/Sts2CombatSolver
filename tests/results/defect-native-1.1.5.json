@@ -1,0 +1,20 @@
+{
+  "status": "Passed",
+  "stage": "defect_revision",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "SearchPanelStableAtDefaultAndCustomSize",
+    "DefragmentNativeStateAndRngMatch",
+    "CoolheadedNativeStateAndRngMatch",
+    "LightningRodNativeStateAndRngMatch",
+    "LightningRodDelayedChannel1MatchesNative",
+    "LightningRodDelayedChannel2MatchesNative",
+    "TurnSetupQualifiesForPotionSafetyBudget",
+    "ExhaustedBudgetSearchesTwoPotionRescue",
+    "FullTurnSetupCoordinatorFindsTwoSmartPotionVictory",
+    "TwoSmartPotionsExecuteToNativeVictory"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T19:05:07.7619041+08:00"
+}

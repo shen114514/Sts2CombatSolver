@@ -1,0 +1,48 @@
+{
+  "version": "1.1.8",
+  "checkedAt": "2026-11-16T23:17:10.8064561+08:00",
+  "phase": "non-saving-validation-before-production-resume",
+  "saveFiles": 224,
+  "saveDifferences": [],
+  "currentRunHash": "F35B96A7029F2A397141A183C5BC4591A819D134D6F515AF8DE7F0A1C27E428C",
+  "stableCurrentRunHash": "F35B96A7029F2A397141A183C5BC4591A819D134D6F515AF8DE7F0A1C27E428C",
+  "settingsUnchanged": true,
+  "dllHash": "0D57038B1B3C826876E9C32D0AC2983657CF60E4688CAB16BCC8B62CC693438A",
+  "installedHash": "0D57038B1B3C826876E9C32D0AC2983657CF60E4688CAB16BCC8B62CC693438A",
+  "packagedHash": "0D57038B1B3C826876E9C32D0AC2983657CF60E4688CAB16BCC8B62CC693438A",
+  "nativeTests": [
+    {
+      "exitCode": 0,
+      "checks": 12,
+      "status": "Passed",
+      "dumps": 0,
+      "shouldSave": false,
+      "dllHash": "0D57038B1B3C826876E9C32D0AC2983657CF60E4688CAB16BCC8B62CC693438A",
+      "name": "native-final"
+    },
+    {
+      "exitCode": 0,
+      "checks": 5,
+      "status": "Passed",
+      "dumps": 0,
+      "shouldSave": false,
+      "dllHash": "0D57038B1B3C826876E9C32D0AC2983657CF60E4688CAB16BCC8B62CC693438A",
+      "name": "saved-final"
+    }
+  ],
+  "manifestMatches": true,
+  "zipHash": "DE0847A423D430626A721CC5F8D0C6929E6A627E069873C8DEEB0FEA4F4C5D97",
+  "installerHash": "A601D2341B10F02E15571A38C826EEDC5086208398E855E2524A6BCBC4D65E45",
+  "embeddedZipMatches": true,
+  "packageEntries": [
+    "Sts2CombatSolver.dll",
+    "Sts2CombatSolver.json",
+    "LICENSE"
+  ],
+  "regressionChecks": 175,
+  "buildErrors": 0,
+  "buildWarnings": 8,
+  "gameProcesses": 0,
+  "captureProcesses": 0,
+  "publishedToGitHub": false
+}

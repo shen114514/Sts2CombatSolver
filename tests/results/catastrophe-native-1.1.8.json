@@ -1,0 +1,21 @@
+{
+  "status": "Passed",
+  "stage": "catastrophe",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "Catastrophe:basic:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:upgraded:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:nested:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:echo-nested:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:echo-upgraded-nested:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:unplayable:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:empty:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:empty-upgraded:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:uproar:FullStateForkChoicesAndRngMatch",
+    "Catastrophe:beatdown:FullStateForkChoicesAndRngMatch",
+    "CatastropheFixtureAutomaticSearchPaused"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T23:07:56.6604501+08:00"
+}

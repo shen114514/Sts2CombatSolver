@@ -80,6 +80,8 @@ internal sealed record SolverSettingsData
     public bool AutoShopEnabled { get; init; }
     public bool AutoEventsEnabled { get; init; }
     public bool AutoCampEnabled { get; init; }
+    public bool AutoNextRunEnabled { get; init; }
+    public string NextRunCharacterId { get; init; } = "IRONCLAD";
     public bool AutomaticCalculationEnabled { get; init; } = true;
     public bool AutoEnableFullAuto { get; init; } = true;
 
@@ -561,6 +563,8 @@ internal static class SolverSettings
     private static void Validate(SolverSettingsData data)
     {
         _ = RelicCounterPolicy.ValidateAndCopy(data.RelicCounterRules);
+        if (string.IsNullOrWhiteSpace(data.NextRunCharacterId) || data.NextRunCharacterId.Length > 120)
+            throw new InvalidDataException("NextRunCharacterId must name a character or RANDOM.");
         if (data.PerformanceMigrationVersion < 0)
             throw new InvalidDataException("PerformanceMigrationVersion must be non-negative.");
         ValidateRange(data.SearchTimeLimitSeconds, 0.1d, 600d, nameof(data.SearchTimeLimitSeconds));

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "basic",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 1,
+    "differences": []
+  },
+  {
+    "scenario": "upgraded",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 1,
+    "differences": []
+  },
+  {
+    "scenario": "nested",
+    "passed": true,
+    "choices": 2,
+    "outerPlays": 1,
+    "differences": []
+  },
+  {
+    "scenario": "echo-nested",
+    "passed": true,
+    "choices": 4,
+    "outerPlays": 2,
+    "differences": []
+  },
+  {
+    "scenario": "echo-upgraded-nested",
+    "passed": true,
+    "choices": 6,
+    "outerPlays": 2,
+    "differences": []
+  },
+  {
+    "scenario": "unplayable",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 1,
+    "differences": []
+  },
+  {
+    "scenario": "empty",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 1,
+    "differences": []
+  },
+  {
+    "scenario": "empty-upgraded",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 1,
+    "differences": []
+  },
+  {
+    "scenario": "uproar",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 0,
+    "differences": []
+  },
+  {
+    "scenario": "beatdown",
+    "passed": true,
+    "choices": 0,
+    "outerPlays": 0,
+    "differences": []
+  }
+]

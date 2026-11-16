@@ -1,0 +1,14 @@
+{
+  "status": "Passed",
+  "stage": "saved_crash_replay",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "SavedRunCloneReloadWithoutSavingOrIncrementingOfficialReloads",
+    "OriginalSavedCombatRecovered:Kind=Catastrophe:Coord=MapCoord (6, 1):Ascension=10:Encounter=TURRET_OPERATOR_WEAK",
+    "OriginalGlamSaveRootAndSimulationForkSucceeded",
+    "OriginalSecondCombatCloneWon:Hp=42:ManualResponses=0"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-16T23:11:04.046224+08:00"
+}

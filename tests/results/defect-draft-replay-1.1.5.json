@@ -1,0 +1,754 @@
+[
+  {
+    "floor": 30,
+    "before": [
+      {
+        "card": "GunkUp",
+        "score": -6.103,
+        "chosen": false
+      },
+      {
+        "card": "Iteration",
+        "score": -3.64,
+        "chosen": false
+      },
+      {
+        "card": "FightThrough",
+        "score": -1,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ],
+    "after": [
+      {
+        "card": "GunkUp",
+        "score": -6.103,
+        "chosen": false
+      },
+      {
+        "card": "Iteration",
+        "score": -3.64,
+        "chosen": false
+      },
+      {
+        "card": "FightThrough",
+        "score": -1,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ]
+  },
+  {
+    "floor": 13,
+    "before": [
+      {
+        "card": "Claw",
+        "score": -0.527,
+        "chosen": false
+      },
+      {
+        "card": "Hotfix",
+        "score": 2.6,
+        "chosen": true
+      },
+      {
+        "card": "Ftl",
+        "score": 2.089,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "Claw",
+        "score": -0.527,
+        "chosen": false
+      },
+      {
+        "card": "Hotfix",
+        "score": 2.6,
+        "chosen": true
+      },
+      {
+        "card": "Ftl",
+        "score": 2.089,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 28,
+    "before": [
+      {
+        "card": "ChargeBattery",
+        "score": -0.352,
+        "chosen": false
+      },
+      {
+        "card": "Coolheaded",
+        "score": 1,
+        "chosen": true
+      },
+      {
+        "card": "Claw",
+        "score": 0.758,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "ChargeBattery",
+        "score": -0.352,
+        "chosen": false
+      },
+      {
+        "card": "Coolheaded",
+        "score": 4.6,
+        "chosen": true
+      },
+      {
+        "card": "Claw",
+        "score": 0.758,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 29,
+    "before": [
+      {
+        "card": "ColdSnap",
+        "score": -10.203,
+        "chosen": false
+      },
+      {
+        "card": "GunkUp",
+        "score": -6.103,
+        "chosen": false
+      },
+      {
+        "card": "Hailstorm",
+        "score": -0.3,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ],
+    "after": [
+      {
+        "card": "ColdSnap",
+        "score": -10.203,
+        "chosen": false
+      },
+      {
+        "card": "GunkUp",
+        "score": -6.103,
+        "chosen": false
+      },
+      {
+        "card": "Hailstorm",
+        "score": -0.3,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ]
+  },
+  {
+    "floor": 5,
+    "before": [
+      {
+        "card": "Synchronize",
+        "score": -3.45,
+        "chosen": false
+      },
+      {
+        "card": "ColdSnap",
+        "score": -0.05,
+        "chosen": false
+      },
+      {
+        "card": "TeslaCoil",
+        "score": -3.577,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ],
+    "after": [
+      {
+        "card": "Synchronize",
+        "score": -3.45,
+        "chosen": false
+      },
+      {
+        "card": "ColdSnap",
+        "score": -0.05,
+        "chosen": false
+      },
+      {
+        "card": "TeslaCoil",
+        "score": -3.577,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ]
+  },
+  {
+    "floor": 19,
+    "before": [
+      {
+        "card": "LightningRod",
+        "score": 0.853,
+        "chosen": false
+      },
+      {
+        "card": "WhiteNoise",
+        "score": 0.5,
+        "chosen": false
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": 1.673,
+        "chosen": true
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "LightningRod",
+        "score": 2.253,
+        "chosen": true
+      },
+      {
+        "card": "WhiteNoise",
+        "score": 0.5,
+        "chosen": false
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": 1.673,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 9,
+    "before": [
+      {
+        "card": "Coolheaded",
+        "score": -1.02,
+        "chosen": false
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": -0.697,
+        "chosen": false
+      },
+      {
+        "card": "Smokestack",
+        "score": -12.8,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": true
+      }
+    ],
+    "after": [
+      {
+        "card": "Coolheaded",
+        "score": 3.98,
+        "chosen": true
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": -0.697,
+        "chosen": false
+      },
+      {
+        "card": "Smokestack",
+        "score": -12.8,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 3,
+    "before": [
+      {
+        "card": "BeamCell",
+        "score": -0.506,
+        "chosen": false
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": 3.274,
+        "chosen": true
+      },
+      {
+        "card": "Subroutine",
+        "score": -0.25,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "BeamCell",
+        "score": -0.506,
+        "chosen": false
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": 3.274,
+        "chosen": true
+      },
+      {
+        "card": "Subroutine",
+        "score": -0.25,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 31,
+    "before": [
+      {
+        "card": "ChargeBattery",
+        "score": -0.4,
+        "chosen": false
+      },
+      {
+        "card": "CreativeAi",
+        "score": -3.2,
+        "chosen": false
+      },
+      {
+        "card": "Darkness",
+        "score": 5.31,
+        "chosen": true
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "ChargeBattery",
+        "score": -0.4,
+        "chosen": false
+      },
+      {
+        "card": "CreativeAi",
+        "score": -0.2,
+        "chosen": false
+      },
+      {
+        "card": "Darkness",
+        "score": 5.31,
+        "chosen": true
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 2,
+    "before": [
+      {
+        "card": "Coolheaded",
+        "score": -0.51,
+        "chosen": false
+      },
+      {
+        "card": "ColdSnap",
+        "score": 4.895,
+        "chosen": true
+      },
+      {
+        "card": "Hologram",
+        "score": 3.79,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "Coolheaded",
+        "score": 4.49,
+        "chosen": false
+      },
+      {
+        "card": "ColdSnap",
+        "score": 4.895,
+        "chosen": true
+      },
+      {
+        "card": "Hologram",
+        "score": 3.79,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 24,
+    "before": [
+      {
+        "card": "CompileDriver",
+        "score": 1.724,
+        "chosen": false
+      },
+      {
+        "card": "Leap",
+        "score": -7.199,
+        "chosen": false
+      },
+      {
+        "card": "Skim",
+        "score": 2.3,
+        "chosen": true
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "CompileDriver",
+        "score": 1.724,
+        "chosen": false
+      },
+      {
+        "card": "Leap",
+        "score": -7.199,
+        "chosen": false
+      },
+      {
+        "card": "Skim",
+        "score": 2.3,
+        "chosen": true
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 11,
+    "before": [
+      {
+        "card": "Glacier",
+        "score": 5.98,
+        "chosen": true
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": -0.697,
+        "chosen": false
+      },
+      {
+        "card": "Fusion",
+        "score": -2,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "Glacier",
+        "score": 5.98,
+        "chosen": true
+      },
+      {
+        "card": "GoForTheEyes",
+        "score": -0.697,
+        "chosen": false
+      },
+      {
+        "card": "Fusion",
+        "score": -2,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 14,
+    "before": [
+      {
+        "card": "Leap",
+        "score": 0.723,
+        "chosen": true
+      },
+      {
+        "card": "Coolheaded",
+        "score": -1.71,
+        "chosen": false
+      },
+      {
+        "card": "WhiteNoise",
+        "score": 0.5,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "Leap",
+        "score": 0.723,
+        "chosen": false
+      },
+      {
+        "card": "Coolheaded",
+        "score": 3.44,
+        "chosen": true
+      },
+      {
+        "card": "WhiteNoise",
+        "score": 0.5,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 21,
+    "before": [
+      {
+        "card": "BoostAway",
+        "score": -0.23,
+        "chosen": false
+      },
+      {
+        "card": "ColdSnap",
+        "score": 0.937,
+        "chosen": true
+      },
+      {
+        "card": "ChargeBattery",
+        "score": 0.303,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "BoostAway",
+        "score": -0.23,
+        "chosen": false
+      },
+      {
+        "card": "ColdSnap",
+        "score": 0.937,
+        "chosen": true
+      },
+      {
+        "card": "ChargeBattery",
+        "score": 0.303,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 4,
+    "before": [
+      {
+        "card": "DoubleEnergy",
+        "score": 4,
+        "chosen": true
+      },
+      {
+        "card": "Claw",
+        "score": -0.077,
+        "chosen": false
+      },
+      {
+        "card": "LightningRod",
+        "score": 3.628,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "DoubleEnergy",
+        "score": 1.5,
+        "chosen": false
+      },
+      {
+        "card": "Claw",
+        "score": -0.077,
+        "chosen": false
+      },
+      {
+        "card": "LightningRod",
+        "score": 5.028,
+        "chosen": true
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  },
+  {
+    "floor": 17,
+    "before": [
+      {
+        "card": "IceLance",
+        "score": 2.534,
+        "chosen": true
+      },
+      {
+        "card": "Modded",
+        "score": 0.1,
+        "chosen": false
+      },
+      {
+        "card": "GeneticAlgorithm",
+        "score": 0.84,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ],
+    "after": [
+      {
+        "card": "IceLance",
+        "score": 2.534,
+        "chosen": true
+      },
+      {
+        "card": "Modded",
+        "score": 0.1,
+        "chosen": false
+      },
+      {
+        "card": "GeneticAlgorithm",
+        "score": 0.84,
+        "chosen": false
+      },
+      {
+        "card": "skip",
+        "score": 0,
+        "chosen": false
+      }
+    ]
+  }
+]

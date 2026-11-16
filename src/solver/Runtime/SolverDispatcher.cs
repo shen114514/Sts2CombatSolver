@@ -36,6 +36,7 @@ internal sealed partial class SolverDispatcher : Node
 
     public override void _Process(double delta)
     {
+        AutoNextRun.Tick();
         RoomAutomation.Tick();
         Routing.AutoRoute.Tick();
         long now = Stopwatch.GetTimestamp();

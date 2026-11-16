@@ -1,0 +1,41 @@
+{
+  "version": "1.1.6",
+  "gameVersion": "0.113.1",
+  "gameAssemblySha256": "62ECBE91093E1FA862DE4329AAC865209DCB297804CAF0F0520D92D8C0B4A9C3",
+  "dllSha256": "F100B86E12342A1398D8EA87A02FC8F828D3102ABD526633099CA4FDD215CE8E",
+  "zipSha256": "4D43D31FFBEBC47A6D68BB87A208ADD08F0B6FAC6653D935B78E2D7DD83E6B3C",
+  "installerSha256": "57BB98BAE0AF4BABF0C8B6F68B559812D0FF626EDB8F4A6B2E434F3D89C1049C",
+  "nativeTests": [
+    {
+      "shouldSave": false,
+      "exitCode": 0,
+      "name": "contract-acceptance",
+      "checks": 20,
+      "status": "Passed",
+      "dumps": 0,
+      "dllHash": "F100B86E12342A1398D8EA87A02FC8F828D3102ABD526633099CA4FDD215CE8E"
+    },
+    {
+      "shouldSave": false,
+      "exitCode": 0,
+      "name": "saved-acceptance",
+      "checks": 5,
+      "status": "Passed",
+      "dumps": 0,
+      "dllHash": "F100B86E12342A1398D8EA87A02FC8F828D3102ABD526633099CA4FDD215CE8E"
+    }
+  ],
+  "regressionChecks": 175,
+  "buildErrors": 0,
+  "buildWarnings": 8,
+  "officialSaveFiles": 220,
+  "officialSaveDifferences": [],
+  "settingsUnchanged": true,
+  "embeddedZipMatches": true,
+  "packageEntries": [
+    "Sts2CombatSolver.dll",
+    "Sts2CombatSolver.json",
+    "LICENSE"
+  ],
+  "publishedToGitHub": false
+}
