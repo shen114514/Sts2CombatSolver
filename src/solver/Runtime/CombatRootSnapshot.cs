@@ -319,7 +319,13 @@ internal sealed class CombatRootSnapshot
             playerState.Phase,
             state.Encounter?.RoomType,
             ActEndingBossPolicy.ResolveHpRelief(state),
-            ActEndingBossPolicy.ResolvePotionSpendContext(state),
+            ActEndingBossPolicy.ResolvePotionSpendContext(state) with
+            {
+                // 娇嫩蕨草（每战前补满空药水栏）与白兽雕像（每战必掉药水）让药水变成可再生资源，
+                // 因此同一场战斗里的保留价要显著下调。
+                PotionsRefreshEachCombat = simulatedCombat.RelicsOf(player)
+                    .Any(relic => relic is DelicateFrond or WhiteBeastStatue),
+            },
             stopwatch.Elapsed.TotalMilliseconds,
             cardCount,
             playerCardIds,

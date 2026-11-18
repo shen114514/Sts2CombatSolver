@@ -1,0 +1,134 @@
+[
+  {
+    "gold": 0,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 0,
+    "damage": 0,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 19,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 0,
+    "damage": 0,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 20,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 1,
+    "damage": 1,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 39,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 1,
+    "damage": 1,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 40,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 2,
+    "damage": 2,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 199,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 9,
+    "damage": 9,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 200,
+    "upgraded": false,
+    "strength": 0,
+    "hits": 10,
+    "damage": 10,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 9,
+    "upgraded": true,
+    "strength": 0,
+    "hits": 0,
+    "damage": 0,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 10,
+    "upgraded": true,
+    "strength": 0,
+    "hits": 1,
+    "damage": 1,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 19,
+    "upgraded": true,
+    "strength": 0,
+    "hits": 1,
+    "damage": 1,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 20,
+    "upgraded": true,
+    "strength": 0,
+    "hits": 2,
+    "damage": 2,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "gold": 200,
+    "upgraded": true,
+    "strength": 3,
+    "hits": 20,
+    "damage": 80,
+    "passed": true,
+    "differences": []
+  },
+  {
+    "encounter": "CORPSE_SLUGS_WEAK",
+    "expected": "Normal",
+    "actual": "Normal",
+    "reserve": 4,
+    "stopAtTarget": true,
+    "passed": true
+  },
+  {
+    "encounter": "TEST_SUBJECT_BOSS",
+    "expected": "DoubleBoss",
+    "actual": "DoubleBoss",
+    "reserve": 4,
+    "stopAtTarget": false,
+    "passed": true
+  },
+  {
+    "encounter": "AEONGLASS_BOSS",
+    "expected": "SpendAll",
+    "actual": "SpendAll",
+    "reserve": 0,
+    "stopAtTarget": true,
+    "passed": true
+  }
+]

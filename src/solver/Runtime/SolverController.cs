@@ -665,7 +665,10 @@ internal static partial class SolverController
             // 免得两边各判一次而走岔。问题包里两样都在，方便看出当时是填了额度还是开了开关。
             GrowthBudgets = settings.GrowthBudgets,
             RelicTargets = RelicCounterCatalog.Capture(state, settings.RelicStrategyEnabled, settings.RelicCounterRules),
-            StopAtAcceptableBattleHpLoss = settings.StopAtAcceptableBattleHpLoss,
+            StopAtAcceptableBattleHpLoss = settings.StopAtAcceptableBattleHpLoss
+                && !ActEndingBossPolicy.ResolvePotionSpendContext(state).PlansForSecondBoss,
+            QuickAcceptLowLoss = FullAutoEnabled && settings.QuickAcceptLowLossInFullAuto
+                && !SolverRuntimeOptions.FixedSearchBudget,
             BrightestFlameMaxHpLossLimit = settings.BrightestFlameMaxHpLossLimit,
             GrowthOpportunityTargets = GrowthOpportunityPolicy.Capture(state),
             IgnoreLongTermRewards = settings.IgnoreLongTermRewards,

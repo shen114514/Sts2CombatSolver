@@ -1,7 +1,7 @@
 {
-  "version": "defect-draft-0.14",
+  "version": "defect-draft-0.16-bilibili-p0",
   "gameVersion": "0.111.0",
-  "status": "manual-review-calibrated-prior-not-winrate-trained",
+  "status": "guide-tier-prior-not-winrate-trained",
   "scope": "Singleplayer Defect experimental automation; card priors plus character adapters for route, shop and rest. Combat requires CombatSolver; unknown effects use explicit fallbacks.",
   "coefficients": {
     "cardTax": 2.5,
@@ -12,7 +12,7 @@
   },
   "cards": {
     "AdaptiveStrike": {
-      "base": 4.0,
+      "base": 2.5,
       "phase": [
         1.0,
         0.0,
@@ -22,13 +22,14 @@
       "upgradeDelta": 1.0,
       "tags": [
         "attack",
-        "zero_setup"
+        "zero_setup",
+        "transition"
       ],
       "note": "本体先复制到弃牌堆再触发迅捷；首次生成的零费复制品可继承未用迅捷。万物一心帮助启动回收，已用实例复制不重置迅捷。",
       "confidence": "medium"
     },
     "AllForOne": {
-      "base": 3.5,
+      "base": 7.0,
       "phase": [
         0.0,
         1.0,
@@ -55,13 +56,14 @@
       "upgradeDelta": 1.0,
       "tags": [
         "attack",
-        "lightning"
+        "lightning",
+        "transition"
       ],
       "note": "前期补伤害并产球；已有足够伤害时第二三张显著降分。",
       "confidence": "medium"
     },
     "Barrage": {
-      "base": 1.0,
+      "base": 3.0,
       "phase": [
         1.0,
         0.0,
@@ -71,7 +73,8 @@
       "upgradeDelta": 1.5,
       "tags": [
         "attack",
-        "orb_attack"
+        "orb_attack",
+        "transition"
       ],
       "note": "依据可填满的球位估算命中，不按纸面球位直接当满球。",
       "confidence": "medium"
@@ -88,7 +91,8 @@
       "tags": [
         "attack",
         "zero",
-        "physical_support"
+        "physical_support",
+        "transition"
       ],
       "note": "易伤主要帮助攻击牌；不能给充能球伤害乘易伤。",
       "confidence": "medium"
@@ -100,7 +104,7 @@
         1.0,
         1.0
       ],
-      "duplicate": 3.0,
+      "duplicate": 4.5,
       "upgradeDelta": 1.0,
       "tags": [
         "focus",
@@ -127,7 +131,7 @@
       "confidence": "medium"
     },
     "BootSequence": {
-      "base": 4.0,
+      "base": 6.0,
       "phase": [
         1.0,
         1.0,
@@ -138,13 +142,14 @@
       "tags": [
         "block",
         "zero",
-        "opening"
+        "opening",
+        "transition"
       ],
       "note": "固有防御保护启动，但多张会挤占首回合关键牌。",
       "confidence": "medium"
     },
     "Buffer": {
-      "base": 5.0,
+      "base": 5.5,
       "phase": [
         0.0,
         1.0,
@@ -154,7 +159,8 @@
       "upgradeDelta": 3.0,
       "tags": [
         "block",
-        "scaling"
+        "scaling",
+        "transition"
       ],
       "note": "防大伤害与启动保护；面对多段小伤害价值下降，升级提升明显。",
       "confidence": "medium"
@@ -177,7 +183,7 @@
       "confidence": "low"
     },
     "Capacitor": {
-      "base": 0.0,
+      "base": 6.0,
       "phase": [
         -1.0,
         0.0,
@@ -207,7 +213,7 @@
       "confidence": "medium"
     },
     "ChargeBattery": {
-      "base": 4.0,
+      "base": 5.2,
       "phase": [
         1.0,
         0.0,
@@ -217,13 +223,14 @@
       "upgradeDelta": 1.0,
       "tags": [
         "block",
-        "delayed_energy"
+        "delayed_energy",
+        "transition"
       ],
       "note": "可靠过渡防御；次回合能量不是本回合启动费用。",
       "confidence": "medium"
     },
     "Chill": {
-      "base": 4.0,
+      "base": 7.0,
       "phase": [
         1.0,
         1.0,
@@ -234,13 +241,14 @@
       "tags": [
         "frost",
         "zero",
-        "opening"
+        "opening",
+        "transition"
       ],
       "note": "多敌时强，单体仅一球；升级不再消耗，价值随补球需求变化。",
       "confidence": "medium"
     },
     "Claw": {
-      "base": 2.0,
+      "base": 1.0,
       "phase": [
         0.0,
         0.0,
@@ -251,7 +259,8 @@
       "tags": [
         "attack",
         "zero",
-        "claw"
+        "claw",
+        "transition"
       ],
       "note": "需要可实现的回收与低费循环；已有全息、万物一心、爪群时成长价值提高，不因一张爪无脑堆。",
       "confidence": "medium"
@@ -267,13 +276,14 @@
       "upgradeDelta": 1.0,
       "tags": [
         "attack",
-        "frost"
+        "frost",
+        "transition"
       ],
       "note": "补伤害同时补冰霜；允许第一张过渡，但不无限堆低效攻击。",
       "confidence": "medium"
     },
     "Compact": {
-      "base": 3.5,
+      "base": 9.5,
       "phase": [
         0.0,
         0.5,
@@ -305,7 +315,7 @@
       "confidence": "medium"
     },
     "ConsumingShadow": {
-      "base": 5.0,
+      "base": 4.5,
       "phase": [
         0.0,
         1.0,
@@ -339,7 +349,7 @@
       "confidence": "low"
     },
     "Coolheaded": {
-      "base": 5.0,
+      "base": 5.8,
       "phase": [
         0.0,
         1.0,
@@ -372,7 +382,7 @@
       "confidence": "medium"
     },
     "Darkness": {
-      "base": 3.0,
+      "base": 10.5,
       "phase": [
         0.0,
         1.0,
@@ -404,13 +414,13 @@
       "confidence": "medium"
     },
     "Defragment": {
-      "base": 7.0,
+      "base": 8.5,
       "phase": [
         0.0,
         1.0,
         2.0
       ],
-      "duplicate": 2.5,
+      "duplicate": 4.0,
       "upgradeDelta": 3.0,
       "tags": [
         "focus",
@@ -420,7 +430,7 @@
       "confidence": "medium"
     },
     "DoubleEnergy": {
-      "base": 5.0,
+      "base": 3.2,
       "phase": [
         0.0,
         1.0,
@@ -532,7 +542,7 @@
       "confidence": "low"
     },
     "FocusedStrike": {
-      "base": 4.0,
+      "base": 2.0,
       "phase": [
         1.0,
         0.0,
@@ -542,7 +552,8 @@
       "upgradeDelta": 1.5,
       "tags": [
         "attack",
-        "temp_focus"
+        "temp_focus",
+        "transition"
       ],
       "note": "集中只持续本回合，按当回合球触发估值，不能当成长核心。",
       "confidence": "medium"
@@ -581,7 +592,7 @@
       "confidence": "medium"
     },
     "GeneticAlgorithm": {
-      "base": 1.0,
+      "base": 4.2,
       "phase": [
         4.0,
         0.0,
@@ -591,7 +602,8 @@
       "upgradeDelta": 1.0,
       "tags": [
         "block",
-        "growing"
+        "growing",
+        "transition"
       ],
       "note": "越早越有培养期；后期新抓不能按养成成品评价，现有成长值另算。",
       "confidence": "medium"
@@ -673,7 +685,8 @@
       "tags": [
         "aoe",
         "frost_payoff",
-        "scaling"
+        "scaling",
+        "transition"
       ],
       "note": "必须稳定保有冰霜；是持续群伤，不是第一回合立即清场。",
       "confidence": "medium"
@@ -711,7 +724,7 @@
       "confidence": "medium"
     },
     "Hologram": {
-      "base": 4.5,
+      "base": 5.8,
       "phase": [
         0.0,
         1.0,
@@ -721,7 +734,8 @@
       "upgradeDelta": 2.5,
       "tags": [
         "block",
-        "recur"
+        "recur",
+        "transition"
       ],
       "note": "优先补第一张定向回收；已有优质回收目标或零费循环时增分，重复仍递减。升级去消耗很重要，但不等于无需费用。",
       "confidence": "medium"
@@ -754,7 +768,8 @@
       "tags": [
         "attack",
         "aoe",
-        "temp_focus_loss"
+        "temp_focus_loss",
+        "transition"
       ],
       "note": "本版本只当回合失去集中；群伤出色，但当回合冰霜防御仍可能受损。",
       "confidence": "medium"
@@ -807,7 +822,7 @@
       "confidence": "medium"
     },
     "Iteration": {
-      "base": 0.0,
+      "base": 3.5,
       "phase": [
         -1.0,
         0.0,
@@ -823,7 +838,7 @@
       "confidence": "medium"
     },
     "Leap": {
-      "base": 2.0,
+      "base": 2.8,
       "phase": [
         1.0,
         -1.0,
@@ -832,7 +847,8 @@
       "duplicate": 3.0,
       "upgradeDelta": 1.0,
       "tags": [
-        "block"
+        "block",
+        "transition"
       ],
       "note": "纯过渡格挡，后期已有冰霜等防线时降低。",
       "confidence": "medium"
@@ -848,7 +864,8 @@
       "upgradeDelta": 1.0,
       "tags": [
         "block",
-        "lightning"
+        "lightning",
+        "transition"
       ],
       "note": "闪电在后两个回合生成，有延迟；与立即产两球区分。",
       "confidence": "medium"
@@ -886,7 +903,7 @@
       "confidence": "medium"
     },
     "MeteorStrike": {
-      "base": 2.0,
+      "base": 4.0,
       "phase": [
         -1.0,
         0.0,
@@ -903,7 +920,7 @@
       "confidence": "medium"
     },
     "Modded": {
-      "base": 2.0,
+      "base": 6.0,
       "phase": [
         0.0,
         1.0,
@@ -951,7 +968,7 @@
       "confidence": "medium"
     },
     "Null": {
-      "base": 4.0,
+      "base": 4.8,
       "phase": [
         0.0,
         1.0,
@@ -962,7 +979,8 @@
       "tags": [
         "attack",
         "dark",
-        "weak"
+        "weak",
+        "transition"
       ],
       "note": "两费挂虚弱并产黑暗；和一费过渡攻击比较时计入启动成本。",
       "confidence": "medium"
@@ -983,7 +1001,7 @@
       "confidence": "medium"
     },
     "Overclock": {
-      "base": 5.0,
+      "base": 7.5,
       "phase": [
         0.0,
         1.0,
@@ -1034,7 +1052,7 @@
       "confidence": "medium"
     },
     "Reboot": {
-      "base": 5.0,
+      "base": 5.2,
       "phase": [
         0.0,
         1.0,
@@ -1061,13 +1079,14 @@
       "tags": [
         "attack",
         "glass",
-        "expensive"
+        "expensive",
+        "transition"
       ],
       "note": "三费多段加两玻璃，偏多敌；需要能量和当回合防守。",
       "confidence": "medium"
     },
     "RocketPunch": {
-      "base": 2.0,
+      "base": 5.5,
       "phase": [
         1.0,
         0.0,
@@ -1110,13 +1129,14 @@
       "upgradeDelta": 1.5,
       "tags": [
         "attack",
-        "zero_payoff"
+        "zero_payoff",
+        "transition"
       ],
       "note": "按零费密度估计留下的牌数，零费数量不能代替密度；非零费核心可能被丢弃。",
       "confidence": "medium"
     },
     "ShadowShield": {
-      "base": 4.0,
+      "base": 4.8,
       "phase": [
         0.0,
         1.0,
@@ -1126,13 +1146,14 @@
       "upgradeDelta": 1.0,
       "tags": [
         "block",
-        "dark"
+        "dark",
+        "transition"
       ],
       "note": "即时格挡兼黑暗启动；两费要考虑和其他启动牌争费用。",
       "confidence": "medium"
     },
     "Shatter": {
-      "base": 5.0,
+      "base": 7.0,
       "phase": [
         0.0,
         1.0,
@@ -1164,7 +1185,7 @@
       "confidence": "medium"
     },
     "Skim": {
-      "base": 3.0,
+      "base": 7.0,
       "phase": [
         0.0,
         1.0,
@@ -1179,7 +1200,7 @@
       "confidence": "medium"
     },
     "Smokestack": {
-      "base": -1.0,
+      "base": 1.0,
       "phase": [
         -1.0,
         0.0,
@@ -1190,7 +1211,8 @@
       "tags": [
         "status_payoff",
         "aoe",
-        "scaling"
+        "scaling",
+        "transition"
       ],
       "note": "触发是生成状态，非抽到；无来源时不赌未来拼图。",
       "confidence": "medium"
@@ -1270,7 +1292,8 @@
       "upgradeDelta": 1.5,
       "tags": [
         "attack",
-        "expensive"
+        "expensive",
+        "transition"
       ],
       "note": "前期斩杀退款强；无法斩杀首领时不能稳定计三点返能。",
       "confidence": "medium"
@@ -1341,7 +1364,7 @@
       "confidence": "medium"
     },
     "Tempest": {
-      "base": 1.0,
+      "base": 2.8,
       "phase": [
         -1.0,
         0.0,
@@ -1406,7 +1429,7 @@
       "confidence": "medium"
     },
     "Turbo": {
-      "base": 4.5,
+      "base": 6.0,
       "phase": [
         0.0,
         1.0,
@@ -1433,7 +1456,8 @@
       "upgradeDelta": 1.0,
       "tags": [
         "attack",
-        "expensive"
+        "expensive",
+        "transition"
       ],
       "note": "随机打出抽牌堆攻击，有高费优质攻击时更好；低质攻击池降分。",
       "confidence": "low"

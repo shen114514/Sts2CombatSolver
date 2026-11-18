@@ -45,6 +45,10 @@ internal sealed partial class PartialAutopilot
         if(!OwnsPickup){ownedPickup=null;ownedPickupRoom=null;}
         if(!OwnsCurrentEvent){ownedEvent=null;if(ownedRestSelection==null&&!OwnsPickup)eventSelectionTargets=null;}
         if(TickCustomEvent(screen))return true;
+        // 附魔选牌（营地/遗物/事件都可能打开）不依赖事件归属：只要界面是附魔选牌就直接接管，
+        // 否则从营地或遗物进入时会一直等玩家点。
+        if(screen is NDeckEnchantSelectScreen enchantSelector)
+        {SelectEventCards(enchantSelector);return true;}
         if((OwnsCurrentEvent || OwnsPickup || ownedRestSelection!=null&&ReferenceEquals(ownedRestSelection,service.RestRoom)) && screen is Control selector && selector is NDeckCardSelectScreen or NDeckUpgradeSelectScreen or NDeckTransformSelectScreen or NDeckEnchantSelectScreen or NSimpleCardSelectScreen)
         {SelectEventCards(selector);return true;}
         if(screen is not NEventRoom room)return false;
@@ -136,7 +140,20 @@ internal sealed partial class PartialAutopilot
         {
             if(selected.Count!=0){Manual("检测到你已开始事件选牌，保留人工选择。");return;}
             var ordered=cards.Select((c,i)=>(Card:c,Index:i,Value:Value(c))).OrderByDescending(x=>x.Value).ThenBy(x=>x.Index).ToArray();
-            if(ordered.Any(x=>!double.IsFinite(x.Value))){Manual("事件选择的用途尚未核验。");return;}
+            // 用途没核验时不再整屏交还人工：按确定性顺序取牌（非基础牌优先），并记录 fallback，
+            // 否则一个没建模的事件选牌就能让整局停在那里等玩家。
+            bool fallback=ordered.Any(x=>!double.IsFinite(x.Value));
+            if(fallback)
+            {
+                ordered=cards.Select((c,i)=>(Card:c,Index:i,
+                        Value:c.Rarity==MegaCrit.Sts2.Core.Entities.Cards.CardRarity.Rare?3d:
+                            c.Rarity==MegaCrit.Sts2.Core.Entities.Cards.CardRarity.Uncommon?2d:
+                            c.Rarity==MegaCrit.Sts2.Core.Entities.Cards.CardRarity.Common?1d:0d))
+                    .OrderByDescending(x=>x.Value).ThenBy(x=>x.Index).ToArray();
+                service.RecordAuto("event_card_fallback",new{eventId=ownedEvent?.Id.ToString()??ownedPickup?.Id.ToString()??"REST",
+                    purpose=eventSelection,screen=screen.GetType().Name,min=prefs.MinSelect,max=prefs.MaxSelect,
+                    cards=cards.Select(SnapshotReader.ReadCard)});
+            }
             var count=prefs.MinSelect==prefs.MaxSelect?prefs.MaxSelect:Math.Clamp(ordered.Count(x=>x.Value>0),prefs.MinSelect,prefs.MaxSelect);
             if(cards.Length<count){Manual("可选卡数量不足，等待游戏处理。");return;}
             eventSelectionTargets=ordered.Take(count).Select(x=>x.Card).ToArray();eventSelectorId=screen.GetInstanceId();

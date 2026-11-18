@@ -51,7 +51,7 @@ public static class ShopPolicy
             // Known enchantments already have a shared card model. Rejecting every
             // modified card silently removed Ironclad shop recommendations.
             if(CardCatalog.HasUnmodelledModification(entry.Card) || CardCatalog.Find(entry.Card)==null) continue;
-            var score=new Policy().Evaluate(s,[new("card",entry.Card.Name,"card",Card:entry.Card),new("skip","存钱","skip")]).Options[0].Score;
+            var score=new Policy().Evaluate(s with{Gold=s.Gold-entry.Price},[new("card",entry.Card.Name,"card",Card:entry.Card),new("skip","存钱","skip")]).Options[0].Score;
             if(score==null)continue;
             var duplicates=CardMechanics.Copies(s,entry.Card);
             var p=CardCatalog.Find(entry.Card)!;
@@ -79,7 +79,8 @@ public static class ShopPolicy
                 $"预算二选一：{(alternative.Kind=="remove"?"删":"买")}{alternative.Name} {alternative.Price} 金币 / {alternative.Score:F1} 分；本项分差 {choice.Score-alternative.Score:+0.0;-0.0;0.0}").ToArray()};
         }).ToList();
         var best=choices.Where(c=>c.Score>0).OrderByDescending(c=>c.Score).ThenBy(c=>c.Price).FirstOrDefault();
-        return new(best,choices.ToArray(),reserve,["价格读取当前实际折扣价；买牌与删牌使用相同金币成本。分数是待校准启发式，不是胜率。","关键遗物先评估；普通买牌与删牌比较净收益，每次交易后重算。其他遗物和药水由自动爬塔后续阶段处理。"]);
+        return new(best,choices.ToArray(),reserve,["价格读取当前实际折扣价；买牌与删牌使用相同金币成本。分数是待校准启发式，不是胜率。","关键遗物先评估；普通买牌与删牌比较净收益，每次交易后重算。其他遗物和药水由自动爬塔后续阶段处理。",
+            MyShiniesPolicy.Owns(s)?"持有我的小钱钱：消费损失的金币命中已计入价格成本，最后一家店也不盲目清仓。":"未持有金币伤害牌，沿用普通预算。"]);
     }
-    private static double GoldCost(RunSnapshot s,int price)=>price/40d*(s.Gold<150?1.5:1);
+    private static double GoldCost(RunSnapshot s,int price)=>price/40d*(s.Gold<150?1.5:1)+MyShiniesPolicy.SpendPenalty(s,price);
 }

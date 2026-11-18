@@ -500,6 +500,8 @@ internal static partial class CombatSearchCoordinator
                 passResult = RunPrimary();
             }
             // Opening posteriors require a resolved hand; turn setup still owns its native choice.
+            if (!root.PotionSpend.SpendsEverything && CanFinishTargetPortfolio(root, beamPolicy, passProfile, passResult))
+                return CapturePassResult(passResult, null, true);
             if (!policy.IncludeTurnSetup)
             {
             if (passResult.ResultScope == SolverResultScope.SearchCompletion)
@@ -955,22 +957,25 @@ internal static partial class CombatSearchCoordinator
             && policy.RelicTargetsSatisfied(result.Snapshot.RelicCounters)
             && TheftEncounterStrategy.RecoverySatisfied(policy.TheftPolicy, result.OutstandingStolenResource)
             && result.Snapshot.ProjectedDeathSaveUseCount == 0
-            && result.PotionCount == policy.MinimumRequiredPotionUses(result.BattlePotionsUsedSoFar)
+            && result.ProjectedMaxHpLost == 0
+            && (result.PotionCount == policy.MinimumRequiredPotionUses(result.BattlePotionsUsedSoFar)
+                || policy.QuickAcceptLowLoss && result.PotionHpRequired > 0
+                    && result.PotionHpSaved >= result.PotionHpRequired)
             && policy.PotionStrategy.EvaluateForcedUses(result.BestNode.Actions, renewablePotionShapedRock: false).AllForcedUsesSatisfied
-            && HasReachedAcceptableBattleHpLoss(
-            IsCompleteVictory(result),
-            result.ProjectedBattleHpLost,
-            policy.AcceptableBattleHpLoss);
+            && BattleHpStopPolicy.MeetsTarget(IsCompleteVictory(result),
+                BattleHpStopPolicy.NetHpLoss(result.ProjectedBattleHpLost,
+                    result.BattleHpRecoveredOrGainedSoFar + result.Snapshot.RecoveredPlayerHp,
+                    result.PostCombatRelicHeal),
+                policy.AcceptableBattleHpLoss, policy.QuickAcceptLowLoss,
+                result.Snapshot.PlayerHp, result.Snapshot.PlayerMaxHp);
 
     // This honors an explicitly enabled satisficing policy, not a proof that no
     // alternate route can heal more or finish sooner. Preserve the selected incumbent.
     private static bool CanFinishTargetPortfolio(
         CombatRootSnapshot root, SearchPolicySnapshot policy, SolverSearchProfile profile, SolverResult result)
         => profile.StopPortfolioAtHpTarget
-            && !root.HasVisibleHealingSource
-            && result.Snapshot.RecoveredPlayerHp == 0
+            && !policy.FixedBudget
             && result.ResultScope == SolverResultScope.SearchCompletion
-            && !result.Snapshot.HasRisk
             && HasReachedAcceptableBattleHpLoss(policy, result);
 
     internal static bool HasReachedAcceptableBattleHpLoss(

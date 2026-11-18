@@ -4,6 +4,9 @@ namespace CombatSolver;
 
 internal static partial class CombatSearchCoordinator
 {
+    /// <summary>HP cushion one potion must buy at a boss the player only has to clear.</summary>
+    private const int ConserveSafetyHpGain = 10;
+
     private static SolverResult RunPostSearchPasses(
         SearchPassContext context,
         SolverResult selected,
@@ -11,13 +14,30 @@ internal static partial class CombatSearchCoordinator
         SearchInteractionState? interaction,
         Func<SolverResult?> currentCompleteAdoptableResult)
     {
+        bool Settled()
+        {
+            if (context.Policy.FixedBudget || !HasReachedAcceptableBattleHpLoss(context.Policy, selected))
+                return false;
+            Entry.Logger.Info($"[z] HP_TARGET_SETTLED gross_loss={selected.ProjectedBattleHpLost} " +
+                $"net_loss={BattleHpStopPolicy.NetHpLoss(selected.ProjectedBattleHpLost, selected.BattleHpRecoveredOrGainedSoFar + selected.Snapshot.RecoveredPlayerHp, selected.PostCombatRelicHeal)} " +
+                $"quick_auto={context.Policy.QuickAcceptLowLoss} skipped=post_search_refinement");
+            return true;
+        }
+        if (Settled()) return selected;
         selected = RunEarlyPotionPairRescue(context, selected);
+        if (Settled()) return selected;
         selected = RunForcedPotionOpeningRescue(context, selected);
+        if (Settled()) return selected;
         selected = RunTurnBoundaryRescue(context, selected, firstTurnAnchors);
+        if (Settled()) return selected;
         selected = RunZeroCostOpeningRescue(context, selected);
+        if (Settled()) return selected;
         selected = RunMidCombatRefinement(context, selected);
+        if (Settled()) return selected;
         selected = RunTurnEndChoicePosterior(context, selected);
+        if (Settled()) return selected;
         selected = RunEarlierCopyDelayedDamage(context, selected);
+        if (Settled()) return selected;
         if (interaction?.CurrentTakeoverRequest?.Kind == SearchTakeoverKind.ApplyCurrentTurn
             && selected.ResultScope == SolverResultScope.SearchCompletion
             && currentCompleteAdoptableResult() is { } adoptable)
@@ -25,7 +45,9 @@ internal static partial class CombatSearchCoordinator
             selected = adoptable;
         }
         selected = RunEarlyTurnExploration(context, selected);
+        if (Settled()) return selected;
         selected = RunDeferredPowerPlanSearchPass(context, selected);
+        if (Settled()) return selected;
         selected = RunGeneratedPotionChainSearchPass(context, selected);
         Entry.Logger.Info($"[z] POTION_FINAL scope={selected.ResultScope} projected_loss={selected.ProjectedBattleHpLost} used={selected.ExplicitPotionCount}");
         return selected;
@@ -305,8 +327,23 @@ internal static partial class CombatSearchCoordinator
                 policy.Diagnostics.Info($"[CombatSolver/Test] TURN_BOUNDARY_RESCUE " +
                     $"won={IsCompleteVictory(rescue)} hp_lost={rescue.ProjectedBattleHpLost} " +
                     $"potions={rescue.PotionCount} first_turn={string.Join('+', firstTurn.Select(action => action.CardId))}");
+                // At a boss the player only has to clear, keep ranking by the discounted deficit - but do not let
+                // that discount hide a potion that turns a knife-edge win into a safe one. One potion for a real
+                // HP cushion is still "clear the act, keep the rest of the belt".
+                bool safetyAccept = rescue.ResultScope == SolverResultScope.SearchCompletion
+                    && IsCompleteVictory(rescue)
+                    && root.PotionSpendMode == PotionSpendMode.Conserve
+                    && rescue.ExplicitPotionCount <= 1
+                    && rescue.Snapshot.ProjectedPlayerHp
+                        >= selected.Snapshot.ProjectedPlayerHp + ConserveSafetyHpGain;
+                if (safetyAccept)
+                {
+                    Entry.Logger.Info(
+                        $"[z] POTION_SAFETY_ACCEPT hp={selected.Snapshot.ProjectedPlayerHp}->{rescue.Snapshot.ProjectedPlayerHp} " +
+                        $"used={rescue.ExplicitPotionCount}");
+                }
                 if (rescue.ResultScope == SolverResultScope.SearchCompletion
-                    && IsBetterPotionPolicyResult(root, policy, rescue, selected))
+                    && (IsBetterPotionPolicyResult(root, policy, rescue, selected) || safetyAccept))
                     selected = rescue;
             }
             if (refineNearZeroLoss && selected.ProjectedBattleHpLost > 0)

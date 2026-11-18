@@ -1,0 +1,14 @@
+{
+  "status": "Passed",
+  "stage": "saved_crash_replay",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "SavedRunCloneReloadWithoutSavingOrIncrementingOfficialReloads",
+    "OriginalSavedCombatRecovered:Kind=BattleLoss:Coord=MapCoord (3, 14):Ascension=7:Encounter=TEST_SUBJECT_BOSS",
+    "OriginalGlamSaveRootAndSimulationForkSucceeded",
+    "OriginalSecondCombatCloneWon:Hp=117:ManualResponses=0"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-17T18:04:10.940567+08:00"
+}

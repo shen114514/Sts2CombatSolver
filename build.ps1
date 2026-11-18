@@ -2,7 +2,7 @@ param([Parameter(Mandatory=$true)][string]$GameDirectory,[switch]$Package,[switc
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot
 $game=[IO.Path]::GetFullPath($GameDirectory)
-$version=(Get-Content -LiteralPath "$root\Sts2CombatSolver.json" -Raw|ConvertFrom-Json).version
+$version=(Get-Content -LiteralPath "$root\Sts2CombatSolver.json" -Raw -Encoding UTF8|ConvertFrom-Json).version
 if(!(Test-Path -LiteralPath "$game\data_sts2_windows_x86_64\sts2.dll")){throw 'Select a Windows Slay the Spire 2 installation'}
 if(!$PackageOnly){
     dotnet build "$root\Sts2CombatSolver.csproj" -c Release --nologo -v minimal "-p:Sts2Dir=$game"
@@ -21,7 +21,7 @@ $zip=Join-Path $release "Sts2CombatSolver-$version-win-x64.zip"
 if(Test-Path -LiteralPath $zip){Remove-Item -LiteralPath $zip}
 Compress-Archive -LiteralPath "$stage\Sts2CombatSolver.dll","$stage\Sts2CombatSolver.json","$stage\LICENSE" -DestinationPath $zip
 $payloadHash=(Get-FileHash -LiteralPath $zip).Hash
-$installerSource=(Get-Content -LiteralPath "$root\installer\Installer.cs" -Raw).Replace('__PAYLOAD_HASH__',$payloadHash).Replace('__VERSION__',$version)
+$installerSource=(Get-Content -LiteralPath "$root\installer\Installer.cs" -Raw -Encoding UTF8).Replace('__PAYLOAD_HASH__',$payloadHash).Replace('__VERSION__',$version)
 $generated=Join-Path $release 'Installer.generated.cs'
 [IO.File]::WriteAllText($generated,$installerSource,[Text.UTF8Encoding]::new($true))
 $csc=Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'

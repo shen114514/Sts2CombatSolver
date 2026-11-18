@@ -211,6 +211,8 @@ internal static class SolverDiagnostics
             .Append(" future_sold_hp=").Append(result.FutureSoldHp)
             .Append(" battle_hp_lost_so_far=").Append(result.BattleHpLostSoFar)
             .Append(" projected_battle_hp_lost=").Append(result.ProjectedBattleHpLost)
+            .Append(" projected_net_hp_lost=").Append(BattleHpStopPolicy.NetHpLoss(result.ProjectedBattleHpLost,
+                result.BattleHpRecoveredOrGainedSoFar + result.Snapshot.RecoveredPlayerHp, result.PostCombatRelicHeal))
             .Append(" recovered_hp=").Append(result.Snapshot.RecoveredPlayerHp)
             .Append(" relic_heal=").Append(result.PostCombatRelicHeal)
             .Append(" death_save_relic_hp=").Append(result.Snapshot.DeathSaveRelicHpRestored)

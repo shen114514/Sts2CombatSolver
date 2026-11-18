@@ -74,7 +74,8 @@ public static class PotionPolicy
     {
         if(price<0||s.Relics.Contains("RELIC.SOZU")||!s.PotionSlots.Any(x=>x==null))return double.NegativeInfinity;
         var model=Evaluate(s,p);if(model==null||model.Value<=0)return double.NegativeInfinity;
-        return model.Value-price*.08*(s.Gold<150?1.3:1);
+        return model.Value-price*.08*(s.Gold<150?1.3:1)
+            -MyShiniesPolicy.SpendPenalty(s,price)*(s.Hp<s.MaxHp*.35&&model.Defense?.2:1);
     }
     public static int Rank(RunSnapshot s,PotionCandidate p)
     {

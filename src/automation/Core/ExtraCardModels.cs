@@ -20,6 +20,7 @@ public static class ExtraCardModels
         var u=card.UpgradeLevel>0;
         return c.ClassName switch
         {
+            "MyShinies"=>new(0,StrengthPayoff:1,Upgrade:10,Note:"每20金币一段，升级每10金币；当前金币与多段力量由专门模型评价，花钱损失另计。"),
             "Exterminate"=>new(3,Attack:a*V("Repeat")*1.4,StrengthPayoff:1.5,Upgrade:9,
                 Note:"杀灭：四段群攻，锐利逐段增加伤害；不把产刀牌当作本体多段。"),
             "Whistle"=>new(4,Attack:a,Block:1,Upgrade:12,

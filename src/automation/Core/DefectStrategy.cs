@@ -111,7 +111,7 @@ public static class DefectStrategy
     {
         var reserve=reserveOverride??Math.Min(150,Math.Max(0,arrivalGold)*35/100);
         var choices=new List<ShopChoice>();
-        double Cost(int price)=>price/40d*(s.Gold<150?1.5:1);
+        double Cost(int price)=>price/40d*(s.Gold<150?1.5:1)+MyShiniesPolicy.SpendPenalty(s,price);
         if(s.PlayerCount<1||s.MaxHp<=0)return new(null,[],reserve,["需要有效的机器人状态"]);
         if(removalPrice is >=0&&removalPrice<=s.Gold)
             foreach(var (c,i) in s.Deck.Select((c,i)=>(c,i)))
@@ -133,7 +133,8 @@ public static class DefectStrategy
         }
         if(s.Character!="Defect")choices=choices.Select(c=>c with{Reasons=c.Reasons.Select(r=>r.Replace("机器人",HeroPolicy.Label(s.Character))).ToArray()}).ToList();
         return new(choices.Where(c=>c.Score>0).OrderByDescending(c=>c.Score).ThenBy(c=>c.Price).FirstOrDefault(),choices.ToArray(),reserve,
-            [HeroPolicy.Label(s.Character)+"策略：买牌与删牌直接比较，普通遗物沿用预算购买。"]);
+            [HeroPolicy.Label(s.Character)+"策略：买牌与删牌直接比较，普通遗物沿用预算购买。",
+                MyShiniesPolicy.Owns(s)?"持有我的小钱钱：花钱损失的金币命中已计入价格成本。":"未持有金币伤害牌，沿用普通预算。"]);
     }
     public static DeckReadiness Readiness(RunSnapshot s)
     {

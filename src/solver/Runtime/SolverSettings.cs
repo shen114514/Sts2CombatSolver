@@ -115,6 +115,7 @@ internal sealed record SolverSettingsData
     public BossHpStrategy ActTransitionBossHpStrategy { get; init; } = BossHpStrategy.ProgressionFirst;
     public BossHpStrategy FinalBossHpStrategy { get; init; } = BossHpStrategy.ProgressionFirst;
     public int AcceptableBattleHpLoss { get; init; }
+    public bool QuickAcceptLowLossInFullAuto { get; init; } = true;
     public bool StopAtAcceptableBattleHpLoss { get; init; } = true;
     public int PerformanceMigrationVersion { get; init; }
     public SolverPerformancePreset? PerformancePreset { get; init; } = SolverPerformancePreset.Medium;
@@ -173,6 +174,7 @@ internal sealed record SolverSettingsSnapshot(
     public int PotionRescueHpLoss { get; init; } = SolverWeights.PotionMinimumHpSaved;
     public bool StopAtAcceptableBattleHpLoss { get; init; } = true;
     public bool RelicStrategyEnabled { get; init; }
+    public bool QuickAcceptLowLossInFullAuto { get; init; } = true;
     public RelicCounterRule[] RelicCounterRules { get; init; } = [];
     public GrowthValues GrowthBudgets { get; init; }
     public int? BrightestFlameMaxHpLossLimit { get; init; }
@@ -341,6 +343,7 @@ internal static class SolverSettings
             RelicStrategyEnabled = data.RelicStrategyEnabled,
             RelicCounterRules = RelicCounterPolicy.ValidateAndCopy(data.RelicCounterRules),
             StopAtAcceptableBattleHpLoss = data.StopAtAcceptableBattleHpLoss,
+            QuickAcceptLowLossInFullAuto = data.QuickAcceptLowLossInFullAuto,
             BrightestFlameMaxHpLossLimit = data.BrightestFlameMaxHpLossLimit,
             IgnoreLongTermRewards = data.IgnoreLongTermRewards,
             UseBeamWidthPortfolio = data.UseBeamWidthPortfolio,

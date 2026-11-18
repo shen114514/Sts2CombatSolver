@@ -27,7 +27,7 @@ internal static class RandomTargetAttackCardMirrors
 
     public static void RicochetOnPlay(Ricochet card, CardOnPlayMirrorContext context)
     {
-        context.AttackRandomOpponents(card.DynamicVars.Repeat.IntValue);
+        context.AttackRandomOpponents(card.DynamicVars.HitCount.IntValue);
     }
 
     public static void RipAndTearOnPlay(RipAndTear card, CardOnPlayMirrorContext context)

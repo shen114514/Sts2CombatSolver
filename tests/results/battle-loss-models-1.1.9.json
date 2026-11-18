@@ -1,0 +1,93 @@
+[
+  {
+    "scenario": "ritual-empty",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "ritual-upgraded-empty",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "ritual-root-exhaust",
+    "passed": true,
+    "actualEnergy": 6,
+    "expectedEnergy": 6,
+    "differences": []
+  },
+  {
+    "scenario": "ritual-branch-exhaust",
+    "passed": true,
+    "actualEnergy": 6,
+    "expectedEnergy": 6,
+    "differences": []
+  },
+  {
+    "scenario": "ritual-power-is-not-exhaust",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "stampede-one",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "stampede-repeat",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "stampede-empty",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "ricochet",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "ricochet-upgraded",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "stampede-ricochet",
+    "passed": true,
+    "actualEnergy": 3,
+    "expectedEnergy": 3,
+    "differences": []
+  },
+  {
+    "scenario": "coordinator-healed-zero",
+    "passed": true,
+    "net": 0,
+    "gross": 4,
+    "elapsedMs": 273
+  },
+  {
+    "scenario": "coordinator-low-loss-without-healing",
+    "passed": true,
+    "net": 4,
+    "gross": 4,
+    "elapsedMs": 16
+  }
+]

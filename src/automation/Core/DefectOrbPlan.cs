@@ -24,5 +24,17 @@ internal static class DefectOrbPlan
             var outlets=s.Deck.Count(d=>d.Cost>=2||d.CostsX||DefectPolicy.Tag(d,"draw")&&d.Variables.GetValueOrDefault("Cards")>=2);
             if(outlets<2)yield return new("缺少高费或净过牌出口，额外能量不能代替产球与输出",-(2-outlets)*1.25);
         }
+        // 永久集中只留一到两张：连胜攻略把"唯一长线集中"列为顶级，但同一份牌组里堆第三、
+        // 第四张时收益已经饱和，后面只是占抽牌位。2.5×已有张数让第二张 −2.5、第三张 −5。
+        if(DefectPolicy.Tag(c,"focus") && !DefectPolicy.Tag(c,"temp_focus") && focus>=1)
+            yield return new("永久集中已够用，第二张起按饱和降权",-2.5*focus);
+        // 过渡牌上限：攻略明确"过渡牌再优质也不能抓很多，会影响后期牌组质量"。
+        // 一层 4 张、二层 6 张封顶，超出后继续加过渡牌额外降权。
+        var act=s.Map?.ContentAct is >0? s.Map.ContentAct : s.Act;
+        var transition=s.Deck.Count(d=>DefectPolicy.Tag(d,"transition"));
+        var transitionCap=act<=1?4:act==2?6:8;
+        if(DefectPolicy.Tag(c,"transition") && transition>=transitionCap)
+            yield return new($"过渡牌已达 {transitionCap} 张上限，继续增加会拖低后期牌组质量",
+                -2.5-Math.Min(3,transition-transitionCap));
     }
 }

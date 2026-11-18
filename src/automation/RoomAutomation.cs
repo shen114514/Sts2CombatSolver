@@ -15,6 +15,7 @@ internal static class RoomAutomation
 {
     private static RoomAutomationOptions previous;
     private static long nextPoll;
+    private static long faultedAt;
     internal static event Action<string>? StatusChanged;
     internal static string Status {get;private set;}="自动房间操作已关闭";
     internal static int SubmittedActions {get;private set;}
@@ -50,7 +51,7 @@ internal static class RoomAutomation
         if(ActiveScreenContext.Instance?.GetCurrentScreen() is not Node foreground
             ||!GodotObject.IsInstanceValid(foreground)||!foreground.IsInsideTree()||!foreground.IsNodeReady())return;
         var manager=RunManager.Instance;
-        if(!manager.IsInProgress||manager.DebugOnlyGetState() is not {} run||run.Players.Count!=1||run.IsGameOver)
+        if(manager==null||!manager.IsInProgress||manager.DebugOnlyGetState() is not {} run||run.Players.Count!=1||run.IsGameOver)
         {AdvisorService.Clear();previous=default;return;}
         var options=Options;
         if(AdvisorService.Current is not {} service||!ReferenceEquals(service.State,run))
@@ -69,7 +70,10 @@ internal static class RoomAutomation
         }
         if(options.Any&&!service.Autopilot.Enabled)
         {
-            if(ReferenceEquals(service.FaultedRoom,run.CurrentRoom))return;
+            // 同一个房间里出错后不再永久停摆：等 15 秒再试一次，仍然失败才继续等（换房会立刻重试）。
+            if(ReferenceEquals(service.FaultedRoom,run.CurrentRoom)
+                && System.Environment.TickCount64-faultedAt<15000)return;
+            if(!ReferenceEquals(service.FaultedRoom,run.CurrentRoom))faultedAt=System.Environment.TickCount64;
             service.ClearFault();service.Autopilot.Enable();
         }
         if(!options.Any||!AllowsCurrentScreen(run))

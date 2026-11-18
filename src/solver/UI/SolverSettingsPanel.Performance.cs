@@ -255,11 +255,21 @@ internal sealed partial class SolverSettingsPanel
             SetStatus(SolverText.Get("已保存，下次搜索生效"), SolverUiTokens.Palette.Success);
         };
         AddBasicRow(stopGrid, SolverText.Get("达到战损目标后停止搜索"), stopAtHpTarget,
-            SolverText.Get("默认开启。完整胜利达到战损阈值且没有多用药水时停止；0 表示零损。成长收益尚未满足时继续搜索，击杀成长牌兑现收益后可停止。下次搜索生效。"));
+            SolverText.Get("默认开启。完整胜利达到净战损阈值且没有多用药水时停止；计入本场回血及胜利后遗物回血。成长收益尚未满足时继续搜索。下次搜索生效。"));
+        CheckButton quickAccept = CreateToggle();
+        _reloadInputs.Add(data => quickAccept.ButtonPressed = data.QuickAcceptLowLossInFullAuto);
+        quickAccept.Toggled += enabled =>
+        {
+            if (_loading) return;
+            SolverSettings.Update(SolverSettings.Current with { QuickAcceptLowLossInFullAuto = enabled });
+            SetStatus(SolverText.Get("已保存，下次搜索生效"), SolverUiTokens.Palette.Success);
+        };
+        AddBasicRow(stopGrid, SolverText.Get("全自动低战损尽快执行"), quickAccept,
+            SolverText.Get("默认开启，仅全自动且上方停止开关开启时生效。找到完整胜利、净战损不超过8且战后至少保留12血及20%最大生命时尽快执行；保留药水指令、成长目标、复活资源和最大生命保护。关闭后严格使用下方阈值。"));
         AddBasicRow(stopGrid, SolverText.Get("提前结束搜索的战损阈值（HP）"), _acceptableBattleHpLoss,
-            SolverText.Get("默认 0，即零损。启用上方开关后，找到预计整场扣血不超过此值的完整胜利路线就停止搜索；仅保存成长额度而本场没有对应卡牌时仍可早停。"));
+            SolverText.Get("默认 0，即回血后净零损。找到预计净损失不超过此值的完整胜利路线就停止搜索；全自动低战损模式可提前接受安全的小战损路线。"));
         AddSettingsSection(content, SolverText.Get("搜索停止条件"),
-            SolverText.Get("战损阈值按整场累计扣血计算，下次搜索生效。"), stopGrid);
+            SolverText.Get("停止条件计入本场及战后遗物回血；面板仍单独报告累计扣血。下次搜索生效。"), stopGrid);
         string memoryDescription = SolverText.Get("推荐使用多核内存回收（默认开启）：大幅降低内存占用并加速复杂搜索。若未生效，则备用下方的暂缓回收策略。主界面内存条右侧可随时手动释放内存。");
         AddSettingsSection(content, SolverText.Get("内存管理"), memoryDescription, memoryGrid);
 

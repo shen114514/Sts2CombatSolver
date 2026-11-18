@@ -1,0 +1,30 @@
+using SpireStrategist.Core;
+int count=0;
+void Check(bool ok,string label){if(!ok)throw new Exception(label);count++;Console.WriteLine("PASS "+label);}
+CardSnapshot Card(bool upgraded=false)=>new(){Id="CARD.MY_SHINIES",ClassName="MyShinies",Name="我的小钱钱",Type="Attack",Rarity="Rare",Cost=1,CanUpgrade=!upgraded,UpgradeLevel=upgraded?1:0,
+ Variables=new(){{"Damage",1},{"Gold",upgraded?10:20}}};
+RunSnapshot s=new(){Character="Ironclad",Hp=60,MaxHp=80,Gold=200,Act=3,Deck=[Card()],PotionSlots=[null,null]};
+Check(MyShiniesPolicy.Hits(Card(),19)==0&&MyShiniesPolicy.Hits(Card(),20)==1,"basic gold breakpoint");
+Check(MyShiniesPolicy.Hits(Card(true),9)==0&&MyShiniesPolicy.Hits(Card(true),10)==1,"upgrade gold breakpoint");
+Check(MyShiniesPolicy.Hits(Card(),200)==10&&MyShiniesPolicy.Hits(Card(true),200)==20,"upgrade doubles hits at 200 gold");
+Check(MyShiniesPolicy.SpendPenalty(s,0)==0,"free item preserves damage");
+Check(MyShiniesPolicy.SpendPenalty(s with{Gold=219},19)==0,"spending within hit tier is allowed");
+Check(MyShiniesPolicy.SpendPenalty(s with{Gold=219},20)>0,"crossing tier counts lost hit");
+Check(MyShiniesPolicy.SpendPenalty(s with{Deck=[]},100)==0,"no card means no new saving penalty");
+Check(MyShiniesPolicy.SpendPenalty(s with{Deck=[Card(true)]},100)>MyShiniesPolicy.SpendPenalty(s,100),"upgrade makes lost gold more costly");
+Check(MyShiniesPolicy.SpendPenalty(s with{Relics=["RELIC.VAJRA"]},100)>MyShiniesPolicy.SpendPenalty(s,100),"strength multiplies lost hits");
+var money=new StrategicValue(s);var ordinary=new StrategicValue(s with{Deck=[]});
+Check(money.Gold(-100)<ordinary.Gold(-100),"paid event accounts for lost attack damage");
+Check(money.GoldSpend(100,true)>0&&ordinary.GoldSpend(100,true)==0,"last shop still preserves money damage");
+Check(money.Gold(100)>ordinary.Gold(100),"cash rewards value extra hits");
+Check(new StrategicValue(s with{Relics=["RELIC.ECTOPLASM"]}).Gold(100)==0,"blocked gold gain grants no imaginary damage");
+Check(new StrategicValue(s with{Relics=["RELIC.ECTOPLASM"]}).Gold(-100)<0,"spending still costs gold with ectoplasm");
+Check(CardMechanics.Upgrade(s,Card())>0,"camp upgrade recognizes extra hits");
+double Score(int gold)=>new Policy().Evaluate(s with{Gold=gold,Deck=[]},[new("card","小钱钱","card",Card:Card()),new("skip","跳过","skip")]).Options[0].Score??throw new Exception("unmodeled");
+Check(Score(400)>Score(40),"reward evaluation follows actual gold");
+Check(PriorityShopPolicy.RelicNetValue(s,"ICE_CREAM",150,true)<PriorityShopPolicy.RelicNetValue(s with{Deck=[]},"ICE_CREAM",150,true),"relic purchase pays damage opportunity cost even at last shop");
+Check(PriorityShopPolicy.Evaluate(s with{Deck=[Card(true)],Relics=["RELIC.VAJRA"]},[new("ice","ICE_CREAM","冰淇淋",150)],[],finalShop:true)==null,"protected priority cannot silently bypass saving");
+Check(PriorityShopPolicy.Evaluate(s,[new("ice","ICE_CREAM","冰淇淋",0)],[])!=null,"free strong relic still taken");
+var eventPlan=EventPolicy.Evaluate(s,[new("pay","花100金币",Gold:-100,Benefit:8),new("keep","保留金币")]);
+Check(eventPlan.RecommendedKey=="keep","marginal paid event rejected when retained attack is better");
+Console.WriteLine($"{count} My Shinies checks passed");

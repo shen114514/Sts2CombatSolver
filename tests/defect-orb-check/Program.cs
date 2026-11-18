@@ -15,6 +15,28 @@ var physical=starter with{Act=2,Deck=[..starter.Deck,C("Claw"),C("Claw"),C("Claw
 Check(Score(physical,"Claw")>Score(physical,"Defragment"),"established physical engine remains viable");
 Check(Score(frost,"Coolheaded")>Score(frost with{Deck=[..frost.Deck,C("Coolheaded"),C("Coolheaded")]},"Coolheaded"),"orb draw still has diminishing duplicate value");
 Check(Score(starter with{Deck=[..starter.Deck,C("Sunder"),C("Skim"),C("MeteorStrike")]},"DoubleEnergy")>Score(starter,"DoubleEnergy"),"energy has real spending outlets");
+if(args.Length>=3&&args[0]=="--probe")
+{
+ var options=new JsonSerializerOptions{PropertyNameCaseInsensitive=true};
+ var decks=JsonSerializer.Deserialize<ProbeDeck[]>(File.ReadAllText(args[1]),options)!;
+ var probes=new[]{"Coolheaded","Defragment","Glacier","BallLightning","Loop","Thunder","Darkness","ShadowShield",
+  "LightningRod","ColdSnap","Zap","Dualcast","BiasedCognition","Glacier","Rainbow",
+  "AdaptiveStrike","RocketPunch","Sunder","Hyperbeam","Barrage","Uproar","Catastrophe","TeslaCoil","MeteorStrike"};
+ var results=new List<object>();
+ foreach(var deck in decks)
+ {
+  var cards=deck.Deck.Select(d=>DefectPolicy.Card(d.ClassName,d.UpgradeLevel>0)??throw new Exception(d.ClassName)).ToArray();
+  var state=new RunSnapshot{Character="Defect",PlayerCount=1,Hp=deck.Hp,MaxHp=75,Energy=3,
+   Act=deck.Act,Floor=deck.Floor,Ascension=deck.Ascension,Room="Monster",Deck=cards};
+  var optionList=probes.Distinct().Select(n=>new DecisionOption(n,n,"card",Card:DefectPolicy.Card(n)!)).ToArray();
+  var evaluation=DefectPolicy.Evaluate(state,optionList);
+  results.Add(new{seed=deck.Seed,ascension=deck.Ascension,win=deck.Win,deck=cards.Length,
+   scores=evaluation.Options.Select(o=>new{card=o.Name,score=o.Score,supported=o.Supported,parts=o.Parts.Select(p=>new{reason=p.Reason,value=p.Value}).ToArray()}).ToArray()});
+ }
+ File.WriteAllText(args[2],JsonSerializer.Serialize(results,new JsonSerializerOptions{WriteIndented=true}));
+ Console.WriteLine($"probe decks={results.Count} -> {args[2]}");
+ return;
+}
 if(args.Length>0)
 {
  using var doc=JsonDocument.Parse(File.ReadAllText(args[0]));
@@ -33,3 +55,5 @@ if(args.Length>0)
  File.WriteAllText(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(args[0]))!,"draft-after.json"),JsonSerializer.Serialize(replay,new JsonSerializerOptions{WriteIndented=true}));
 }
 Console.WriteLine($"{checks} Defect orb, physical compatibility and observed reward checks passed");
+internal sealed record ProbeCard(string ClassName,int UpgradeLevel);
+internal sealed record ProbeDeck(string Seed,int Ascension,bool Win,int Floor,int Act,int Hp,ProbeCard[] Deck);

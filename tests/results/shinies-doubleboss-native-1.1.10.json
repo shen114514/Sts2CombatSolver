@@ -1,0 +1,26 @@
+{
+  "status": "Passed",
+  "stage": "shinies_double_boss",
+  "checks": [
+    "NoFrameworkAssemblyReferenceOrLoadedAssembly",
+    "MyShinies:Gold=0:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=19:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=20:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=39:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=40:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=199:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=200:Upgrade=False:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=9:Upgrade=True:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=10:Upgrade=True:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=19:Upgrade=True:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=20:Upgrade=True:Strength=0:NativeDamageForkAndRngMatch",
+    "MyShinies:Gold=200:Upgrade=True:Strength=3:NativeDamageForkAndRngMatch",
+    "A10:CORPSE_SLUGS_WEAK:HpAndPotionPolicyMatched",
+    "A10:TEST_SUBJECT_BOSS:HpAndPotionPolicyMatched",
+    "A10:AEONGLASS_BOSS:HpAndPotionPolicyMatched",
+    "ShiniesDoubleBossAutomaticSearchPaused"
+  ],
+  "error": null,
+  "shouldSave": false,
+  "finishedAt": "2026-11-17T20:46:37.9246789+08:00"
+}

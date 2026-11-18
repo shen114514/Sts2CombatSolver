@@ -14,7 +14,7 @@ public static class PriorityShopPolicy
     {
         if(finalShop&&id.Split('.').Last()=="MEMBERSHIP_CARD")return 0;
         var model=RelicValue.Shop(id,s);
-        return model is {Supported:true}?model.Value-(finalShop?0:new StrategicValue(s).Gold(price)):null;
+        return model is {Supported:true}?model.Value-new StrategicValue(s).GoldSpend(price,finalShop):null;
     }
 
     public static PriorityPurchase? Evaluate(RunSnapshot s,ShopRelic[] relics,ShopCard[] cards,int boughtCards=0,int? removalPrice=null,bool finalShop=false)
@@ -27,6 +27,7 @@ public static class PriorityShopPolicy
             if(id=="MINIATURE_TENT"&&s.Act>2)continue;
             foreach(var relic in eligible.Where(r=>r.Id.Replace("RELIC.","")==id).OrderBy(r=>r.Price).ThenBy(r=>r.Key,StringComparer.Ordinal))
             {
+                if(MyShiniesPolicy.Owns(s)&&RelicNetValue(s,relic.Id,relic.Price,finalShop) is not >0)continue;
                 if(id=="GHOST_SEED")
                 {
                     var basics=s.Deck.Count(c=>(c.ClassName is "StrikeIronclad" or "DefendIronclad" or "StrikeDefect" or "DefendDefect" or "StrikeSilent" or "DefendSilent" or "StrikeRegent" or "DefendRegent" or "StrikeNecrobinder" or "DefendNecrobinder" or "StrikeFool" or "DefendFool")&&!c.Keywords.Contains("Ethereal"));

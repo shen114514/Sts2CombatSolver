@@ -17,6 +17,7 @@ using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 using MegaCrit.Sts2.Core.Nodes.Screens.TreasureRoomRelic;
+using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 using MegaCrit.Sts2.Core.Entities.Merchant;
@@ -111,6 +112,12 @@ internal sealed partial class PartialAutopilot
         {Wait("接管中 · 等待商店遗物或动画处理完成");return;}
         PrepareParasolRemoval(screen);
         if(TickEvent(screen))return;
+        // 事件里的"选一张牌加入牌组/从三张里挑一张"用的是 NChooseACardSelectionScreen，
+        // 它不属于 TickEvent 处理的那几种选牌界面，原来会一直停在这里等玩家。
+        if(screen is NChooseACardSelectionScreen grid)
+        {
+            if(TickChooseACardGrid(grid))return;
+        }
         var excludedRewards=false;
         if(screen is NDeckCardSelectScreen remove && removalTarget!=null && service.State.CurrentRoom==shoppingRoom)
         {
@@ -161,10 +168,16 @@ internal sealed partial class PartialAutopilot
             if(excludedRewards){Manual("商店或先古奖励请手动选择。");return;}
             var d=service.Decision;
             if(d?.Kind!="cards") {gate.ResetPending();return;}
-            if(d.Evaluation.Options.Any(o=>o.Enabled&&!o.Supported))
-            {Manual("候选含未建模的效果，请手动决定是否拿牌。");return;}
             var chosen=d.Options.FirstOrDefault(o=>o.Key==d.Evaluation.RecommendedKey);
-            if(chosen==null) {Manual("这组选牌存在未适配效果，请手动选择。");return;}
+            // 不要为了一个没建模的候选把整屏交还人工：能算出分的照旧选最优，算不出的也要给一个
+            // 确定性的结果（跳过 > 稀有度最高的牌），并记录原因供事后核对。
+            if(chosen==null||d.Evaluation.Options.Any(o=>o.Enabled&&!o.Supported))
+            {
+                chosen=FallbackRewardChoice(d,out string rewardFallbackReason);
+                service.RecordAuto("reward_fallback",new{reason=rewardFallbackReason,decision=d.Id,
+                    chosen=chosen?.Key,options=d.Evaluation.Options.Select(o=>new{o.Key,o.Name,o.Supported,o.Enabled,o.Score})});
+                if(chosen==null){Manual("这组奖励没有可自动执行的选项，请手动处理。");return;}
+            }
             Wait("接管中 · 即将选择 "+chosen.Name);
             if(!Claim("decision:"+d.Id,GameActions.RewardReady(cards))) return;
             if(chosen.Key.StartsWith("card:")) GameActions.SelectCard(cards,service.CardOptions[int.Parse(chosen.Key[5..])].Card);
@@ -356,10 +369,85 @@ internal sealed partial class PartialAutopilot
         }
         gate.ResetPending();
     }
+    /// <summary>
+    /// Picks a card on the event grid screen (<c>NChooseACardSelectionScreen</c>).
+    /// </summary>
+    /// <remarks>
+    /// Used by events such as BrainLeech "share knowledge" and other "choose 1 of N cards" grids. The screen is
+    /// not one of the selectors TickEvent owns, so without this branch the automation waited there forever.
+    /// Selection goes through the native <c>SelectHolder</c> so the completion source the caller awaits resolves
+    /// exactly as if the player clicked the card. Unknown card values fall back to the first holder rather than
+    /// handing the screen back.
+    /// </remarks>
+    private bool TickChooseACardGrid(NChooseACardSelectionScreen grid)
+    {
+        var holders=GameActions.Descendants<NGridCardHolder>(grid)
+            .Where(h=>h.IsVisibleInTree()&&h.CardModel!=null).ToArray();
+        var skip=GameActions.Field(grid,"_skipButton") as NClickableControl;
+        if(holders.Length==0)
+        {
+            if(skip is {IsEnabled:true}&&skip.IsVisibleInTree())
+            {
+                Wait("接管中 · 跳过这组选牌");
+                if(Claim("grid-skip:"+grid.GetInstanceId())) GameActions.Invoke(grid,"OnSkipButtonReleased",skip);
+                return true;
+            }
+            gate.ResetPending();return true;
+        }
+        NGridCardHolder? pick=null;
+        try
+        {
+            var state=service.WithForesight(SnapshotReader.Read(service.State,service.Player));
+            var v=new StrategicValue(state);
+            pick=holders
+                .Select(h=>(Holder:h,Value:v.Add(SnapshotReader.ReadCard(h.CardModel!))))
+                .Where(x=>double.IsFinite(x.Value))
+                .OrderByDescending(x=>x.Value)
+                .Select(x=>x.Holder)
+                .FirstOrDefault();
+        }
+        catch
+        {
+            pick=null;
+        }
+        pick??=holders[0];
+        Wait("接管中 · 选牌 "+pick.CardModel!.Title);
+        if(Claim("grid-card:"+grid.GetInstanceId()+":"+pick.CardModel.Id.Entry,pick.IsVisibleInTree()))
+            GameActions.Invoke(grid,"SelectHolder",pick);
+        return true;
+    }
+
     private void LeaveShop(NMerchantRoom room)
     {
         var now=Time.GetTicksMsec()/1000.0;if(now<nextShopLeaveClick)return;nextShopLeaveClick=now+1.5;
         Proceed(room,room.ProceedButton,"OnProceedButtonReleased");
+    }
+    /// <summary>
+    /// Deterministic card-reward choice when the model cannot score the whole screen.
+    /// </summary>
+    /// <remarks>
+    /// The previous behaviour handed the screen back to the player the moment any candidate carried an
+    /// unmodelled effect, so one unknown card stopped the whole run. The fallback keeps automation in control:
+    /// the best scored option if any survives, otherwise skip (which is always executable and never adds an
+    /// unknown card), otherwise the highest-rarity card. The reason is recorded with the decision.
+    /// </remarks>
+    private static DecisionOption? FallbackRewardChoice(DecisionRecord decision,out string reason)
+    {
+        var evaluation=decision.Evaluation.Options.ToDictionary(o=>o.Key);
+        var enabled=decision.Options.Where(o=>!evaluation.TryGetValue(o.Key,out var score)||score.Enabled).ToArray();
+        DecisionOption? scored=enabled
+            .Where(o=>evaluation.TryGetValue(o.Key,out var score)&&score.Supported&&score.Score.HasValue)
+            .OrderByDescending(o=>evaluation[o.Key].Score!.Value)
+            .Cast<DecisionOption?>().FirstOrDefault();
+        if(scored!=null){reason="最优可评分选项";return scored;}
+        DecisionOption? skip=enabled.FirstOrDefault(o=>o.Kind=="skip");
+        if(skip!=null){reason="没有可评分选项，跳过本次奖励";return skip;}
+        DecisionOption? card=enabled
+            .Where(o=>o.Kind=="card")
+            .OrderByDescending(o=>o.Card?.Rarity switch{"Rare"=>3,"Uncommon"=>2,"Common"=>1,"Basic"=>0,_=>-1})
+            .Cast<DecisionOption?>().FirstOrDefault();
+        reason=card!=null?"没有可评分选项，取稀有度最高的牌":"没有可执行选项";
+        return card;
     }
     /// <summary>本局是否已结束（RunManager 的 IsGameOver）。建筑师把玩家杀死后就是 true。</summary>
     private static bool RunOver()

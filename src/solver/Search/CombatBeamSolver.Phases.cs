@@ -344,8 +344,16 @@ internal sealed partial class CombatBeamSolver
                 && TheftEncounterStrategy.RecoverySatisfied(_theftPolicy, node.Snapshot.OutstandingStolenResource)
                 && IsEligibleCompleteVictory(node)
                 && node.Snapshot.ProjectedDeathSaveUseCount == 0
+                && node.Snapshot.PlayerMaxHp >= root.InitialPlayerMaxHp
                 && ExplicitPotionUseCount(node) <= earlyStopPotionUses
-                && battleDamage.HpLostSoFar + node.Snapshot.CumulativePlayerHpLost <= _acceptableBattleHpLoss;
+                && BattleHpStopPolicy.MeetsTarget(true,
+                    BattleHpStopPolicy.NetHpLoss(
+                        battleDamage.HpLostSoFar + node.Snapshot.CumulativePlayerHpLost,
+                        battleDamage.HpRecoveredOrGainedSoFar + node.Snapshot.RecoveredPlayerHp,
+                        root.PostCombatRelicHeal.HealFor(node.Snapshot.PlayerHp, node.Snapshot.PlayerMaxHp)),
+                    _acceptableBattleHpLoss,
+                    policy.QuickAcceptLowLoss && node.Snapshot.PlayerMaxHp >= root.InitialPlayerMaxHp,
+                    node.Snapshot.PlayerHp, node.Snapshot.PlayerMaxHp);
 
         void ConsiderCompleteVictory(SearchNode node)
         {
@@ -853,6 +861,7 @@ internal sealed partial class CombatBeamSolver
                 SoldHpByTurn = annotations.SoldHpByTurn,
                 HpLostByTurn = annotations.HpLostByTurn,
                 HpRecoveredByTurn = annotations.HpRecoveredByTurn,
+                ProjectedMaxHpLost = Math.Max(0, root.InitialPlayerMaxHp - finalSnapshot.PlayerMaxHp),
                 PostCombatRelicHeal = SolverInterimResultOrdering.IsCompleteVictory(
                     best.ActionCount,
                     finalSnapshot.AllEnemiesDead,

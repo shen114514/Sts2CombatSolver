@@ -77,6 +77,8 @@ internal static class AutoNextRun
         if (!Entry.Enabled || SolverController.IsMultiplayerSession)
         { owner = null; pending = false; ResetCountdown(); SetStatus("自动下一局仅支持单人标准模式"); return; }
         var manager = RunManager.Instance;
+        // 主菜单/场景切换时 RunManager 可能还没建好；这不是错误状态，直接当"没有局"处理。
+        if (manager == null) { owner = null; pending = false; ResetCountdown(); return; }
         var run = manager.DebugOnlyGetState();
         if (run != null)
         {

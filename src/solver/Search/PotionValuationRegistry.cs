@@ -39,6 +39,7 @@ internal sealed class PotionValuationRegistry
         typeof(LiquidBronze),
         typeof(MazalethsGift),
         typeof(PotionOfCapacity),
+        typeof(RegenPotion),
         typeof(SoldiersStew),
         typeof(StrengthPotion),
     ]);

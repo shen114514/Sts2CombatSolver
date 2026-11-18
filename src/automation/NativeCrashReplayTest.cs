@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models.Enchantments;
 namespace CombatSolver;
 internal static class NativeCrashReplayTest
 {
-    internal static bool IsRequested=>StandaloneSmokeTest.IsRunning&&System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "CRASH_REPLAY" or "CRASH_CONTINUE" or "CENTIPEDE_REPLAY" or "GLAM_SAVED" or "CATASTROPHE_SAVED";
+    internal static bool IsRequested=>StandaloneSmokeTest.IsRunning&&System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "CRASH_REPLAY" or "CRASH_CONTINUE" or "CENTIPEDE_REPLAY" or "GLAM_SAVED" or "CATASTROPHE_SAVED" or "BATTLE_LOSS_SAVED";
     private static async Task Until(Func<bool> condition,string label)
     {var end=DateTime.UtcNow.AddSeconds(30);while(!condition()&&DateTime.UtcNow<end)await Task.Delay(100);if(!condition())throw new InvalidOperationException(label+": "+RoomAutomation.Status);}
     internal static async Task RunAsync(NGame host,List<string> checks)
@@ -31,23 +31,24 @@ internal static class NativeCrashReplayTest
             AutoEventsEnabled=false,AutoShopEnabled=false});
         int before=run.Players[0].Relics.Count;
         await host.LoadRun(run,save.PreFinishedRoom);
-        if(System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "GLAM_SAVED" or "CATASTROPHE_SAVED")
+        if(System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE") is "GLAM_SAVED" or "CATASTROPHE_SAVED" or "BATTLE_LOSS_SAVED")
         {
+            bool battleLoss=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE")=="BATTLE_LOSS_SAVED";
             bool catastrophe=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_MODE")=="CATASTROPHE_SAVED";
             var player=run.Players.Single();
             await Until(()=>player.PlayerCombatState?.Phase==PlayerTurnPhase.Play,"saved Glam combat enters native Play");
             var state=CombatManager.Instance.DebugOnlyGetState()!;
-            if(!(catastrophe?player.Deck.Cards.Any(c=>c is MegaCrit.Sts2.Core.Models.Cards.Catastrophe):player.Deck.Cards.Any(c=>c.Enchantment is Glam))||SolverController.PredictionFailure!=null)
+            if((!battleLoss&&!(catastrophe?player.Deck.Cards.Any(c=>c is MegaCrit.Sts2.Core.Models.Cards.Catastrophe):player.Deck.Cards.Any(c=>c.Enchantment is Glam)))||SolverController.PredictionFailure!=null)
                 throw new InvalidOperationException("Original Glam deck did not recover");
             var root=CombatRootSnapshot.Capture(state);
             host.GetViewport().GetTexture().GetImage().SavePng(Path.Combine(
                 System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_DIR")!,"saved-glam-combat.png"));
-            checks.Add($"OriginalSavedCombatRecovered:Kind={(catastrophe?"Catastrophe":"Glam")}:Coord={run.CurrentMapCoord}:Ascension={run.AscensionLevel}:Encounter={state.Encounter?.Id.Entry}");
+            checks.Add($"OriginalSavedCombatRecovered:Kind={(battleLoss?"BattleLoss":catastrophe?"Catastrophe":"Glam")}:Coord={run.CurrentMapCoord}:Ascension={run.AscensionLevel}:Encounter={state.Encounter?.Id.Entry}");
             _=root.ForkSimulator();
             checks.Add("OriginalGlamSaveRootAndSimulationForkSucceeded");
             SolverSettings.ApplyForTesting(SolverSettings.Current with{AutoRewardsEnabled=false,AutoCampEnabled=false,
-                PerformancePreset=SolverPerformancePreset.Custom,SearchTimeLimitSeconds=catastrophe?15:5,SearchBeamWidth=catastrophe?30:20,
-                SearchMaxExpandedNodes=catastrophe?50000:10000,SearchMaxDegreeOfParallelism=1,IgnoreLongTermRewards=true});
+                PerformancePreset=SolverPerformancePreset.Custom,SearchTimeLimitSeconds=catastrophe||battleLoss?15:5,SearchBeamWidth=catastrophe||battleLoss?30:20,
+                SearchMaxExpandedNodes=catastrophe||battleLoss?50000:10000,SearchMaxDegreeOfParallelism=1,IgnoreLongTermRewards=true});
             StandaloneSmokeTest.EnableReplayCombatOnly();
             bool won=false;
             void OnWon(CombatRoom room){won=true;}
@@ -56,7 +57,7 @@ internal static class NativeCrashReplayTest
             {
                 SolverController.SetFullAuto(host,state,true);
                 if(!SolverController.FullAutoEnabled)throw new InvalidOperationException("Saved-run fixture failed to enable full auto");
-                var deadline=DateTime.UtcNow.AddSeconds(catastrophe?180:100);
+                var deadline=DateTime.UtcNow.AddSeconds(catastrophe||battleLoss?180:100);
                 while(!won&&DateTime.UtcNow<deadline)
                 {
                     await Task.Delay(100);

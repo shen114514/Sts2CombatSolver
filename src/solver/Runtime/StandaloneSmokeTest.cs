@@ -76,10 +76,24 @@ internal static class StandaloneSmokeTest
             string character=System.Environment.GetEnvironmentVariable("COMBATSOLVER_SELF_TEST_CHARACTER")??"FOOL";
             CharacterModel model=character=="IRONCLAD"?ModelDb.Character<Ironclad>():character=="DEFECT"?ModelDb.Character<Defect>():ModelDb.Character<Fool>();
             var testPlayer=Player.CreateForNewRun(model,new MegaCrit.Sts2.Core.Unlocks.UnlockState(SaveManager.Instance.Progress),1UL);
-            await host.StartNewSingleplayerRun(testPlayer,false,ActModel.GetDefaultList(),[],"STANDALONE-20261115",GameMode.Standard,isCustomGame:false,ascensionLevel:2);
+            await host.StartNewSingleplayerRun(testPlayer,false,ActModel.GetDefaultList(),[],"STANDALONE-20261115",GameMode.Standard,isCustomGame:false,ascensionLevel:ShiniesDoubleBossNativeTest.IsRequested?10:2);
             if(RunManager.Instance.ShouldSave)throw new InvalidOperationException("Saving test refused.");
             var run=RunManager.Instance.DebugOnlyGetState()!;
             var player=LocalContext.GetMe(run)!;
+            if(ShiniesDoubleBossNativeTest.IsRequested)
+            {
+                stage="shinies_double_boss";
+                await ShiniesDoubleBossNativeTest.RunAsync(host,run,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
+            if(BattleLossNativeTest.IsRequested)
+            {
+                stage="battle_loss";
+                await BattleLossNativeTest.RunAsync(host,player,evidence);
+                Write("Passed",stage,evidence,null);
+                return;
+            }
             if(CatastropheNativeTest.IsRequested)
             {
                 stage="catastrophe";

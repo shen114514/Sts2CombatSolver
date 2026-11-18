@@ -1,0 +1,48 @@
+{
+  "version": "1.1.10",
+  "generatedAt": "2026-11-17T21:05:43.5496168+08:00",
+  "dllHash": "1073AF69D76C76454013DD551DC19387967BD695392D8414C2C6BE2BCB790206",
+  "installedHash": "1073AF69D76C76454013DD551DC19387967BD695392D8414C2C6BE2BCB790206",
+  "gameHash": "62ECBE91093E1FA862DE4329AAC865209DCB297804CAF0F0520D92D8C0B4A9C3",
+  "native": [
+    {
+      "name": "native-final",
+      "status": "Passed",
+      "checks": 17,
+      "shouldSave": false,
+      "exitCode": "0x00000000",
+      "dumps": 0,
+      "dllHash": "1073AF69D76C76454013DD551DC19387967BD695392D8414C2C6BE2BCB790206"
+    }
+  ],
+  "regressions": {
+    "stop": 13,
+    "route": 9,
+    "shinies": 20,
+    "glam": 9,
+    "automation": 110,
+    "il": 7,
+    "potion": 7,
+    "centipede": 10,
+    "orb": 23
+  },
+  "regressionTotal": 208,
+  "savesChecked": 236,
+  "saveDifferences": [],
+  "newSaveFiles": [],
+  "settingsUnchanged": true,
+  "currentRunHash": "1FD4FB25ACC3DE175F0EE7934FD8175075B768158CA8387682F5DF1F31D44890",
+  "zipHash": "084A114E2180E549B34E5AF89DC4BEBF33B2660DA7C6752884BCC4705FB08C61",
+  "installerHash": "D8F0B6930E2816777B925F19BE2D96562F081692D5756656EC99DCF7C4F847BA",
+  "zipDllHash": "1073AF69D76C76454013DD551DC19387967BD695392D8414C2C6BE2BCB790206",
+  "embeddedZipHash": "084A114E2180E549B34E5AF89DC4BEBF33B2660DA7C6752884BCC4705FB08C61",
+  "payloadFiles": [
+    "Sts2CombatSolver.dll",
+    "Sts2CombatSolver.json",
+    "LICENSE"
+  ],
+  "officialSaveRestored": false,
+  "githubWritten": false,
+  "monitoringRunning": false,
+  "remainingKnownIssue": "Two-boss resource heuristic, not exact joint combat simulation; prior TestSubject R.targets drift unresolved"
+}

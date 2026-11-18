@@ -676,6 +676,18 @@ internal static partial class CombatSearchCoordinator
         }
     }
 
+    /// <summary>
+    /// True when a whole-combat buff potion (Strength/Dexterity/Focus/Regen/…) is still in the belt.
+    /// </summary>
+    /// <remarks>
+    /// These potions pay for themselves only from the turns after they are drunk, so the opening-use pass has to
+    /// run even when the potion gradient already found a short winning route: otherwise the solver settles for a
+    /// plan that never drinks them and the buff is wasted.
+    /// </remarks>
+    private static bool HasOpeningDurationPotion(CombatRootSnapshot root)
+        => root.SearchablePotions.Any(potion =>
+            PotionUsePolicy.RequiresOpeningUse(potion.PotionId));
+
     private static SolverResult AuditSmartPotionUse(
         SearchPassContext context,
         CancellationToken callerCancellationToken,
@@ -709,7 +721,8 @@ internal static partial class CombatSearchCoordinator
                 || battleDamage.PotionsUsedSoFar != 0
                 || CanFinishNativeLouseZeroDamageRoute(root, policy, gradient)
                 || (gradient.ExplicitPotionCount <= 1
-                    && HasReachedProvablePrimaryQualityLowerBound(root, policy, gradient)))
+                    && HasReachedProvablePrimaryQualityLowerBound(root, policy, gradient)
+                    && !HasOpeningDurationPotion(root)))
                 return gradient;
 
             CombatBeamSolver builder = new(root, displayNames, battleDamage, policy,

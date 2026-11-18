@@ -51,6 +51,7 @@ internal sealed record SearchPolicySnapshot(
     internal const int DefaultTranspositionEntryLimit = 1_000_000;
 
     public bool StopAtAcceptableBattleHpLoss { get; init; } = true;
+    public bool QuickAcceptLowLoss { get; init; }
     public bool CanStopAtHpTarget => StopAtAcceptableBattleHpLoss
         && (!EffectiveHasGrowthTargets || GrowthOpportunityTargets.IsBounded);
     public bool GrowthTargetSatisfied(GrowthValues rewards)

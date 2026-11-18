@@ -1221,6 +1221,7 @@ internal static class CombatBugReportExporter
             settings.FinalBossHpStrategy,
             settings.AcceptableBattleHpLoss,
             settings.StopAtAcceptableBattleHpLoss,
+            settings.QuickAcceptLowLossInFullAuto,
             settings.GrowthBudgets,
             settings.RelicStrategyEnabled,
             settings.RelicCounterRules,
@@ -1336,7 +1337,7 @@ internal static class CombatBugReportExporter
         {
             "solverDisabled", "automaticCalculationEnabled", "stopFullAutoOnCombatEnd", "stopFullAutoOnDeathTurn", "relicStrategyEnabled", "relicCounterRules",
             "stopFullAutoOnWorseRecalculation", "enableDetailedDiagnosticLogs", "retainAllCombatLogs", "potionDirectives",
-            "actTransitionBossHpStrategy", "finalBossHpStrategy", "acceptableBattleHpLoss", "stopAtAcceptableBattleHpLoss", "growthBudgets", "brightestFlameMaxHpLossLimit", "performancePreset",
+            "actTransitionBossHpStrategy", "finalBossHpStrategy", "acceptableBattleHpLoss", "stopAtAcceptableBattleHpLoss", "quickAcceptLowLossInFullAuto", "growthBudgets", "brightestFlameMaxHpLossLimit", "performancePreset",
             "searchMaxDegreeOfParallelism", "useBeamWidthPortfolio", "useNoveltyPortfolio", "showNoveltyPortfolioHint", "showSpeedXWarning", "shortTimeLimitSeconds", "deepTimeLimitSeconds", "enableNoGcRegion",
             "noGcRegionBudgetGigabytes", "shortBeamWidth", "deepBeamWidth", "shortMaxExpandedNodes", "deepMaxExpandedNodes",
             "shortMaxCardBranchesPerNode", "deepMaxCardBranchesPerNode", "shortMaxPileChoiceBranchesPerAction",

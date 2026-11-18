@@ -3,7 +3,7 @@
     <TargetFramework>net9.0</TargetFramework><LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable><ImplicitUsings>true</ImplicitUsings><AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <EnableDynamicLoading>true</EnableDynamicLoading><AssemblyName>Sts2CombatSolver</AssemblyName>
-    <Version>1.1.8</Version><EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Version>1.1.10</Version><EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin/$(Configuration)/</OutputPath>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>

@@ -142,10 +142,25 @@ internal static class ActEndingBossPolicy
         int recoveredHp,
         BossHpRelief bossHpRelief,
         int deathSaveHpRestored = 0)
-        => cumulativeHpLost
+        => RankedHpLost(cumulativeHpLost, bossHpRelief)
             + maxHpDeficit
             - PersistentValueOfRecoveredHp(recoveredHp - deathSaveHpRestored, bossHpRelief)
             + DeathSavePremium(deathSaveHpRestored);
+
+    /// <summary>
+    /// The part of the damage taken that route ranking is allowed to count.
+    /// </summary>
+    /// <remarks>
+    /// Clearing an act restores 80% of the damage the boss dealt, so at an act-ending boss that damage is only
+    /// worth a fifth - the same ratio <see cref="PersistentValueOfRecoveredHp"/> already applied to healing.
+    /// Counting damage at full value while discounting healing made those two fights rank as if the HP left at
+    /// the end mattered as much as it does in an ordinary fight, which is the opposite of "clear the act and keep
+    /// the belt for later". Permanent max-HP loss is still counted in full: that is not refunded.
+    /// </remarks>
+    public static int RankedHpLost(int cumulativeHpLost, BossHpRelief bossHpRelief)
+        => bossHpRelief == BossHpRelief.ActClearHeal
+            ? Math.Max(0, cumulativeHpLost) / 5
+            : cumulativeHpLost;
 
     /// <summary>
     /// Extra recovered HP a finished route earns from post-combat relics, in the same units as the in-combat
@@ -234,7 +249,7 @@ internal static class ActEndingBossPolicy
             PotionSpendPolicy.Resolve(
                 ResolveHpRelief(combatState),
                 ascensionLevel,
-                actHasSecondBoss: secondBoss is not null,
+                actHasSecondBoss: combatState.Encounter?.RoomType == RoomType.Boss && secondBoss is not null,
                 isSecondBoss),
             ascensionLevel);
     }

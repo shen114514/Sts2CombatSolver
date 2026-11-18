@@ -234,6 +234,7 @@ internal static partial class CardOnPlayMirrors
         registry.Register<WhiteNoise>(CardGenerationCardMirrors.WhiteNoiseOnPlay);
 
         registry.Register<StrikeIronclad>(GeneralCardMirrors.GeneralAttackOnPlay);
+        registry.Register<MyShinies>(GeneralCardMirrors.GeneralAttackOnPlay);
         registry.Register<StrikeSilent>(GeneralCardMirrors.GeneralAttackOnPlay);
         registry.Register<StrikeRegent>(GeneralCardMirrors.GeneralAttackOnPlay);
         registry.Register<StrikeNecrobinder>(GeneralCardMirrors.GeneralAttackOnPlay);
@@ -248,6 +249,18 @@ internal static partial class CardOnPlayMirrors
 
         registry.RegisterStrictInferrer(CardOnPlayInferrer.InferStrict);
         registry.RegisterInferrer(CardOnPlayInferrer.Infer);
+
+        // Necrobinder attack/block/draw cards that used to rely on inference only.
+        registry.Register<BansheesCry>(NecrobinderOnPlayMirrors.BansheesCryOnPlay);
+        registry.Register<Bury>(NecrobinderOnPlayMirrors.BuryOnPlay);
+        registry.Register<Defile>(NecrobinderOnPlayMirrors.DefileOnPlay);
+        registry.Register<Eradicate>(NecrobinderOnPlayMirrors.EradicateOnPlay);
+        registry.Register<Flatten>(NecrobinderOnPlayMirrors.FlattenOnPlay);
+        registry.Register<Melancholy>(NecrobinderOnPlayMirrors.MelancholyOnPlay);
+        registry.Register<Parse>(NecrobinderOnPlayMirrors.ParseOnPlay);
+        registry.Register<Poke>(NecrobinderOnPlayMirrors.PokeOnPlay);
+        registry.Register<Reap>(NecrobinderOnPlayMirrors.ReapOnPlay);
+        registry.Register<Sow>(NecrobinderOnPlayMirrors.SowOnPlay);
 
         return registry;
     }

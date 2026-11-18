@@ -1582,6 +1582,7 @@ internal sealed class SolverResult
     public required int BattleHpLostSoFar { get; init; }
     public int BattleHpRecoveredOrGainedSoFar { get; init; }
     public required int ProjectedBattleHpLost { get; init; }
+    public int ProjectedMaxHpLost { get; init; }
     public required int BattlePotionsUsedSoFar { get; init; }
     public required string[] BattlePotionIdsUsedSoFar { get; init; }
     public required string[] PlannedPotionIds { get; init; }
@@ -1898,6 +1899,7 @@ internal sealed class SolverResult
             HpLostByTurn = HpLostByTurn,
             HpRecoveredByTurn = HpRecoveredByTurn,
             PostCombatRelicHeal = PostCombatRelicHeal,
+            ProjectedMaxHpLost = ProjectedMaxHpLost,
             EnemyHpLostByTurn = EnemyHpLostByTurn,
             MaxBlockByTurn = MaxBlockByTurn,
             ActualBlockByTurn = ActualBlockByTurn,

@@ -2,19 +2,19 @@ param(
     [Parameter(Mandatory=$true)][string]$GameDirectory,
     [Parameter(Mandatory=$true)][string]$ProcDumpPath,
     [Parameter(Mandatory=$true)][string]$EvidenceDirectory,
-    [ValidateSet('ENCHANTMENT_CONTRACT','GLAM_SAVED','AUTO_NEXT','CATASTROPHE','CATASTROPHE_SAVED')][string]$Mode='ENCHANTMENT_CONTRACT',
+    [ValidateSet('ENCHANTMENT_CONTRACT','GLAM_SAVED','AUTO_NEXT','CATASTROPHE','CATASTROPHE_SAVED','BATTLE_LOSS','BATTLE_LOSS_SAVED','SHINIES_DOUBLE_BOSS')][string]$Mode='ENCHANTMENT_CONTRACT',
     [string]$ReplaySave
 )
 $ErrorActionPreference='Stop'
 if(@(Get-Process -Name SlayTheSpire2 -ErrorAction SilentlyContinue).Count){throw 'Close the game normally first; preserve its current run'}
 $dir=[IO.Path]::GetFullPath($EvidenceDirectory)
 if(Test-Path -LiteralPath $dir){throw 'New evidence directory required'}
-if($Mode -in @('GLAM_SAVED','CATASTROPHE_SAVED') -and (!$ReplaySave -or !(Test-Path -LiteralPath $ReplaySave -PathType Leaf))){throw 'An existing saved-run COPY is required'}
+if($Mode -in @('GLAM_SAVED','CATASTROPHE_SAVED','BATTLE_LOSS_SAVED') -and (!$ReplaySave -or !(Test-Path -LiteralPath $ReplaySave -PathType Leaf))){throw 'An existing saved-run COPY is required'}
 if(!(Test-Path -LiteralPath $ProcDumpPath -PathType Leaf)){throw 'Existing ProcDump executable required'}
 New-Item -ItemType Directory -Path (Join-Path $dir 'dumps') -Force|Out-Null
 $vars=@{
     COMBATSOLVER_SELF_TEST_DIR=$dir
-    COMBATSOLVER_SELF_TEST_CHARACTER='DEFECT'
+    COMBATSOLVER_SELF_TEST_CHARACTER=$(if($Mode -in @('BATTLE_LOSS','SHINIES_DOUBLE_BOSS')){'IRONCLAD'}else{'DEFECT'})
     COMBATSOLVER_SELF_TEST_MODE=$Mode
     COMBATSOLVER_SELF_TEST_SOURCE_ROOT=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\src'))
     COMBATSOLVER_REPLAY_SAVE=$ReplaySave

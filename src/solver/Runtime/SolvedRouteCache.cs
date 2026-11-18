@@ -72,6 +72,7 @@ internal sealed class SolvedRouteCache(string path)
             policy.FinalBossHpStrategy,
             policy.AcceptableBattleHpLoss,
             policy.StopAtAcceptableBattleHpLoss,
+            policy.QuickAcceptLowLoss,
             policy.UseBeamWidthPortfolio,
             policy.UseNoveltyPortfolio,
             policy.EarlyTurnExplorationDepth,

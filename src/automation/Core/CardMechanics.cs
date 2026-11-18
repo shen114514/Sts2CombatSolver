@@ -33,6 +33,7 @@ public static class CardMechanics
     }
     public static double Upgrade(RunSnapshot s, CardSnapshot c)
     {
+        if(c.ClassName=="MyShinies")return MyShiniesPolicy.UpgradeValue(s,c);
         if(ApotheosisPolicy.UpgradeOverride(s,c) is {} apotheosis)return apotheosis;
         if(HeroPolicy.Supports(s.Character))return HeroStrategy.Upgrade(s,c);
         if(s.Character=="Silent")return SilentStrategy.Upgrade(s,c);

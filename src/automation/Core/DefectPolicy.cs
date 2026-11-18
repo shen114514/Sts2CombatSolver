@@ -5,7 +5,7 @@ namespace SpireStrategist.Core;
 // Reviewed deterministic priors shared with tools/DefectDraft; no game references.
 public static class DefectPolicy
 {
-    public const string Version = "defect-draft-0.15-orbs";
+    public const string Version = "defect-draft-0.16-bilibili";
     public const string Scope = "机器人接管：选牌、营火、路线、商店与原生事件；战斗需要 CombatSolver。未知效果会记录并采用明确后备策略。";
     private sealed record Profile(double Base, double[] Phase, double Duplicate, double UpgradeDelta, string[] Tags);
     private sealed record Coefficients(double CardTax, double DamageNeed, double BlockNeed, double DuplicateQuadratic, double SynergyCap);

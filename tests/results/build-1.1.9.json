@@ -1,0 +1,56 @@
+{
+  "version": "1.1.9",
+  "generatedAt": "2026-11-17T18:05:29.5121888+08:00",
+  "dllHash": "AA321FD75D1AB6373599B8E6D769986C4B95200BB1025F779454C4FDF9F0593A",
+  "installedHash": "AA321FD75D1AB6373599B8E6D769986C4B95200BB1025F779454C4FDF9F0593A",
+  "gameHash": "62ECBE91093E1FA862DE4329AAC865209DCB297804CAF0F0520D92D8C0B4A9C3",
+  "native": [
+    {
+      "name": "native-release",
+      "status": "Passed",
+      "checks": 15,
+      "shouldSave": false,
+      "exitCode": "0x00000000",
+      "dumps": 0,
+      "dllHash": "AA321FD75D1AB6373599B8E6D769986C4B95200BB1025F779454C4FDF9F0593A"
+    },
+    {
+      "name": "saved-release",
+      "status": "Passed",
+      "checks": 5,
+      "shouldSave": false,
+      "exitCode": "0x00000000",
+      "dumps": 0,
+      "dllHash": "AA321FD75D1AB6373599B8E6D769986C4B95200BB1025F779454C4FDF9F0593A"
+    }
+  ],
+  "regressions": {
+    "stop": 13,
+    "route": 9,
+    "potion": 7,
+    "automation": 110,
+    "orb": 23,
+    "il": 7,
+    "glam": 9,
+    "centipede": 10
+  },
+  "regressionTotal": 188,
+  "savesChecked": 229,
+  "saveDifferences": [],
+  "newSaveFiles": [],
+  "settingsUnchanged": true,
+  "currentRunHash": "8D74B376FF5A5E32A69F38E7E7EB46FE9277D2EBBAF1E7A339B84F0DD00803C6",
+  "zipHash": "4EF7C65B62F757E048585322885B307F2BE7C5107EE36D6E4F49BE537EFF231B",
+  "installerHash": "81A6EABF402100301D17B8AB83F2FF9F229113BE4A40BF3DBD536597D04312CE",
+  "zipDllHash": "AA321FD75D1AB6373599B8E6D769986C4B95200BB1025F779454C4FDF9F0593A",
+  "embeddedZipHash": "4EF7C65B62F757E048585322885B307F2BE7C5107EE36D6E4F49BE537EFF231B",
+  "payloadFiles": [
+    "Sts2CombatSolver.dll",
+    "Sts2CombatSolver.json",
+    "LICENSE"
+  ],
+  "officialSaveRestored": false,
+  "githubWritten": false,
+  "monitoringRunning": false,
+  "remainingKnownIssue": "TestSubject R.targets drift; strict rejection and replan retained, not certified fixed"
+}

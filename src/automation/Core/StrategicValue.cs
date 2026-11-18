@@ -20,7 +20,11 @@ public sealed class StrategicValue(RunSnapshot state)
     public double HpCost(double amount)=>amount*(.55+3*Math.Pow(1-Ratio,2))*(State.NextNodeTypes.Length>0 && State.NextNodeTypes.All(n=>n=="RestSite")?.6:1);
     public double Heal(double amount)=>Math.Min(Math.Max(0,State.MaxHp-State.Hp),amount)*(.55+2.5*Math.Pow(1-Ratio,2))*CardMechanics.HealthyHealingMultiplier(Ratio);
     public double MaxHp(double amount)=>amount*(.8+.45*Horizon);
-    public double Gold(double amount)=>Has("ECTOPLASM")&&amount>0?0:amount*.055*(State.Gold<100?1.3:State.Gold>500?.65:1);
+    public double Gold(double amount)=>amount<0?-GoldSpend(-amount):Has("ECTOPLASM")?0:
+        amount*.055*(State.Gold<100?1.3:State.Gold>500?.65:1)
+            +MyShiniesPolicy.SpendPenalty(State with{Gold=State.Gold+(int)amount},amount);
+    public double GoldSpend(double amount,bool finalShop=false)=>(finalShop?0:Math.Max(0,amount)*.055*
+        (State.Gold<100?1.3:State.Gold>500?.65:1))+MyShiniesPolicy.SpendPenalty(State,amount);
     public double Add(CardSnapshot c)=>new Policy().Evaluate(State,[new("c",c.Name,"card",Card:c)]).Options[0].Score??-12;
     public double Upgrade(CardSnapshot c)=>CardMechanics.Upgrade(State,c)*.65;
     public double Remove(CardSnapshot c)
