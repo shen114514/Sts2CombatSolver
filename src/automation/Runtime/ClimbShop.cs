@@ -60,6 +60,7 @@ internal sealed partial class PartialAutopilot
         return true;
     }
     private ulong? leavingShop;
+    private string? shopSlotFingerprint;
     private void TickClimbShop(NMerchantRoom room,NMerchantInventory inventory,NMerchantSlot[] slots,RunSnapshot state)
     {
         var nodes=RouteAdapter.Nodes(service.State);
@@ -99,7 +100,37 @@ internal sealed partial class PartialAutopilot
             return;
         }
         Wait("接管中 · 商店处理完成，离开");
-        if(Claim("climb-shop-close:"+room.GetInstanceId()))
+        // 遗物和药水都买不到时别空手走人：金币充足就按"清仓"预算再看一次买牌/删牌，
+        // 否则 600+ 金币的店会被直接跳过（打到最后钱没花完）。
+        var cards = slots.Where(s => s.Entry is MerchantCardEntry { CreationResult: not null })
+            .Select(s => new ShopCard(s.GetInstanceId().ToString(),
+                SnapshotReader.ReadCard(((MerchantCardEntry)s.Entry).CreationResult!.Card), s.Entry.Cost))
+            .ToArray();
+        var removalCost = slots.FirstOrDefault(s => s.Entry is MerchantCardRemovalEntry)?.Entry.Cost;
+        var spend = ShopPolicy.Evaluate(state, cards, removalCost, state.Gold, shopBoughtCards, 0);
+        if (spend.Recommendation is { } pick)
+        {
+            var target = pick.Kind == "remove"
+                ? slots.FirstOrDefault(s => s.Entry is MerchantCardRemovalEntry)
+                : slots.FirstOrDefault(s => s.GetInstanceId().ToString() == pick.Key);
+            if (target != null)
+            {
+                var choice = new ShopChoice(pick.Key, pick.Name, pick.Kind, pick.Price, 0,
+                    ["遗物与药水都不可用，剩余金币按清仓预算投入", ..spend.Notes]);
+                service.ShowShop(state, new(choice, [choice], 0, choice.Reasons));
+                Wait($"接管中 · 清仓 {pick.Name}（{pick.Price} 金币）");
+                if (Claim($"climb-spend:{room.GetInstanceId()}:{target.GetInstanceId()}:{state.Gold}:{shopBoughtCards}",
+                        target.Entry.EnoughGold, 8000))
+                {
+                    if (pick.Kind == "remove")
+                        removalTarget = service.Player.Deck.Cards[Math.Clamp(pick.DeckIndex, 0, service.Player.Deck.Cards.Count - 1)];
+                    service.RecordAuto("climb_spend", new { state, plan = spend, choice });
+                    Track(() => BuyShopSlot(target, pick.Kind == "card"));
+                }
+                return;
+            }
+        }
+        if (Claim("climb-shop-close:"+room.GetInstanceId()))
         {
             leavingShop=room.GetInstanceId();
             GameActions.Invoke(inventory,"Close");

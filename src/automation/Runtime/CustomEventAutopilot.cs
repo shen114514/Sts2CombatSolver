@@ -62,7 +62,16 @@ internal sealed partial class PartialAutopilot
             else
             {
                 Wait("接管中 · 假商人购买结束，离开");
-                if(Claim("fake-leave:"+inventory.GetInstanceId())){GameActions.Invoke(inventory,"Close");GameActions.Invoke(merchant,"HideScreen",GameActions.Field(merchant,"_proceedButton"));}
+                // 现行版本 NFakeMerchant 没有 HideScreen；离场走原生 OnProceedButtonReleased，
+                // 它内部会调用 RunManager.Proceed()。旧调用会抛 MissingMethodException 并卡在店里。
+                if(Claim("fake-leave:"+inventory.GetInstanceId()))
+                {
+                    GameActions.Invoke(inventory,"Close");
+                    var proceed=GameActions.Field(merchant,"_proceedButton");
+                    if(proceed is NClickableControl button&&!button.IsVisibleInTree())
+                        GameActions.Invoke(merchant,"ShowProceedButton");
+                    GameActions.Invoke(merchant,"OnProceedButtonReleased",proceed);
+                }
             }
             return true;
         }

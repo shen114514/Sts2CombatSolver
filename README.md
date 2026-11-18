@@ -4,7 +4,7 @@
 
 ## 安装
 
-1. 关闭游戏，到 [Releases](https://github.com/shen114514/Sts2CombatSolver/releases/latest) 下载 `Sts2CombatSolver-Setup-1.1.10.exe`。
+1. 关闭游戏，到 [Releases](https://github.com/shen114514/Sts2CombatSolver/releases/latest) 下载 `Sts2CombatSolver-Setup-1.1.11.exe`。
 2. 双击运行。安装器自动查找 Steam 游戏目录；未找到时选择含 `SlayTheSpire2.exe` 的目录。
 3. 启动游戏并启用 Mod。单人战斗默认自动计算、出牌；地图允许前进时自动选路。可在求解器面板暂停、关闭全自动或关闭自动选路。
 4. **设置 → 常规 → 房间自动操作**：分别开启“自动奖励与拿牌”“自动商店”“自动事件”“自动火堆”。四项默认关闭，设置会保存；关闭某项后交还手动操作。已经提交的单次动作可能仍在完成。
@@ -15,6 +15,15 @@
 安装器会将现有 `Sts2CombatSolver`、`CombatSolver`、`Sts2Whale` 文件夹备份到游戏根目录的 `mod-backups/Sts2CombatSolver/时间编号/`，再安装独立版。不修改存档、用户配置或无关 Mod；不自动删除朋友可能用于其他 Mod 的 RitsuLib。本发布包不包含也不依赖它。
 
 手动安装：将 ZIP 中三个文件放到 `游戏目录/mods/Sts2CombatSolver/`。卸载：关闭游戏后删除该文件夹；如需回退，从 `mod-backups` 取回原文件夹。
+
+## 技术文档
+
+实现原理与算法写在 `docs/` 下：
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)：两套引擎、数据流、线程与预算、日志与验证。
+- [`docs/COMBAT-SOLVER.md`](docs/COMBAT-SOLVER.md)：镜像模拟、Beam 搜索、节点打分、多轮补搜、药水策略、容错与确定性。
+- [`docs/ROOM-AUTOMATION.md`](docs/ROOM-AUTOMATION.md)：房间自动化主循环、界面分派顺序、`Claim`/`Wait`/`Manual`、商店与事件流程、路线与连开。
+- [`docs/DEFECT-POLICY.md`](docs/DEFECT-POLICY.md)：故障机器人抓牌先验结构、打分公式、集中饱和与过渡上限、先验来源与验证。
 
 ## 功能范围
 

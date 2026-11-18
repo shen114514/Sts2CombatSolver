@@ -333,9 +333,31 @@ internal sealed partial class PartialAutopilot
             var inventory=(NMerchantInventory)screen;
             if(!inventory.IsOpen || GameActions.Field(inventory,"_isInputBlocked") is true){gate.ResetPending();return;}
             var slots=inventory.GetAllSlots().Where(s=>s.IsVisibleInTree() && s.Hitbox.IsEnabled && s.Entry is {IsStocked:true}).ToArray();
+            // 刚打开商店时槽位还在做入场动画，读不到商品就下结论会"空店直接走人"。
+            if(slots.Length==0){Wait("接管中 · 等待商店商品载入");gate.ResetPending();return;}
             var removal=slots.FirstOrDefault(s=>s.Entry is MerchantCardRemovalEntry);
             var cardsInShop=slots.Where(s=>s.Entry is MerchantCardEntry {CreationResult:not null}).ToArray();
             var state=service.WithForesight(SnapshotReader.Read(service.State,service.Player));
+            // 商品明细只记一次，便于事后核对"有货却空手离场"这类问题。
+            var slotFingerprint=string.Join("|",slots.Select(s=>s.GetInstanceId()+":"+s.Entry.Cost));
+            if(shopSlotFingerprint!=slotFingerprint)
+            {
+                shopSlotFingerprint=slotFingerprint;
+                service.RecordAuto("shop_slots",new
+                {
+                    gold=state.Gold,
+                    slots=slots.Select(s=>new
+                    {
+                        kind=s.Entry.GetType().Name,
+                        cost=s.Entry.Cost,
+                        affordable=s.Entry.EnoughGold,
+                        key=s.GetInstanceId().ToString(),
+                        card=(s.Entry as MerchantCardEntry)?.CreationResult?.Card?.Id.ToString(),
+                        relic=(s.Entry as MerchantRelicEntry)?.Model?.Id.ToString(),
+                        potion=(s.Entry as MerchantPotionEntry)?.Model?.Id.ToString(),
+                    }),
+                });
+            }
             if(TickPriorityShop(room,slots,state))return;
             var finalShop=FullAutomatic&&service.State.CurrentMapPoint is {} shopPoint&&
                 ShopBudget.Reserve(state,RouteAdapter.Nodes(service.State),RouteAdapter.Key(shopPoint),100)==0;

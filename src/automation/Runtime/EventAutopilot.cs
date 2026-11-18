@@ -43,7 +43,9 @@ internal sealed partial class PartialAutopilot
     {
         if(CombatManager.Instance.IsInProgress)return false;
         if(!OwnsPickup){ownedPickup=null;ownedPickupRoom=null;}
-        if(!OwnsCurrentEvent){ownedEvent=null;if(ownedRestSelection==null&&!OwnsPickup)eventSelectionTargets=null;}
+        // 附魔选牌不归属任何事件/营地选项（营地附魔、遗物、事件都可能打开）。这里必须保留已经算好的
+        // 选牌目标，否则每帧都会重新初始化，看到"玩家已选了一张"就交还人工——表现为停在附魔界面。
+        if(!OwnsCurrentEvent){ownedEvent=null;if(ownedRestSelection==null&&!OwnsPickup&&screen is not NDeckEnchantSelectScreen)eventSelectionTargets=null;}
         if(TickCustomEvent(screen))return true;
         // 附魔选牌（营地/遗物/事件都可能打开）不依赖事件归属：只要界面是附魔选牌就直接接管，
         // 否则从营地或遗物进入时会一直等玩家点。
